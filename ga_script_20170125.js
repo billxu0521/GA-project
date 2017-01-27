@@ -1,4 +1,4 @@
-     console.log("@billxu page test");//初始化確認有載入腳本
+     console.log("GaEventScript20170127@billxu");//初始化確認有載入腳本
 
      var customUserId = "billxu";  //輸入ID
 
@@ -22,12 +22,55 @@
      ga('require', 'displayfeatures');
      ga('set', 'userId', customUserId); // 使用已登入的 user_id 設定 User-ID。
      ga('set', 'dimension1', customUserId);
-
     
+     
+     /********
+     這邊放置各種偵測任務
+     ********/
+     $(function () {  
+          //將ID資訊記錄到視窗屬性中
+		saveUserID(customUserId);
+          
+          //紀錄滑鼠滑過標選單按鈕範例   
+          mouseHoverEvent("menu-title","mouse_hover");
+
+          //紀錄滑鼠點擊標選單按鈕   
+          mouseClickEvent("menu-title","click_menu");
+          
+          //偵測捲動頁面有無出現目標
+          mouseScrollEvent("frame");
+          
+     });
+
+     
+
+     //將ID資訊記錄到視窗屬性中
+     function saveUserID(customUserId){
+          var _customUserId = customUserId;
+          if(window.name == null){
+               window.name = _customUserId;
+          }else{
+               _customUserId = window.name;
+          }
+     }
+
+     /********
+     偵測滑鼠滑過
+     ********/
+     function mouseHoverEvent(selector,event_type){
+          var _id = selector;
+          var _event_type = event_type;
+
+          $('.'+_id).mouseover(function () {    
+               console.log("mouse hover");        // 加上事件的程式碼
+               ga("send", "event", _event_type, this.title);   
+          });        
+     }
+
      /*******
      計時器功能
      ********/
-
+     
      //計時器宣告
      var timecount = 0;
      var timecountStart;
@@ -45,32 +88,29 @@
           clearTimeout(timecountStart);
           return _timecount;
      }
-     /********
-     腳本本體
-     ********/
-     $(function () {  
-     //將ID資訊記錄到視窗屬性中
-		if(window.name == null){
-			window.name = customUserId;
-		}else{
-			customUserId = window.name;
-		}
-     
-          //紀錄滑鼠滑過標選單按鈕    
-          $('.menu-title').mouseover(function () {    
-               console.log("mouse hover");        // 加上事件的程式碼
-               ga("send", "event", "mouseover_menu", this.title);   
-          });        
 
-          //紀錄滑鼠點擊標選單按鈕    
-          $('.menu-title').click(function () {    
+     /********
+     偵測滑鼠滑過點擊
+     ********/
+     function mouseClickEvent(selector,event_type){
+          var _id = selector;
+          var _event_type = event_type;
+
+          $('.'+_id).click(function () {    
                console.log("mouse click");        // 加上事件的程式碼
-               ga("send", "event", "click_menu", this.title);    
-          });            
-          
+               ga("send", "event", _event_type, this.title);   
+          });        
+     }
+     
+     /********
+     偵測捲動畫面，物件出現畫面中
+     ********/
+     function mouseScrollEvent(selector){
+          var _id = selector;
+
           /*    偵測物件出現在畫面上    */    
           //找出要被偵測的元件位置    
-          var $obj = $('.frame'),_height = $obj.height(), _scrollHeight =  $obj.offset();
+          var obj = $('.'+_id),_height = obj.height(), _scrollHeight =  obj.offset();
           var objheight = _height;
           var scrollHeight = _scrollHeight;
           var document_height = $( document ).height();
@@ -95,17 +135,17 @@
                          getObjStatus = 1;
                          timedCount();
                          console.log(">>>目標進入，開始計時<<<");
-                         ga("send", "event", "Get_obj", this.title);
+                         ga("send", "event", "scroll_in", this.title);
                          return 0;
                     }
                //console.log(">>>目標在畫面中<<<");
                }else if(getObjStatus == 1){
                     var _durtime = stopCount();
                     console.log(">>>目標離開，使用時間:"+_durtime+"秒<<<");
-                    console.log();
-
-                    ga("send", "event", "Get_obj", this.title+":"+timecount+"s");
+                    ga("send", "event", "scroll_out", this.title+":"+_durtime+"s");
                     getObjStatus = 0;
                }});
+     }
 
-     });
+
+
