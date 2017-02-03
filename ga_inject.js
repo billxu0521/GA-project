@@ -1,6 +1,29 @@
-console.log("GaEventScript20170127@billxu");//初始化確認有載入腳本
+/**
+ * 畫面讀取完成之後再來初始化
+ * 而且避免變數被宣告在全域範圍，跟其他程式碼相互衝突
+ * @author Pudding 20170203
+ */
+$(function () {
 
-var customUserId = "billxu";  //輸入ID
+/**
+ * 加上DEBUG的設定，以方便未來開關
+ * @type Boolean
+ * @author Pudding 20170203
+ */ 
+var DEBUG = true;
+    
+if (DEBUG === true) {    
+    console.log("GaEventScript20170127@billxu");//初始化確認有載入腳本
+}
+
+/**
+ * @TODO 要改成從window.name讀取
+ * 1. 確認window.name是否有資料
+ * 2. 如果沒有資料，則先給與預設值 "anonymity"
+ * 3. 使用一種特殊的方法來設定 customUserId
+ * @type String|userIdInput
+ */
+var customUserId = "anonymity";  //輸入ID
 
 /********
 埋入GA追蹤資訊
@@ -11,10 +34,12 @@ var customUserId = "billxu";  //輸入ID
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();  
           a=s.createElement(o),  m=s.getElementsByTagName(o)[0];
           a.async=1;a.src=g;m.parentNode.insertBefore(a,m)  
-})
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-console.log("Active google-analytics");
+if (DEBUG === true) {
+    // @TODO 把所有console.log()的事件前面都加上DEBUG判斷
+    console.log("Google analytics injected.");
+}
 
 //這邊填入GA專案追蹤碼  
 ga('create', 'UA-89833109-1', {'userId': customUserId});  
@@ -24,105 +49,65 @@ ga('set', 'userId', customUserId); // 使用已登入的 user_id 設定 User-ID�
 ga('set', 'dimension1', customUserId);
 
 
-/********
-這邊放置各種偵測任務
-********/
-$(function () {  
-     //inputUserIDDialog();
+// ===================================================================
+/**
+ * 這邊放置各種偵測任務
+ */
+var _setup_event = function () {
+    //inputUserIDDialog();
 
-     //將ID資訊記錄到視窗屬性中
-      //saveUserID(customUserId);
+    //將ID資訊記錄到視窗屬性中
+    //saveUserID(customUserId);
 
-     //紀錄滑鼠滑過標選單按鈕範例   
-     mouseHoverEvent(".menu-title","mouse_hover");
+    //紀錄滑鼠滑過標選單按鈕範例   
+    mouseHoverEvent(".menu-title","mouse_hover");
 
-     //紀錄滑鼠點擊標選單按鈕   
-     mouseClickEvent(".menu-title","click_menu");
+    //紀錄滑鼠點擊標選單按鈕   
+    mouseClickEvent(".menu-title","click_menu");
 
-     //偵測捲動頁面有無出現目標
-     mouseScrollEvent(".frame");
-
-
-
-     /*********
-     輸入密技啟動輸入ID
-     *********/
-     $(document).ready(function(){    
-         $(document).unbind("keyup",HotKeyControler.Keyup);
-         $(document).bind("keyup",HotKeyControler.Keyup);
-     });
-
-     /* DEMO 註冊當按下 Konami(上上下下左右左右BA)時要觸發的事件 */
-     HotKeyControler.RegisterTest("Konami",function(event,code) { /* 上上下下左右左右BA */
-               if (code.length!=10) return false;
-               if (code[0]==38 && code[1]==38 && code[2]==40 && code[3]==40 &&
-               code[4]==37 && code[5]==39 && code[6]==37 && code[7]==39 &&
-               code[8]==66 && code[9]==65) {
-                    return true;
-               }
-               return false;
-          }
-          ,function() {
-               inputUserIDDialog();
-          }
-     );
-});
-
-/*********
-偵測按鍵
-*********/
-
-var HotKeyControler = {
-    MAX_QUEUE: 10, /* 保留最後 10 個鍵盤事件 */
-    testFuns: new Object(),
-    triggerFuns: new Object(),
-    KeyQueue: new Array,
-    Keyup: function(event) {
-          HotKeyControler.KeyQueue.push(event.keyCode);
-          if (HotKeyControler.KeyQueue.length > HotKeyControler.MAX_QUEUE) {
-               HotKeyControler.KeyQueue.shift();
-          }
-          for (var key in HotKeyControler.testFuns) {
-               if (HotKeyControler.testFuns[key](event,  HotKeyControler.KeyQueue)) {
-                    HotKeyControler.triggerFuns[key]();
-               }
-          }
-    },
-   /*  函數名稱：註冊熱鍵
-    *  參數說明：(唯一鍵值, 測試function, 觸發function)
-    *  說   明：提供註冊熱鍵的方法，提供目前畫面被按下的按鍵佇列，供AP自行判斷是否觸發執行事件
-    */
-    RegisterTest: function(key, testFun, triggerFun) {
-          if (typeof(testFun) === 'function' && typeof(triggerFun) === 'function') {
-               HotKeyControler.testFuns[key] = testFun;
-               HotKeyControler.triggerFuns[key] = triggerFun;
-          }
-     }
-}
+    //偵測捲動頁面有無出現目標
+    mouseScrollEvent(".frame");
+};  //var _setup_event = function () {
 
 
-//將ID資訊記錄到視窗屬性中
-function saveUserID(customUserId){
-     var _customUserId = customUserId;
-     if(window.name === null){
-          window.name = _customUserId;
-     }else{
-          _customUserId = window.name;
-     }
-}
+/**
+ * 將ID資訊記錄到視窗屬性中
+ * @param {String} customUserId
+ * 
+ * @TODO 把function宣告方式全部改成
+ * var _save_user_id = function (_customUserId) {
+ *      // script
+ * };
+ */
+var _save_user_id = function (_customUserId){
+    //var _customUserId = customUserId;
+    if (window.name === null) {
+       window.name = _customUserId;
+    }
+    else {
+       _customUserId = window.name;
+    }
+};
 
+/**
+ * @TODO 缺少函式說明
+ * @returns {undefined}
+ */
 function inputUserIDDialog(){
      var userIdInput = prompt("請輸入使用者名稱", "普羅米修斯");
      if (userIdInput !== null) {   
          customUserId = userIdInput;
          console.log("Hello," + customUserId);
-         saveUserID(customUserId);
+         _save_user_id(customUserId);
      }
 }
 
 /********
-偵測滑鼠滑過
-********/
+ * 偵測滑鼠滑過
+ * @TODO 函式前面的說明全部改成
+ * /**
+ *  * 說明的形式
+ *  */
 function mouseHoverEvent(selector,event_type){
      var _id = selector;
      var _event_type = event_type;
@@ -216,4 +201,7 @@ function mouseScrollEvent(selector){
 }
 
 
+_setup_event();
+
+}); //$(function () {
 
