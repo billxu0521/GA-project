@@ -1,12 +1,18 @@
 # GA-project
 GA偵測事件
 
-# TODO
+# TODO (主要請看Issues)
+https://github.com/billxu0521/GA-project/issues
 - 計時器功能錯誤，請見#TODO ga_inject_lib.js
-- 記錄userID
-- 撰寫安裝教學 (README.md)
+- _save_user_id寫法不能跟ga結合，請重新思考ga怎麼設定id再來重寫這個功能
+- 撰寫匯入(安裝)教學 (README.md)
 - 撰寫匯出教學 (README.md)
 - 撰寫設定userID教學 (README.md)
+- 把所有console.log()的事件前面都加上DEBUG判斷
+- 變數名稱規範： 區域變數或函數前面要加底線，字與字中間用底線隔開，例如「_var」；固定的常數要全部大寫，字與字之間用底線隔開，例如「MOUSE_CONFIG」
+- 不要直接用function宣告函數，應用 var _func = function () { /*script*/ }; 宣告函數。注意最後的「;」
+- 許多函式缺少說明，函式前面的說明全部改成
+- ga("send", "event"...) 最後還要加上事件類型，像是"click"或"mouseover"
 
 # 匯入(安裝)教學
 * 注意：要將 page_inject_js 中的*.js對應到網站中的網址，例如「page_inject_js/index.js」對應到「https://www.travel.taipei/」。每個網頁都會套用不同的事件偵測，所以匯入匯出必須要能批次處理多個網頁

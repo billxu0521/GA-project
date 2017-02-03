@@ -73,6 +73,7 @@ var _setup_event = function () {
 /**
  * 將ID資訊記錄到視窗屬性中
  * @param {String} customUserId
+ * @ TODO _save_user_id寫法不能跟ga結合，請重新思考ga怎麼設定id再來重寫這個功能
  * 
  * @TODO 把function宣告方式全部改成
  * var _save_user_id = function (_customUserId) {
@@ -90,8 +91,7 @@ var _save_user_id = function (_customUserId){
 };
 
 /**
- * @TODO 缺少函式說明
- * @returns {undefined}
+ * @TODO 許多函式缺少說明
  */
 function inputUserIDDialog(){
      var userIdInput = prompt("請輸入使用者名稱", "anonymity");
@@ -102,9 +102,9 @@ function inputUserIDDialog(){
      }
 }
 
-/********
+/**
  * 偵測滑鼠移上去的事件
- * @TODO 函式前面的說明全部改成
+ * @TODO 許多函式缺少說明，函式前面的說明全部改成
  * /**
  *  * 說明的形式
  *  */
@@ -121,7 +121,7 @@ var _mouseover_event = function (_selector, _event_type) {
 var _mouse_click_event = function (_selector, _event_type) {
      $(_selector).click(function () {    
           console.log("mouse click");        // 加上事件的程式碼
-          ga("send", "event", _event_type, this.title, 'click'); // @TODO 最後還要加上事件類型
+          ga("send", "event", _event_type, this.title, 'click'); // @TODO ga("send", "event"...) 最後還要加上事件類型，像是"click"或"mouseover"
      });        
 };
 
