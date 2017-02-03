@@ -2,14 +2,14 @@
 GA偵測事件
 
 # TODO
-- 計時器功能錯誤，請見#TODO ga_inject.js
+- 計時器功能錯誤，請見#TODO ga_inject_lib.js
 - 記錄userID
 - 撰寫安裝教學 (README.md)
 - 撰寫匯出教學 (README.md)
 - 撰寫設定userID教學 (README.md)
 
 # 匯入(安裝)教學
-* 注意：這個script會被用在多個網頁上，每個網頁都會套用不同的事件偵測，所以匯入匯出必須要能批次處理多個網頁
+* 注意：要將 page_inject_js 中的*.js對應到網站中的網址，例如「page_inject_js/index.js」對應到「https://www.travel.taipei/」。每個網頁都會套用不同的事件偵測，所以匯入匯出必須要能批次處理多個網頁
 1. step1
 2. step2
 
