@@ -94,7 +94,7 @@ var _save_user_id = function (_customUserId){
  * @returns {undefined}
  */
 function inputUserIDDialog(){
-     var userIdInput = prompt("請輸入使用者名稱", "普羅米修斯");
+     var userIdInput = prompt("請輸入使用者名稱", "anonymity");
      if (userIdInput !== null) {   
          customUserId = userIdInput;
          console.log("Hello," + customUserId);
@@ -103,33 +103,27 @@ function inputUserIDDialog(){
 }
 
 /********
- * 偵測滑鼠滑過
+ * 偵測滑鼠移上去的事件
  * @TODO 函式前面的說明全部改成
  * /**
  *  * 說明的形式
  *  */
-function mouseHoverEvent(selector,event_type){
-     var _id = selector;
-     var _event_type = event_type;
-
-     $(_id).mouseover(function () {    
+var _mouseover_event = function (_selector, _event_type) {
+     $(_selector).mouseover(function () {    
           console.log("mouse hover");        // 加上事件的程式碼
-          ga("send", "event", _event_type, this.title);   
-     });        
-}
+          ga("send", "event", _event_type, this.title, 'mouseover');   
+     });
+};
 
 /********
 偵測滑鼠滑過點擊
 ********/
-function mouseClickEvent(selector,event_type){
-     var _id = selector;
-     var _event_type = event_type;
-
-     $(_id).click(function () {    
+var _mouse_click_event = function (_selector, _event_type) {
+     $(_selector).click(function () {    
           console.log("mouse click");        // 加上事件的程式碼
-          ga("send", "event", _event_type, this.title);   
+          ga("send", "event", _event_type, this.title, 'click'); // @TODO 最後還要加上事件類型
      });        
-}
+};
 
 /*******
  * 計時器功能
@@ -187,14 +181,14 @@ function mouseScrollEvent(selector){
                 getObjStatus = 1;
                 timedCount();
                 console.log(">>>目標進入，開始計時<<<");
-                ga("send", "event", "scroll_in", this.title);
+                ga("send", "event", "scroll_in", this.title); // @TODO 最後還要加上事件類型
                 return 0;
             }
         //console.log(">>>目標在畫面中<<<");
         }else if(getObjStatus === 1){
             var _durtime = stopCount();
             console.log(">>>目標離開，使用時間:"+_durtime+"秒<<<");
-            ga("send", "event", "scroll", this.title, "out", _durtime); 
+            ga("send", "event", "scroll", this.title, "out", _durtime);  // @TODO 最後還要加上事件類型
             getObjStatus = 0;
         }
     });
