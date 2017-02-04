@@ -83,10 +83,10 @@ var _setup_event = function () {
 var _save_user_id = function (_customUserId){
     //var _customUserId = customUserId;
     if (window.name === null) {
-       window.name = _customUserId;
+      window.name = _customUserId;
     }
     else {
-       _customUserId = window.name;
+      _customUserId = window.name;
     }
 };
 
@@ -96,9 +96,9 @@ var _save_user_id = function (_customUserId){
 function inputUserIDDialog(){
      var userIdInput = prompt("請輸入使用者名稱", "anonymity");
      if (userIdInput !== null) {   
-         customUserId = userIdInput;
-         console.log("Hello," + customUserId);
-         _save_user_id(customUserId);
+        customUserId = userIdInput;
+        console.log("Hello," + customUserId);
+        _save_user_id(customUserId);
      }
 }
 
@@ -109,9 +109,11 @@ function inputUserIDDialog(){
  *  * 說明的形式
  *  */
 var _mouseover_event = function (_selector, _event_type) {
-     $(_selector).mouseover(function () {    
+     $(_selector).mouseover(function () {
+        if (DEBUG === true) {
           console.log("mouse hover");        // 加上事件的程式碼
-          ga("send", "event", _event_type, this.title, 'mouseover');   
+        }    
+        ga("send", "event", _event_type, this.title, 'mouseover');   
      });
 };
 
@@ -120,7 +122,9 @@ var _mouseover_event = function (_selector, _event_type) {
 ********/
 var _mouse_click_event = function (_selector, _event_type) {
      $(_selector).click(function () {    
-          console.log("mouse click");        // 加上事件的程式碼
+        if (DEBUG === true){
+          console.log("mouse click");        // 加上事件的程式碼 
+        }
           ga("send", "event", _event_type, this.title, 'click'); // @TODO ga("send", "event"...) 最後還要加上事件類型，像是"click"或"mouseover"
      });        
 };
@@ -178,18 +182,22 @@ function mouseScrollEvent(selector){
         //偵測目標有無在畫面中
         if ((scrollVal + winHeight) - scrollHeight.top > 0 && scrollVal < (scrollHeight.top + objheight)  ){
             if (getObjStatus === 0){
-                getObjStatus = 1;
-                timedCount();
+              getObjStatus = 1;
+              timedCount();
+              if (DEBUG === true){
                 console.log(">>>目標進入，開始計時<<<");
-                ga("send", "event", "scroll_in", this.title); // @TODO 最後還要加上事件類型
-                return 0;
+              }
+              ga("send", "event", "scroll_in", this.title); // @TODO 最後還要加上事件類型
+              return 0;
             }
         //console.log(">>>目標在畫面中<<<");
         }else if(getObjStatus === 1){
-            var _durtime = stopCount();
+          var _durtime = stopCount();
+          if (DEBUG === true){
             console.log(">>>目標離開，使用時間:"+_durtime+"秒<<<");
-            ga("send", "event", "scroll", this.title, "out", _durtime);  // @TODO 最後還要加上事件類型
-            getObjStatus = 0;
+          }
+          ga("send", "event", "scroll", this.title, "out", _durtime);  // @TODO 最後還要加上事件類型
+          getObjStatus = 0;
         }
     });
 }
