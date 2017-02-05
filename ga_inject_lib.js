@@ -23,7 +23,7 @@ if (DEBUG === true) {
  * 3. 使用一種特殊的方法來設定 customUserId
  * @type String|userIdInput
  */
-var customUserId = "anonymity";  //輸入ID
+var CUSTOM_USER_ID = "anonymity";  //輸入ID
 
 /********
 埋入GA追蹤資訊
@@ -42,11 +42,11 @@ if (DEBUG === true) {
 }
 
 //這邊填入GA專案追蹤碼  
-ga('create', 'UA-89833109-1', {'userId': customUserId});  
+ga('create', 'UA-89833109-1', {'userId': CUSTOM_USER_ID});  
 ga('send', 'pageview');
 ga('require', 'displayfeatures');
-ga('set', 'userId', customUserId); // 使用已登入的 user_id 設定 User-ID。
-ga('set', 'dimension1', customUserId);
+ga('set', 'userId', CUSTOM_USER_ID); // 使用已登入的 user_id 設定 User-ID。
+ga('set', 'dimension1', CUSTOM_USER_ID);
 
 
 // ===================================================================
@@ -60,13 +60,13 @@ var _setup_event = function () {
     //saveUserID(customUserId);
 
     //紀錄滑鼠滑過標選單按鈕範例   
-    mouseHoverEvent(".menu-title","mouse_hover");
+    _mouseover_event(".menu-title","mouse_hover");
 
     //紀錄滑鼠點擊標選單按鈕   
-    mouseClickEvent(".menu-title","click_menu");
+    _mouse_click_event(".menu-title","click_menu");
 
     //偵測捲動頁面有無出現目標
-    mouseScrollEvent(".frame");
+    _mouse_scroll_event(".frame","scroll");
 };  //var _setup_event = function () {
 
 
@@ -94,11 +94,11 @@ var _save_user_id = function (_customUserId){
  * @TODO 許多函式缺少說明
  */
 function inputUserIDDialog(){
-     var userIdInput = prompt("請輸入使用者名稱", "anonymity");
-     if (userIdInput !== null) {   
-        customUserId = userIdInput;
-        console.log("Hello," + customUserId);
-        _save_user_id(customUserId);
+     var _userIdInput = prompt("請輸入使用者名稱", "anonymity");
+     if (_userIdInput !== null) {   
+        CUSTOM_USER_ID = userIdInput;
+        console.log("Hello," + CUSTOM_USER_ID);
+        _save_user_id(CUSTOM_USER_ID);
      }
 }
 
@@ -135,69 +135,87 @@ var _mouse_click_event = function (_selector, _event_type) {
  ********/
 
 //計時器宣告
-var timecount = 0;
-var timecountStart;
-var timecountflag = 0;
+//var timecount = 0;
+//var timecountStart;
+//var timecountflag = 0;
+//var TIME_COUNT_ARRAY = new Array();
+var TIME_ARRAY = new Array();
 
 //開始計時
-function timedCount(){
-    timecount=timecount + 1;
-    timecountStart=setTimeout(timedCount,1000);
+function _start_timed(_event_type,obj_name){
+    if (!TIME_COUNT_ARRAY[_event_type]){
+      TIME_COUNT_ARRAY[_event_type] = 0;
+      console.log("start:"+TIME_COUNT_ARRAY[_event_type]); 
+      _timed_count(_event_type);
+    }
+    //timecount=timecount + 1;  
+    //timecountStart=setTimeout(timedCount,1000);
 }
+//計時器
+function _timed_count(_event_type,obj_name){
+    TIME_COUNT_ARRAY[_event_type]  = TIME_COUNT_ARRAY[_event_type] + 1 ;
+    TIME_ARRAY[_event_type]=setTimeout(function(){_timed_count(_event_type)},1000);
+    //timecount=timecount + 1;
+    //timecountStart=setTimeout(timedCount,1000);
+}
+
 //結束計時
-function stopCount(){
-    var _timecount = timecount;
-    timecount=0;
-    clearTimeout(timecountStart);
-    return _timecount;
+function _stopCount(_event_type){
+    var _durtime = TIME_COUNT_ARRAY[_event_type] ;
+    clearTimeout(TIME_ARRAY[_event_type]);
+    TIME_COUNT_ARRAY[_event_type] = 0;
+    return _durtime;
+    //var _timecount = timecount;
+    //timecount=0;
+    //clearTimeout(timecountStart);  
+    //return _timecount;
 }
 
 /********
 偵測捲動畫面，物件出現畫面中
 ********/
-function mouseScrollEvent(selector){
+function _mouse_scroll_event(selector,_event_type){
     var _id = selector;
 
     /*    偵測物件出現在畫面上    */    
     //找出要被偵測的元件位置    
-    var obj = $(_id),_height = obj.height(), _scrollHeight =  obj.offset();
-    var objheight = _height;
-    var scrollHeight = _scrollHeight;
-    var document_height = $( document ).height();
+    var _obj = $(_id),_height = _obj.height(), _scrollHeight =  _obj.offset();
+    //var _document_height = $( document ).height();
     //console.log("總高度:"+document_height);    
-    //console.log("物件位置:"+scrollHeight.top);    
-    //console.log("物件高度:"+objheight);
+    //console.log("物件位置:"+_scrollHeight.top);    
+    //console.log("物件高度:"+_height);
 
-    var getObjStatus = 0; //被偵測物件的狀態 #0:沒偵測到 #1:已經被偵測到   
+    var _getObjStatus = 0; //被偵測物件的狀態 #0:沒偵測到 #1:已經被偵測到   
 
     // 捲動時偵測
     $(window).scroll(function(){
-        var scrollHeight = _scrollHeight;
-        var winHeight = $(window).height();
-        var scrollVal = $(this).scrollTop();
-        //console.log("目前捲動高度:"+scrollVal);
-        //console.log("目前畫面高度:"+winHeight);
-        //console.log("目前物件狀態:"+getObjStatus);
+        var _winHeight = $(window).height();
+        var _scrollVal = $(this).scrollTop();
+        //console.log("目前捲動高度:"+_scrollVal);
+        //console.log("目前畫面高度:"+_winHeight);
+        //console.log("目前物件狀態:"+_getObjStatus);
 
         //偵測目標有無在畫面中
-        if ((scrollVal + winHeight) - scrollHeight.top > 0 && scrollVal < (scrollHeight.top + objheight)  ){
-            if (getObjStatus === 0){
-              getObjStatus = 1;
-              timedCount();
+        if ((_scrollVal + _winHeight) - _scrollHeight.top > 0 && _scrollVal < (_scrollHeight.top + _height)  ){
+            if (_getObjStatus === 0){
+              _getObjStatus = 1;
+              _start_timed(_event_type);
+              //timedCount(_event_type,this.title);
               if (DEBUG === true){
                 console.log(">>>目標進入，開始計時<<<");
               }
-              ga("send", "event", "scroll_in", this.title); // @TODO 最後還要加上事件類型
+              ga("send", "event", _event_type, this.title, "in"); // @TODO 最後還要加上事件類型
               return 0;
             }
         //console.log(">>>目標在畫面中<<<");
-        }else if(getObjStatus === 1){
-          var _durtime = stopCount();
+        }else if(_getObjStatus === 1){
+          var _durtime = _stopCount(_event_type);
+          //var _durtime = stopCount();
           if (DEBUG === true){
             console.log(">>>目標離開，使用時間:"+_durtime+"秒<<<");
           }
           ga("send", "event", "scroll", this.title, "out", _durtime);  // @TODO 最後還要加上事件類型
-          getObjStatus = 0;
+          _getObjStatus = 0;
         }
     });
 }
