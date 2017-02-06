@@ -23,7 +23,7 @@ if (DEBUG === true) {
  * 3. 使用一種特殊的方法來設定 customUserId
  * @type String|userIdInput
  */
-var CUSTOM_USER_ID = "anonymity";  //輸入ID
+var CUSTOM_USER_ID = "";  //輸入ID
 
 /********
 埋入GA追蹤資訊
@@ -41,6 +41,7 @@ if (DEBUG === true) {
     console.log("Google analytics injected.");
 }
 
+
 //這邊填入GA專案追蹤碼  
 ga('create', 'UA-89833109-1', {'userId': CUSTOM_USER_ID});  
 ga('send', 'pageview');
@@ -54,21 +55,44 @@ ga('set', 'dimension1', CUSTOM_USER_ID);
  * 這邊放置各種偵測任務
  */
 var _setup_event = function () {
+    //初始化UserID
+    check_user_id();
     //inputUserIDDialog();
 
     //將ID資訊記錄到視窗屬性中
     //saveUserID(customUserId);
 
     //紀錄滑鼠滑過標選單按鈕範例   
-    _mouseover_event(".menu-title","mouse_hover");
+    mouseover_event(".menu-title","mouse_hover");
 
     //紀錄滑鼠點擊標選單按鈕   
-    _mouse_click_event(".menu-title","click_menu");
+    mouse_click_event(".menu-title","click_menu");
 
     //偵測捲動頁面有無出現目標
-    _mouse_scroll_event(".frame","scroll");
+    mouse_scroll_event('a[title="台北畫刊"]',"scroll");
+
+    mouse_scroll_event('a[title="大型活動"]',"scroll");
+
+
 };  //var _setup_event = function () {
 
+
+/**
+*
+*
+*/
+check_user_id = function(){
+    if (window.name === null){
+      save_user_id("anonymity");
+      if (DEBUG === true) {
+        console.log("Set Default UserID");
+      }
+      return false;
+    }else {
+      //window.name = CUSTOM_USER_ID;
+      return true;
+    }    
+}
 
 /**
  * 將ID資訊記錄到視窗屬性中
@@ -80,15 +104,27 @@ var _setup_event = function () {
  *      // script
  * };
  */
-var _save_user_id = function (_customUserId){
+set_user_id = function (_customUserId){
     //var _customUserId = customUserId;
-    if (window.name === null) {
-      window.name = _customUserId;
-    }
-    else {
-      _customUserId = window.name;
+    var _check_id = check_user_id();
+    if (_check_id) {
+      save_user_id(_customUserId);       
+    }else {
+      if (DEBUG === true) {
+        console.log("UserID not set!");
+      }    
     }
 };
+save_user_id = function(_customUserId){
+    ga('create', 'UA-89833109-1', {'userId': _customUserId});
+    ga('set', 'userId', _customUserId); // 使用已登入的 user_id 設定 User-ID。
+    ga('set', 'dimension1', _customUserId); 
+    CUSTOM_USER_ID = _customUserId;
+    window.name = CUSTOM_USER_ID;
+    if (DEBUG === true) {
+      console.log("Set UserID;"+CUSTOM_USER_ID);
+    }
+}
 
 /**
  * @TODO 許多函式缺少說明
@@ -106,9 +142,9 @@ function inputUserIDDialog(){
  * 偵測滑鼠移上去的事件
  * @TODO 許多函式缺少說明，函式前面的說明全部改成
  * /**
- *  * 說明的形式
+ *  * 
  *  */
-var _mouseover_event = function (_selector, _event_type) {
+mouseover_event = function (_selector, _event_type) {
      $(_selector).mouseover(function () {
         if (DEBUG === true) {
           console.log("mouse hover");        // 加上事件的程式碼
@@ -120,7 +156,7 @@ var _mouseover_event = function (_selector, _event_type) {
 /********
 偵測滑鼠滑過點擊
 ********/
-var _mouse_click_event = function (_selector, _event_type) {
+mouse_click_event = function (_selector, _event_type) {
      $(_selector).click(function () {    
         if (DEBUG === true){
           console.log("mouse click");        // 加上事件的程式碼 
@@ -138,32 +174,31 @@ var _mouse_click_event = function (_selector, _event_type) {
 //var timecount = 0;
 //var timecountStart;
 //var timecountflag = 0;
-//var TIME_COUNT_ARRAY = new Array();
+var TIME_COUNT_ARRAY = new Array();
 var TIME_ARRAY = new Array();
 
 //開始計時
-function _start_timed(_event_type,obj_name){
-    if (!TIME_COUNT_ARRAY[_event_type]){
-      TIME_COUNT_ARRAY[_event_type] = 0;
-      console.log("start:"+TIME_COUNT_ARRAY[_event_type]); 
-      _timed_count(_event_type);
+ start_timed = function(_event_type,_obj_name){
+    if (!TIME_COUNT_ARRAY[_event_type+_obj_name]){
+      TIME_COUNT_ARRAY[_event_type+_obj_name] = 0;
+      //console.log("start:"+TIME_COUNT_ARRAY[_event_type]); 
+      timed_count(_event_type,_obj_name);
     }
     //timecount=timecount + 1;  
     //timecountStart=setTimeout(timedCount,1000);
 }
 //計時器
-function _timed_count(_event_type,obj_name){
-    TIME_COUNT_ARRAY[_event_type]  = TIME_COUNT_ARRAY[_event_type] + 1 ;
-    TIME_ARRAY[_event_type]=setTimeout(function(){_timed_count(_event_type)},1000);
+timed_count = function(_event_type,_obj_name){
+    TIME_COUNT_ARRAY[_event_type + _obj_name]  = TIME_COUNT_ARRAY[_event_type + _obj_name] + 1 ;
+    TIME_ARRAY[_event_type + _obj_name]=setTimeout(function(){timed_count(_event_type,_obj_name)},1000);
     //timecount=timecount + 1;
     //timecountStart=setTimeout(timedCount,1000);
 }
-
 //結束計時
-function _stopCount(_event_type){
-    var _durtime = TIME_COUNT_ARRAY[_event_type] ;
-    clearTimeout(TIME_ARRAY[_event_type]);
-    TIME_COUNT_ARRAY[_event_type] = 0;
+stopCount = function(_event_type,_obj_name){
+    var _durtime = TIME_COUNT_ARRAY[_event_type + _obj_name] ;
+    clearTimeout(TIME_ARRAY[_event_type + _obj_name]);
+    TIME_COUNT_ARRAY[_event_type + _obj_name] = 0;
     return _durtime;
     //var _timecount = timecount;
     //timecount=0;
@@ -174,9 +209,8 @@ function _stopCount(_event_type){
 /********
 偵測捲動畫面，物件出現畫面中
 ********/
-function _mouse_scroll_event(selector,_event_type){
+mouse_scroll_event = function(selector,_event_type){
     var _id = selector;
-
     /*    偵測物件出現在畫面上    */    
     //找出要被偵測的元件位置    
     var _obj = $(_id),_height = _obj.height(), _scrollHeight =  _obj.offset();
@@ -199,20 +233,20 @@ function _mouse_scroll_event(selector,_event_type){
         if ((_scrollVal + _winHeight) - _scrollHeight.top > 0 && _scrollVal < (_scrollHeight.top + _height)  ){
             if (_getObjStatus === 0){
               _getObjStatus = 1;
-              _start_timed(_event_type);
+              start_timed(_event_type,selector);
               //timedCount(_event_type,this.title);
               if (DEBUG === true){
-                console.log(">>>目標進入，開始計時<<<");
+                console.log(">>>["+ selector +"]進入，開始計時<<<");
               }
               ga("send", "event", _event_type, this.title, "in"); // @TODO 最後還要加上事件類型
               return 0;
             }
         //console.log(">>>目標在畫面中<<<");
         }else if(_getObjStatus === 1){
-          var _durtime = _stopCount(_event_type);
+          var _durtime = stopCount(_event_type,selector);
           //var _durtime = stopCount();
           if (DEBUG === true){
-            console.log(">>>目標離開，使用時間:"+_durtime+"秒<<<");
+            console.log(">>>["+ selector +"]離開，使用時間:"+_durtime+"秒<<<");
           }
           ga("send", "event", "scroll", this.title, "out", _durtime);  // @TODO 最後還要加上事件類型
           _getObjStatus = 0;
