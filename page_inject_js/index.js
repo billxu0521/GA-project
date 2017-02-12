@@ -9,7 +9,7 @@
 //var url = "https://billxu0521.github.io/GA-project/ga_inject_lib.js";
 //$.getScript(url, function () {
 
-$(function(){
+$(function() {
 
 	//初始化名字
 	check_user_id();

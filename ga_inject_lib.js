@@ -80,7 +80,7 @@ function _setup_event(){
 
 /**
 *
-*
+*檢查ID
 */
 window.check_user_id = function(){
     if (window.name === null){
@@ -105,7 +105,7 @@ window.check_user_id = function(){
  *      // script
  * };
  */
-set_user_id = function (_customUserId){
+window.set_user_id = function (_customUserId){
     //var _customUserId = customUserId;
     var _check_id = check_user_id();
     if (_check_id) {
@@ -116,7 +116,7 @@ set_user_id = function (_customUserId){
       }    
     }
 };
-save_user_id = function(_customUserId){
+window.save_user_id = function(_customUserId){
     ga('create', 'UA-89833109-1', {'userId': _customUserId});
     ga('set', 'userId', _customUserId); // 使用已登入的 user_id 設定 User-ID。
     ga('set', 'dimension1', _customUserId); 
@@ -144,7 +144,7 @@ function inputUserIDDialog(){
  * /**
  *  * 偵測滑鼠滑到物件上，以滑進為段時間
  *  */
-mouseover_event = function (_selector, _event_type) {
+window.mouseover_event = function (_selector, _event_type) {
      $(_selector).mouseover(function () {
         if (DEBUG === true) {
           console.log("mouse hover");        // 加上事件的程式碼
@@ -158,7 +158,7 @@ mouseover_event = function (_selector, _event_type) {
  * /**
  *  * 偵測滑鼠點擊物件
  *  */
-mouse_click_event = function (_selector, _event_type) {
+window.mouse_click_event = function (_selector, _event_type) {
      $(_selector).click(function () {    
         if (DEBUG === true){
           console.log("mouse click");        // 加上事件的程式碼 
@@ -181,7 +181,7 @@ var TIME_COUNT_ARRAY = new Array();
 var TIME_ARRAY = new Array();
 
 //開始計時
-start_timed = function(_event_type,_obj_name){
+window.start_timed = function(_event_type,_obj_name){
     if (!TIME_COUNT_ARRAY[_event_type+_obj_name]){
       TIME_COUNT_ARRAY[_event_type+_obj_name] = 0;
       //console.log("start:"+TIME_COUNT_ARRAY[_event_type]); 
@@ -191,14 +191,14 @@ start_timed = function(_event_type,_obj_name){
     //timecountStart=setTimeout(timedCount,1000);
 }
 //計時器
-timed_count = function(_event_type,_obj_name){
+window.timed_count = function(_event_type,_obj_name){
     TIME_COUNT_ARRAY[_event_type + _obj_name]  = TIME_COUNT_ARRAY[_event_type + _obj_name] + 1 ;
     TIME_ARRAY[_event_type + _obj_name]=setTimeout(function(){timed_count(_event_type,_obj_name)},1000);
     //timecount=timecount + 1;
     //timecountStart=setTimeout(timedCount,1000);
 }
 //結束計時
-stopCount = function(_event_type,_obj_name){
+window.stopCount = function(_event_type,_obj_name){
     var _durtime = TIME_COUNT_ARRAY[_event_type + _obj_name] ;
     clearTimeout(TIME_ARRAY[_event_type + _obj_name]);
     TIME_COUNT_ARRAY[_event_type + _obj_name] = 0;
@@ -214,7 +214,7 @@ stopCount = function(_event_type,_obj_name){
  * /**
  *  * 可偵測物件是否出現在畫面中，並計算時間
  *  */
-mouse_scroll_event = function(selector,_event_type){
+window.mouse_scroll_event = function(selector,_event_type){
     var _id = selector;
     /*    偵測物件出現在畫面上    */    
     //找出要被偵測的元件位置    
