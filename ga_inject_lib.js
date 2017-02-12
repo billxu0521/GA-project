@@ -82,7 +82,7 @@ function _setup_event(){
 *
 *
 */
-check_user_id = function(){
+window.check_user_id = function(){
     if (window.name === null){
       save_user_id("anonymity");
       if (DEBUG === true) {
