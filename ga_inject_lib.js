@@ -143,7 +143,7 @@ function inputUserIDDialog(){
  * /**
  *  * 偵測滑鼠滑到物件上，以滑進為段時間
  *  */
-var mouseover_event = function (_selector, _event_type) {
+mouseover_event = function (_selector, _event_type) {
      $(_selector).mouseover(function () {
         if (DEBUG === true) {
           console.log("mouse hover");        // 加上事件的程式碼
@@ -259,7 +259,7 @@ mouse_scroll_event = function(selector,_event_type){
 }
 
 
-_setup_event();
+//_setup_event();
 
 }); //$(function () {
 
