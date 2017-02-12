@@ -7,7 +7,17 @@
 // 載入 ga_inject.js
 $.getScript("//billxu0521.github.io/GA-project/ga_inject.js", function () {
     
-    // 宣告事件
-    _mouse_click_event("#btn-open-menu", 'g01');
+   
+    //GL1-3 click
+
+    //GL1-4 click
+
+    //GL1-5 click
+
+    //GL1-6 click
+
+    //G1-7 click
+
+    //GL1-8 click
     
 });

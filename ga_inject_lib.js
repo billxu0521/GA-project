@@ -140,9 +140,8 @@ function inputUserIDDialog(){
 
 /**
  * 偵測滑鼠移上去的事件
- * @TODO 許多函式缺少說明，函式前面的說明全部改成
  * /**
- *  * 
+ *  * 偵測滑鼠滑到物件上，以滑進為段時間
  *  */
 mouseover_event = function (_selector, _event_type) {
      $(_selector).mouseover(function () {
@@ -153,9 +152,11 @@ mouseover_event = function (_selector, _event_type) {
      });
 };
 
-/********
-偵測滑鼠滑過點擊
-********/
+/**
+ * 偵測滑鼠點擊的事件
+ * /**
+ *  * 偵測滑鼠點擊物件
+ *  */
 mouse_click_event = function (_selector, _event_type) {
      $(_selector).click(function () {    
         if (DEBUG === true){
@@ -165,10 +166,11 @@ mouse_click_event = function (_selector, _event_type) {
      });        
 };
 
-/*******
- * 計時器功能
- * @TODO 這樣設計不行，這樣不能支援多個計時器，請封裝物件化後重新設計
- ********/
+/**
+ * 事件計時器
+ * /**
+ *  * 計時事件過程的時間
+ *  */
 
 //計時器宣告
 //var timecount = 0;
@@ -178,7 +180,7 @@ var TIME_COUNT_ARRAY = new Array();
 var TIME_ARRAY = new Array();
 
 //開始計時
- start_timed = function(_event_type,_obj_name){
+start_timed = function(_event_type,_obj_name){
     if (!TIME_COUNT_ARRAY[_event_type+_obj_name]){
       TIME_COUNT_ARRAY[_event_type+_obj_name] = 0;
       //console.log("start:"+TIME_COUNT_ARRAY[_event_type]); 
@@ -206,9 +208,11 @@ stopCount = function(_event_type,_obj_name){
     //return _timecount;
 }
 
-/********
-偵測捲動畫面，物件出現畫面中
-********/
+/**
+ * 偵測畫面捲動的事件
+ * /**
+ *  * 可偵測物件是否出現在畫面中，並計算時間
+ *  */
 mouse_scroll_event = function(selector,_event_type){
     var _id = selector;
     /*    偵測物件出現在畫面上    */    
