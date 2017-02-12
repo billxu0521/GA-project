@@ -54,7 +54,8 @@ ga('set', 'dimension1', CUSTOM_USER_ID);
 /**
  * 這邊放置各種偵測任務
  */
-var _setup_event = function () {
+function _setup_event(){
+//var _setup_event = function () {
     //初始化UserID
     check_user_id();
     //inputUserIDDialog();
@@ -143,7 +144,7 @@ function inputUserIDDialog(){
  * /**
  *  * 偵測滑鼠滑到物件上，以滑進為段時間
  *  */
-mouseover_event = function (_selector, _event_type) {
+var mouseover_event = function (_selector, _event_type) {
      $(_selector).mouseover(function () {
         if (DEBUG === true) {
           console.log("mouse hover");        // 加上事件的程式碼
