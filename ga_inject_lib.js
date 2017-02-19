@@ -148,7 +148,7 @@ function inputUserIDDialog(){
 window.mouseover_event = function (_selector, _event_type) {
      $(_selector).mouseover(function () {
         if (DEBUG === true) {
-          console.log("mouse hover");        // 加上事件的程式碼
+          console.log("mouse hover,"+this.title);        // 加上事件的程式碼
         }    
       var _name = '';
       if (this.title == null){
@@ -169,7 +169,7 @@ window.mouseover_event = function (_selector, _event_type) {
 window.mouse_click_event = function (_selector, _event_type) {
      $(_selector).click(function () {    
         if (DEBUG === true){
-          console.log("mouse click");        // 加上事件的程式碼 
+          console.log("mouse click,"+this.title);        // 加上事件的程式碼 
         }
       var _name = '';
       if (this.title == null){
