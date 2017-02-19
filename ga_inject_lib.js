@@ -156,7 +156,7 @@ window.mouseover_event = function (_selector, _event_type) {
       }else{
         _name = this.title;
       }
-        ga("send", "event", _event_type, this.title, 'mouseover');   
+        ga("send", "event", _event_type, '', 'mouseover');   
       
      });
 };
@@ -177,7 +177,7 @@ window.mouse_click_event = function (_selector, _event_type) {
       }else{
         _name = this.title;
       }
-          ga("send", "event", _event_type, this.title, 'click'); // @TODO ga("send", "event"...) 最後還要加上事件類型，像是"click"或"mouseover"
+          ga("send", "event", _event_type, '', 'click'); // @TODO ga("send", "event"...) 最後還要加上事件類型，像是"click"或"mouseover"
      });        
 };
 
