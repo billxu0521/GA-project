@@ -64,16 +64,16 @@ function _setup_event(){
     //saveUserID(customUserId);
 
     //紀錄滑鼠滑過標選單按鈕範例   
-    mouseover_event(".menu-title","mouse_hover");
+    mouseover_event("#btn-open-menu","GL1-4");
 
     //紀錄滑鼠點擊標選單按鈕   
-    mouse_click_event(".menu-title","click_menu");
+    //mouse_click_event(".menu-title","click_menu");
     mouse_click_event("#btn-open-menu","GL1-4");
 
     //偵測捲動頁面有無出現目標
-    mouse_scroll_event('a[title="台北畫刊"]',"scroll");
+   // mouse_scroll_event('a[title="台北畫刊"]',"scroll");
 
-    mouse_scroll_event('a[title="大型活動"]',"scroll");
+//    mouse_scroll_event('a[title="大型活動"]',"scroll");
 
 
 }  //var _setup_event = function () {
@@ -147,14 +147,15 @@ function inputUserIDDialog(){
  *  */
 window.mouseover_event = function (_selector, _event_type) {
      $(_selector).mouseover(function () {
-        if (DEBUG === true) {
-          console.log("mouse hover,"+this.title);        // 加上事件的程式碼
-        }
+        
       var _name = new String;    
-      if(this.title != null){
+      if(this.title){
         _name = this.title ;
       }else{
         _name = _event_type;
+      }
+      if (DEBUG === true) {
+        console.log("mouse hover,"+_name);        // 加上事件的程式碼
       }
         ga("send", "event", _event_type, _name, 'mouseover');   
       
@@ -168,16 +169,16 @@ window.mouseover_event = function (_selector, _event_type) {
  *  */
 window.mouse_click_event = function (_selector, _event_type) {
      $(_selector).click(function () {    
-        if (DEBUG === true){
-          console.log("mouse click,"+this.title);        // 加上事件的程式碼 
-        }
+        
         var _name = new String;  
-        if(this.title != null){
+        if(this.title){
           _name = this.title ;
         }else{
           _name = _event_type;
         }
-      
+        if (DEBUG === true){
+          console.log("mouse click,"+_name);        // 加上事件的程式碼 
+        }
           ga("send", "event", _event_type, _name, 'click'); // @TODO ga("send", "event"...) 最後還要加上事件類型，像是"click"或"mouseover"
      });        
 };
