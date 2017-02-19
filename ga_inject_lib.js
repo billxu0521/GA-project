@@ -68,6 +68,7 @@ function _setup_event(){
 
     //紀錄滑鼠點擊標選單按鈕   
     mouse_click_event(".menu-title","click_menu");
+    mouse_click_event("#btn-open-menu","GL1-4");
 
     //偵測捲動頁面有無出現目標
     mouse_scroll_event('a[title="台北畫刊"]',"scroll");
@@ -75,7 +76,7 @@ function _setup_event(){
     mouse_scroll_event('a[title="大型活動"]',"scroll");
 
 
-};  //var _setup_event = function () {
+}  //var _setup_event = function () {
 
 
 /**
@@ -149,7 +150,14 @@ window.mouseover_event = function (_selector, _event_type) {
         if (DEBUG === true) {
           console.log("mouse hover");        // 加上事件的程式碼
         }    
+      var _name = '';
+      if (this.title == null){
+        _name = _event_type;
+      }else{
+        _name = this.title;
+      }
         ga("send", "event", _event_type, this.title, 'mouseover');   
+      }
      });
 };
 
@@ -163,6 +171,12 @@ window.mouse_click_event = function (_selector, _event_type) {
         if (DEBUG === true){
           console.log("mouse click");        // 加上事件的程式碼 
         }
+      var _name = '';
+      if (this.title == null){
+        _name = _event_type;
+      }else{
+        _name = this.title;
+      }
           ga("send", "event", _event_type, this.title, 'click'); // @TODO ga("send", "event"...) 最後還要加上事件類型，像是"click"或"mouseover"
      });        
 };
