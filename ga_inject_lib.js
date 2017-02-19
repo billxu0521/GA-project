@@ -157,7 +157,7 @@ window.mouseover_event = function (_selector, _event_type) {
         _name = this.title;
       }
         ga("send", "event", _event_type, this.title, 'mouseover');   
-      }
+      
      });
 };
 
