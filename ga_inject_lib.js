@@ -151,7 +151,7 @@ window.mouseover_event = function (_selector, _event_type) {
           console.log("mouse hover,"+this.title);        // 加上事件的程式碼
         }    
       
-        ga("send", "event", _event_type, '', 'mouseover');   
+        ga("send", "event", _event_type, 'qq', 'mouseover');   
       
      });
 };
@@ -167,7 +167,7 @@ window.mouse_click_event = function (_selector, _event_type) {
           console.log("mouse click,"+this.title);        // 加上事件的程式碼 
         }
       
-          ga("send", "event", _event_type, '', 'click'); // @TODO ga("send", "event"...) 最後還要加上事件類型，像是"click"或"mouseover"
+          ga("send", "event", _event_type, 'aa', 'click'); // @TODO ga("send", "event"...) 最後還要加上事件類型，像是"click"或"mouseover"
      });        
 };
 
