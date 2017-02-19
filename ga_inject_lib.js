@@ -151,7 +151,7 @@ window.mouseover_event = function (_selector, _event_type) {
           console.log("mouse hover,"+this.title);        // 加上事件的程式碼
         }    
       var _name = '';
-      if (this.title == null){
+      if (this.title == ''){
         _name = _event_type;
       }else{
         _name = this.title;
@@ -172,7 +172,7 @@ window.mouse_click_event = function (_selector, _event_type) {
           console.log("mouse click,"+this.title);        // 加上事件的程式碼 
         }
       var _name = '';
-      if (this.title == null){
+      if (this.title == ''){
         _name = _event_type;
       }else{
         _name = this.title;
