@@ -249,7 +249,12 @@ window.mouse_scroll_event = function(selector,_event_type){
         //console.log("目前捲動高度:"+_scrollVal);
         //console.log("目前畫面高度:"+_winHeight);
         //console.log("目前物件狀態:"+_getObjStatus);
-
+        var _name = new String;  
+        if(this.title){
+          _name = this.title ;
+        }else{
+          _name = _event_type;
+        }
         //偵測目標有無在畫面中
         if ((_scrollVal + _winHeight) - _scrollHeight.top > 0 && _scrollVal < (_scrollHeight.top + _height)  ){
             if (_getObjStatus === 0){
@@ -259,7 +264,7 @@ window.mouse_scroll_event = function(selector,_event_type){
               if (DEBUG === true){
                 console.log(">>>["+ selector +"]進入，開始計時<<<");
               }
-              ga("send", "event", _event_type, this.title, "in"); // @TODO 最後還要加上事件類型
+              ga("send", "event", _event_type, _name, "scroll in"); // @TODO 最後還要加上事件類型
               return 0;
             }
         //console.log(">>>目標在畫面中<<<");
@@ -269,7 +274,7 @@ window.mouse_scroll_event = function(selector,_event_type){
           if (DEBUG === true){
             console.log(">>>["+ selector +"]離開，使用時間:"+_durtime+"秒<<<");
           }
-          ga("send", "event", "scroll", this.title, "out", _durtime);  // @TODO 最後還要加上事件類型
+          if(_durtime > 0) ga("send", "event", _event_type, _name, "scroll out", _durtime);  // @TODO 最後還要加上事件類型
           _getObjStatus = 0;
         }
     });
