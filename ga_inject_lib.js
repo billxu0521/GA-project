@@ -61,20 +61,25 @@ function _setup_event(){
     check_user_id();
     //inputUserIDDialog();
 
-    //將ID資訊記錄到視窗屬性中
-    //saveUserID(customUserId);
+    //GL1-3 click
+    mouse_click_event('a[title="臺北旅遊網"]',"GL1-3");
 
-    //紀錄滑鼠滑過標選單按鈕範例   
-    mouseover_event("#btn-open-menu","GL1-4");
 
-    //紀錄滑鼠點擊標選單按鈕   
-    //mouse_click_event(".menu-title","click_menu");
+    /*GL1-4 導覽列 click*/
     mouse_click_event("#btn-open-menu","GL1-4");
 
-    //偵測捲動頁面有無出現目標
-    mouse_scroll_event('a[title="台北畫刊"]',"scroll");
+    //GL1-5 麵包屑/首頁 click
+    mouse_scroll_event('.btn-more',"GL1-5");
+    //GL1-6 click
+    mouse_click_event(".unit:eq(0)","GL1-6");
+    //G1-7 click
+    mouse_click_event(".unit:eq(1)","GL1-7");
+    mouse_click_event(".unit:eq(2)","GL1-7");
+    mouse_click_event(".unit:eq(3)","GL1-7");
 
-    mouse_scroll_event('a[title="大型活動"]',"scroll");
+    //GL1-8 搜尋列 click
+    mouse_click_event('.btn-search-submit',"GL1-8");
+    mouse_click_event('.gsc-search-button',"GL1-8");
 
 
 }  //var _setup_event = function () {
@@ -235,12 +240,11 @@ window.mouse_scroll_event = function(selector,_event_type){
     var _id = selector;
     /*    偵測物件出現在畫面上    */    
     //找出要被偵測的元件位置    
-    var _obj = $(_id),_height = _obj.height();
-    var _scrollHeight =  _obj.offset();
+    var _obj = $(_id),_height = _obj.height(),_scrollHeight =  _obj.offset();
     //var _document_height = $( document ).height();
     //console.log("總高度:"+document_height);    
-    //console.log("物件位置:"+_scrollHeight.top);    
-    //console.log("物件高度:"+_height);
+    console.log("物件位置:"+_scrollHeight.top);    
+    console.log("物件高度:"+_height);
 
     var _getObjStatus = 0; //被偵測物件的狀態 #0:沒偵測到 #1:已經被偵測到   
 
@@ -251,12 +255,12 @@ window.mouse_scroll_event = function(selector,_event_type){
         //console.log("目前捲動高度:"+_scrollVal);
         //console.log("目前畫面高度:"+_winHeight);
         //console.log("目前物件狀態:"+_getObjStatus);
-        /*var _name = new String;  
+        var _name = new String;  
         if(this.title){
           _name = this.title ;
         }else{
           _name = _event_type;
-        }*/
+        }
         //偵測目標有無在畫面中
         if ((_scrollVal + _winHeight) - _scrollHeight.top > 0 && _scrollVal < (_scrollHeight.top + _height)  ){
             if (_getObjStatus === 0){
