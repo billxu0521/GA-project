@@ -250,8 +250,9 @@ window.mouse_scroll_event = function(selector,_event_type){
 
     // 捲動時偵測
     $(window).scroll(function(){
+       
         var _winHeight = $(window).height();
-        var _scrollVal = $(this).scrollTop();
+        var _scrollVal = $(window).scrollTop();
         //console.log("目前捲動高度:"+_scrollVal);
         //console.log("目前畫面高度:"+_winHeight);
         //console.log("目前物件狀態:"+_getObjStatus);
