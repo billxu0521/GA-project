@@ -9,7 +9,7 @@
 //var url = "https://billxu0521.github.io/GA-project/ga_inject_lib.js";
 //$.getScript(url, function () {
 
-$(function() {
+$(function(){
 
 	//初始化名字
 	check_user_id();
@@ -32,7 +32,7 @@ $(function() {
     mouse_click_event("#btn-open-menu","GL1-4");
 
     //GL1-5 麵包屑/首頁 click
-    mouse_scroll_event(".breadcrumb","GL1-5");
+    mouse_scroll_event('.breadcrumb:eq(0)',"GL1-5");
     //GL1-6 click
 	mouse_click_event(".unit:eq(0)","GL1-6");
     //G1-7 click

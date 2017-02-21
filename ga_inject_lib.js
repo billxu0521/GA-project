@@ -243,8 +243,8 @@ window.mouse_scroll_event = function(selector,_event_type){
     var _obj = $(_id),_height = _obj.height(),_scrollHeight =  _obj.offset();
     //var _document_height = $( document ).height();
     //console.log("總高度:"+document_height);    
-    console.log("物件位置:"+_scrollHeight.top);    
-    console.log("物件高度:"+_height);
+    //console.log("物件位置:"+_scrollHeight.top);    
+    //console.log("物件高度:"+_height);
 
     var _getObjStatus = 0; //被偵測物件的狀態 #0:沒偵測到 #1:已經被偵測到   
 
