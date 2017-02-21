@@ -1,3 +1,4 @@
+
 /**
  * 畫面讀取完成之後再來初始化
  * 而且避免變數被宣告在全域範圍，跟其他程式碼相互衝突
@@ -71,9 +72,9 @@ function _setup_event(){
     mouse_click_event("#btn-open-menu","GL1-4");
 
     //偵測捲動頁面有無出現目標
-   // mouse_scroll_event('a[title="台北畫刊"]',"scroll");
+    mouse_scroll_event('a[title="台北畫刊"]',"scroll");
 
-//    mouse_scroll_event('a[title="大型活動"]',"scroll");
+    mouse_scroll_event('a[title="大型活動"]',"scroll");
 
 
 }  //var _setup_event = function () {
