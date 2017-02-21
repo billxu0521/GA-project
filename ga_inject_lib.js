@@ -251,12 +251,12 @@ window.mouse_scroll_event = function(selector,_event_type){
         //console.log("目前捲動高度:"+_scrollVal);
         //console.log("目前畫面高度:"+_winHeight);
         //console.log("目前物件狀態:"+_getObjStatus);
-        var _name = new String;  
+        /*var _name = new String;  
         if(this.title){
           _name = this.title ;
         }else{
           _name = _event_type;
-        }
+        }*/
         //偵測目標有無在畫面中
         if ((_scrollVal + _winHeight) - _scrollHeight.top > 0 && _scrollVal < (_scrollHeight.top + _height)  ){
             if (_getObjStatus === 0){
