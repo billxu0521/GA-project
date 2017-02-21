@@ -235,7 +235,8 @@ window.mouse_scroll_event = function(selector,_event_type){
     var _id = selector;
     /*    偵測物件出現在畫面上    */    
     //找出要被偵測的元件位置    
-    var _obj = $(_id),_height = _obj.height(), _scrollHeight =  _obj.offset();
+    var _obj = $(_id),_height = _obj.height();
+    var _scrollHeight =  _obj.offset();
     //var _document_height = $( document ).height();
     //console.log("總高度:"+document_height);    
     //console.log("物件位置:"+_scrollHeight.top);    
