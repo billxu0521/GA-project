@@ -240,7 +240,6 @@ window.mouse_scroll_event = function(selector,_event_type){
     var _id = selector;
     /*    偵測物件出現在畫面上    */    
     //找出要被偵測的元件位置    
-    var _obj = $(_id),_height = _obj.height(),_scrollHeight =  _obj.offset();
     //var _document_height = $( document ).height();
     //console.log("總高度:"+document_height);    
     //console.log("物件位置:"+_scrollHeight.top);    
@@ -250,9 +249,11 @@ window.mouse_scroll_event = function(selector,_event_type){
 
     // 捲動時偵測
     $(window).scroll(function(){
-       
+
         var _winHeight = $(window).height();
         var _scrollVal = $(window).scrollTop();
+        var _obj = $(_id),_height = _obj.height(),_scrollHeight =  _obj.offset();
+
         //console.log("目前捲動高度:"+_scrollVal);
         //console.log("目前畫面高度:"+_winHeight);
         //console.log("目前物件狀態:"+_getObjStatus);
@@ -285,10 +286,11 @@ window.mouse_scroll_event = function(selector,_event_type){
           _getObjStatus = 0;
         }
     });
+    $(window).scroll();
 }
 
 
-//_setup_event();
+_setup_event();
 
 }); //$(function () {
 
