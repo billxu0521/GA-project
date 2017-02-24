@@ -237,7 +237,8 @@ window.stopCount = function(_event_type,_obj_name){
  *  * 可偵測物件是否出現在畫面中，並計算時間
  *  */
 window.mouse_scroll_event = function(selector,_event_type){
-    var _id = selector;
+    //var _id = selector;
+    //var _obj = $(_id),_height = _obj.height(),_scrollHeight =  _obj.offset();
     /*    偵測物件出現在畫面上    */    
     //找出要被偵測的元件位置    
     //var _document_height = $( document ).height();
@@ -249,10 +250,11 @@ window.mouse_scroll_event = function(selector,_event_type){
 
     // 捲動時偵測
     $(window).scroll(function(){
-
+        var _id = selector;
+        var _obj = $(_id),_height = _obj.height(),_scrollHeight =  _obj.offset();
         var _winHeight = $(window).height();
         var _scrollVal = $(window).scrollTop();
-        var _obj = $(_id),_height = _obj.height(),_scrollHeight =  _obj.offset();
+        
 
         //console.log("目前捲動高度:"+_scrollVal);
         //console.log("目前畫面高度:"+_winHeight);
