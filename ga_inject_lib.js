@@ -290,7 +290,7 @@ window.mouse_scroll_event = function(selector,_event_type){
 }
 
 
-_setup_event();
+//_setup_event();
 
 }); //$(function () {
 
