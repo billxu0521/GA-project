@@ -62,24 +62,24 @@ function _setup_event(){
     //inputUserIDDialog();
 
     //GL1-3 click
-    mouse_click_event('a[title="臺北旅遊網"]',"GL1-3");
+    //mouse_click_event('a[title="臺北旅遊網"]',"GL1-3");
 
 
     /*GL1-4 導覽列 click*/
-    mouse_click_event("#btn-open-menu","GL1-4");
+    //mouse_click_event("#btn-open-menu","GL1-4");
 
     //GL1-5 麵包屑/首頁 click
-    mouse_scroll_event('.btn-more',"GL1-5");
+    //mouse_scroll_event('.btn-more',"GL1-5");
     //GL1-6 click
-    mouse_click_event(".unit:eq(0)","GL1-6");
+    //mouse_click_event(".unit:eq(0)","GL1-6");
     //G1-7 click
-    mouse_click_event(".unit:eq(1)","GL1-7");
-    mouse_click_event(".unit:eq(2)","GL1-7");
-    mouse_click_event(".unit:eq(3)","GL1-7");
+    //mouse_click_event(".unit:eq(1)","GL1-7");
+    //mouse_click_event(".unit:eq(2)","GL1-7");
+    //mouse_click_event(".unit:eq(3)","GL1-7");
 
     //GL1-8 搜尋列 click
-    mouse_click_event('.btn-search-submit',"GL1-8");
-    mouse_click_event('.gsc-search-button',"GL1-8");
+    //mouse_click_event('.btn-search-submit',"GL1-8");
+    //mouse_click_event('.gsc-search-button',"GL1-8");
 
 
 }  //var _setup_event = function () {
@@ -296,7 +296,7 @@ window.mouse_scroll_event = function(selector,_event_type){
 }
 
 
-//_setup_event();
+_setup_event();
 
 }); //$(function () {
 
