@@ -254,7 +254,7 @@ window.mouse_scroll_event = function(selector,_event_type){
         var _obj = $(_id),_height = _obj.height(),_scrollHeight =  _obj.offset();
         var _winHeight = $(window).height();
         var _scrollVal = $(window).scrollTop();
-        console.log("總高度:"+document_height);    
+        console.log("總高度:"+_document_height);    
         console.log("物件位置:"+_scrollHeight);  
 
         //console.log("目前捲動高度:"+_scrollVal);
