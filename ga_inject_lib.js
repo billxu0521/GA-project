@@ -253,7 +253,7 @@ window.mouse_scroll_event = function(selector,_event_type){
     $(window).scroll(function(){
         
         var _id = selector;
-        if ($(_id).length > 0) return;
+        if ($(_id).length < 0) return;
         var _obj = $(_id),_height = _obj.height(),_scrollHeight =  _obj.offset();
         var _winHeight = $(window).height();
         var _scrollVal = $(window).scrollTop();
