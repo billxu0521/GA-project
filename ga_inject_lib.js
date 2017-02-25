@@ -251,6 +251,8 @@ window.mouse_scroll_event = function(selector,_event_type){
 
     // 捲動時偵測
     $(window).scroll(function(){
+        console.log("???:"+$(selector).length);    
+
         if ($(selector).length < 0) return 0;
         var _id = selector;
         var _obj = $(_id),_height = _obj.height(),_scrollHeight =  _obj.offset();
