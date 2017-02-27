@@ -287,7 +287,7 @@ window.mouse_scroll_event = function(selector,_event_type){
           if (DEBUG === true){
             console.log(">>>["+ selector +"]離開，使用時間:"+_durtime+"秒<<<");
           }
-          if(_durtime > 0) ga("send", "event", _event_type, _name, "scroll out", _durtime);  // @TODO 最後還要加上事件類型
+          if(_durtime > 3) ga("send", "event", _event_type, _name, "scroll out", _durtime);  // @TODO 最後還要加上事件類型
           _getObjStatus = 0;
         }
     });

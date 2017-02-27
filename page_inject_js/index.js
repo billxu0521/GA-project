@@ -6,13 +6,13 @@
 
 // 載入 ga_inject.js
 
-//var url = "https://billxu0521.github.io/GA-project/ga_inject_lib.js";
-//$.getScript(url, function () {
+var url = "https://billxu0521.github.io/GA-project/ga_inject_lib.js";
+$.getScript(url, function () {
 
-$(function(){
+//$(function(){
 
 	//初始化名字
-	check_user_id();
+	//check_user_id();
 
     //GL1-3 click
     mouse_click_event('a[title="臺北旅遊網"]',"GL1-3");
@@ -43,33 +43,49 @@ $(function(){
     mouse_click_event('.btn-add-diamond adj js-add-diamond',"GL2-5");
     mouse_click_event('.btn-add-diamond adj js-add-diamond remove',"GL2-5");
 
-    //GL2-6 
+    //GL2-6  底部
+    mouse_scroll_event('.footer',"GL2-6");
 
     //GL2-8  電話
     mouse_click_event('.tel-link',"GL2-8");
     mouse_click_event('.btn-tel-link',"GL2-8");
 
     //GL2-10  底部條款
+    mouse_scroll_event('.info link-blk',"GL2-10");
 
     //GL2-11  勘誤
-
-
+    mouse_click_event('.btn-report-issue',"GL2-11");
     //GL2-12  分享
+    mouse_click_event('.btn-share-fb',"GL2-12");
+    mouse_click_event('.btn-share-gplus',"GL2-12");
+    mouse_click_event('.btn-share-twitter',"GL2-12");
+    mouse_click_event('.btn-share-weibo',"GL2-12");
     mouse_click_event('.btn-share-line',"GL2-12");
 
     //GL2-13  分類資訊
+    mouse_click_event('.menu-title has-more',"GL2-13");
+    mouse_click_event('.info-blk vam-blk',"GL2-13");
+    mouse_click_event('.btn-theme-link',"GL2-13");
+    
+    //GL2-14  日期
+    mouse_scroll_event('.duration',"GL2-14");
+    mouse_scroll_event('.date',"GL2-14");
 
     //GL5-2  圖片
+    mouseover_event('.media-switch-blk',"GL5-2")
 
     //GL5-3  互動
+    mouse_click_event('.media-switch-blk',"GL5-3");
+    mouse_click_event('.btn-media-photo',"GL5-3");
+    mouse_click_event('.btn-media-video',"GL5-3");
+    mouse_click_event('.btn-media-pano',"GL5-3");
+    mouse_click_event('.btn-media-voice',"GL5-");
 
     //GL5-5  圖示設計
 
     //GL5-6  按鈕設計
 
-    //GL6-2  分享
-    mouse_click_event('.link',"GL6-2");
-
+    //GL6-2     
 
 
 });
