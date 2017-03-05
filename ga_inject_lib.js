@@ -179,7 +179,16 @@ window.mouse_click_event = function (_selector, _event_type) {
         var _name = new String;  
         if(this.title){
           _name = this.title ;
-        }else{
+        } else if ($(this).text()) {
+          _name = $(this).text() ;
+        } else if (this.alt){
+          _name = this.alt;
+        }else if (this.src){
+          _name = this.src;
+        }else if (this.className){
+          _name = this.className;
+        }
+        else{
           _name = _event_type;
         }
         if (DEBUG === true){
@@ -209,27 +218,19 @@ window.start_timed = function(_event_type,_obj_name){
       //console.log("start:"+TIME_COUNT_ARRAY[_event_type]); 
       timed_count(_event_type,_obj_name);
     }
-    //timecount=timecount + 1;  
-    //timecountStart=setTimeout(timedCount,1000);
-}
+    }
 //計時器
 window.timed_count = function(_event_type,_obj_name){
     TIME_COUNT_ARRAY[_event_type + _obj_name]  = TIME_COUNT_ARRAY[_event_type + _obj_name] + 1 ;
     TIME_ARRAY[_event_type + _obj_name]=setTimeout(function(){timed_count(_event_type,_obj_name)},1000);
-    //timecount=timecount + 1;
-    //timecountStart=setTimeout(timedCount,1000);
-}
+   }
 //結束計時
 window.stopCount = function(_event_type,_obj_name){
     var _durtime = TIME_COUNT_ARRAY[_event_type + _obj_name] ;
     clearTimeout(TIME_ARRAY[_event_type + _obj_name]);
     TIME_COUNT_ARRAY[_event_type + _obj_name] = 0;
     return _durtime;
-    //var _timecount = timecount;
-    //timecount=0;
-    //clearTimeout(timecountStart);  
-    //return _timecount;
-}
+    }
 
 /**
  * 偵測畫面捲動的事件
@@ -293,6 +294,9 @@ window.mouse_scroll_event = function(selector,_event_type){
     });
     $(window).scroll();
 }
+
+
+//多一個函式接判斷物件內容
 
 
 _setup_event();
