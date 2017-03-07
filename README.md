@@ -24,8 +24,14 @@ https://github.com/billxu0521/GA-project/issues
 2. step2
 
 # 設定userID教學
-1. step1
-2. step2
+1. 啟動偵測腳本
+2. 開啟新視窗
+3. 進入https://www.travel.taipei台北旅遊網
+4. 右鍵選擇檢查
+5. 分頁切換到console
+6. 確認有無"Google analytics injected."
+7. 在6.字樣下方輸入set_user_id("欲輸入ID")
+8. 若出現"Set UserID;輸入ID"表示設定成功
 
 # 參考連結
 - Google Analytics: https://analytics.google.com/analytics/web/
