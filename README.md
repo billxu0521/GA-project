@@ -26,7 +26,7 @@ https://github.com/billxu0521/GA-project/issues
 # 設定userID教學
 1. 啟動偵測腳本
 2. 開啟新視窗
-3. 進入https://www.travel.taipei台北旅遊網
+3. 進入台北旅遊網 https://www.travel.taipei
 4. 右鍵選擇檢查
 5. 分頁切換到console
 6. 確認有無"Google analytics injected."
