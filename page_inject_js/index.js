@@ -12,7 +12,7 @@
     $(function(){
 
     	//初始化名字
-    	//check_user_id();
+    	check_user_id();
 
         //GL1-3 click
         mouse_click_event('a[title="臺北旅遊網"]',"GL1-3");
