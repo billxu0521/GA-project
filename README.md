@@ -16,8 +16,33 @@ https://github.com/billxu0521/GA-project/issues
 
 # 匯入(安裝)教學
 * 注意：要將 page_inject_js 中的*.js對應到網站中的網址，例如「page_inject_js/index.js」對應到「 https://www.travel.taipei/ 」。每個網頁都會套用不同的事件偵測，所以匯入匯出必須要能批次處理多個網頁
-1. step1
-2. step2
+1.選擇函式庫(Libraries)分頁
+![2017-03-15 1 20 06](https://cloud.githubusercontent.com/assets/3469079/23913333/95c05158-091d-11e7-8ab2-86e4cb826bfe.png)
+
+2.輸入第一組函式庫 GA用 然後點擊Add new
+GA/https://www.google-analytics.com/analytics.js
+![2017-03-15 1 22 15](https://cloud.githubusercontent.com/assets/3469079/23913401/dc852f50-091d-11e7-86c6-acc01c9ec0d4.png)
+
+3.輸入第二組函式庫 本專案的函式腳本 然後點擊Add new
+GA project/https://billxu0521.github.io/GA-project/ga_inject_lib.js
+![2017-03-15 1 24 11](https://cloud.githubusercontent.com/assets/3469079/23913519/3734f598-091e-11e7-957d-1a7785e2214c.png)
+
+4.輸入第二組函式庫 本專案的函式腳本 然後點擊Add new
+GA project index/https://billxu0521.github.io/GA-project/page_inject_js/index.js
+![2017-03-15 1 24 55](https://cloud.githubusercontent.com/assets/3469079/23913522/3c1d2152-091e-11e7-880c-84c6156c5655.png)
+
+5.切換至網站(Sites)分頁，選擇Add new site
+![2017-03-15 1 26 02](https://cloud.githubusercontent.com/assets/3469079/23913617/858a0a44-091e-11e7-9d8b-3cc42abf9b4d.png)
+
+6.左上角輸入台北旅遊網網址https://www.travel.taipei/*
+![2017-03-15 1 26 42](https://cloud.githubusercontent.com/assets/3469079/23913612/820a21ec-091e-11e7-8f1c-3840f44c2668.png)
+
+7.開啟設定，如圖打勾
+![2017-03-15 1 27 39](https://cloud.githubusercontent.com/assets/3469079/23913681/a6708940-091e-11e7-90c5-4bead762743f.png)
+
+8.右上角點擊Save 即可使用
+![2017-03-15 1 27 47](https://cloud.githubusercontent.com/assets/3469079/23913685/a939dafa-091e-11e7-924f-cfce86290936.png)
+
 
 # 匯出教學
 1. step1
