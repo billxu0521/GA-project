@@ -180,7 +180,7 @@ window.mouse_click_event = function (_selector, _event_type) {
         if(this.title){
           _name = this.title ;
         } else if ($(this).text()) {
-          _name = $(this).text() ;
+          _name = $(this).text() 
         } else if (this.alt){
           _name = this.alt;
         }else if (this.src){
@@ -286,7 +286,7 @@ window.mouse_scroll_event = function(selector,_event_type){
         if(this.title){
           _name = this.title ;
         } else if ($(this).text()) {
-          _name = $(this).text() ;
+          _name = $(this).text() 
         } else if (this.alt){
           _name = this.alt;
         }else if (this.src){
