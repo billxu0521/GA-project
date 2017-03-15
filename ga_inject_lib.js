@@ -1,11 +1,11 @@
 
+//GA_TRACE_CODE = "UA-89833109-1";
+
 /**
  * 畫面讀取完成之後再來初始化
  * 而且避免變數被宣告在全域範圍，跟其他程式碼相互衝突
  * @author Pudding 20170203
  */
-$(function () {
-
 /**
  * 加上DEBUG的設定，以方便未來開關
  * @type Boolean
@@ -44,7 +44,7 @@ if (DEBUG === true) {
 
 
 //這邊填入GA專案追蹤碼  
-ga('create', 'UA-89833109-1', {'userId': CUSTOM_USER_ID});  
+ga('create', GA_TRACE_CODE, {'userId': CUSTOM_USER_ID});  
 ga('send', 'pageview');
 ga('require', 'displayfeatures');
 ga('set', 'userId', CUSTOM_USER_ID); // 使用已登入的 user_id 設定 User-ID。
@@ -55,6 +55,7 @@ ga('set', 'dimension1', CUSTOM_USER_ID);
 /**
  * 這邊放置各種偵測任務
  */
+/*
 function _setup_event(){
 //var _setup_event = function () {
     //初始化UserID
@@ -65,7 +66,7 @@ function _setup_event(){
     //mouse_click_event('a[title="臺北旅遊網"]',"GL1-3");
 
 
-    /*GL1-4 導覽列 click*/
+    //GL1-4 導覽列 click
     //mouse_click_event("#btn-open-menu","GL1-4");
 
     //GL1-5 麵包屑/首頁 click
@@ -83,30 +84,35 @@ function _setup_event(){
 
 
 }  //var _setup_event = function () {
-
+*/
 
 /**
 *
 *檢查ID
 */
-window.check_user_id = function(){
+window.get_user_id = function(){
+    //var name;
     if (window.name === null 
             || window.name === undefined 
             || window.name.trim() === ""){
         
-      save_user_id("anonymity");
+      //save_user_id("anonymity");
       
       if (DEBUG === true) {
         console.log("Set Default UserID: anonymity");
       }
-      return false;
+      //return false;
+      return "anonymity";
     } 
     else {
-      //window.name = CUSTOM_USER_ID;
-      var _name = window.name;
-      _name = _name.trim();
-      console.log("UserID:" + _name);
-      return true;
+        //window.name = CUSTOM_USER_ID;
+        //var _name = window.name;
+        //_name = _name.trim();
+        //if (DEBUG === true) {
+        //    console.log("UserID: " + _name);
+        //}
+        //return true;
+        return window.name;
     }    
 };
 
@@ -122,37 +128,60 @@ window.check_user_id = function(){
  */
 window.set_user_id = function (_customUserId){
     //var _customUserId = customUserId;
+    /*
     var _check_id = check_user_id();
     if (_check_id) {
-      save_user_id(_customUserId);       
+        save_user_id(_customUserId);       
     }else {
       if (DEBUG === true) {
         console.log("UserID not set!");
       }    
     }
+    */
+   Date.prototype.yyyymmdd = function() {
+    var mm = this.getMonth() + 1; // getMonth() is zero-based
+    var dd = this.getDate();
+
+    return [this.getFullYear(),
+            (mm>9 ? '' : '0') + mm,
+            (dd>9 ? '' : '0') + dd
+           ].join('');
+  };
+
+  var date = new Date();
+    
+    _customUserId = _customUserId.trim();
+    _customUserId = _customUserId + "-" + date.yyyymmdd();
+    window.name = _customUserId;
 };
 window.save_user_id = function(_customUserId){
-    ga('create', 'UA-89833109-1', {'userId': _customUserId});
+    
+    ga('create', GA_TRACE_CODE, {'userId': _customUserId});
     ga('set', 'userId', _customUserId); // 使用已登入的 user_id 設定 User-ID。
     ga('set', 'dimension1', _customUserId); 
+    
     CUSTOM_USER_ID = _customUserId;
     window.name = CUSTOM_USER_ID;
     if (DEBUG === true) {
       console.log("Set UserID;"+CUSTOM_USER_ID);
     }
-}
+};
 
 /**
  * @TODO 許多函式缺少說明
  */
+/*
 function inputUserIDDialog(){
      var _userIdInput = prompt("請輸入使用者名稱", "anonymity");
      if (_userIdInput !== null) {   
         CUSTOM_USER_ID = userIdInput;
-        console.log("Hello," + CUSTOM_USER_ID);
+        if (DEBUG === true) {
+            console.log("Hello, " + CUSTOM_USER_ID);
+        }
         _save_user_id(CUSTOM_USER_ID);
      }
 }
+*/
 
 /**
  * 偵測滑鼠移上去的事件
@@ -162,17 +191,17 @@ function inputUserIDDialog(){
 window.mouseover_event = function (_selector, _event_type) {
      $(_selector).mouseover(function () {
         
-      var _name = new String;    
-      if(this.title){
+    var _name = new String;    
+    if(this.title){
         _name = this.title ;
-      }else{
+    }else{
         _name = _event_type;
-      }
-      if (DEBUG === true) {
+    }
+    if (DEBUG === true) {
         console.log(_event_type+","+_name+","+"mouse hover");        // 加上事件的程式碼  <這間要加上事件敘述
-      } 
+    } 
         ga("send", "event", _event_type, _name, 'mouseover');   
-     });
+   });
 };
 
 /**
@@ -268,7 +297,7 @@ window.mouse_scroll_event = function(selector,_event_type){
     /*    偵測物件出現在畫面上    */    
     //找出要被偵測的元件位置    
 
-    var _document_height = $( document ).height();
+    //var _document_height = $( document ).height();
     //console.log("總高度:"+document_height);    
     //console.log("物件位置:"+_scrollHeight.top);    
     //console.log("物件高度:"+_height);
@@ -354,6 +383,3 @@ window.load_css = function (_css_url) {
 };
 
 //_setup_event();
-
-}); //$(function () {
-
