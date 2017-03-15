@@ -6,6 +6,7 @@
 
 GA_TRACE_CODE = "UA-89833109-1";
 CSS = "https://billxu0521.github.io/GA-project/config/www.travel.taipei.css";
+DIMENSION = "dimension1";
 
 var exec = function () {
     //GL1-3 click
@@ -65,7 +66,7 @@ var exec = function () {
     mouse_scroll_event('.info-blk .date',"GL2-14");
 
     //GL5-2  圖片
-    mouseover_event('.media-switch-blk',"GL5-2")
+    mouse_over_event('.media-switch-blk',"GL5-2")
 
     //GL5-3  互動
     mouse_click_event('.flickity-prev-next-button',"GL5-3");
@@ -97,10 +98,6 @@ var exec = function () {
 
 // --------------------------------------
 
-$(function () {
-    $.getScript("https://billxu0521.github.io/GA-project/ga_inject_lib.js", function () {
-        setup_ga(function () {
-            exec();
-        });
-    });
+$.getScript("https://billxu0521.github.io/GA-project/ga_inject_lib.js", function () {
+    setup_ga(exec);
 });
