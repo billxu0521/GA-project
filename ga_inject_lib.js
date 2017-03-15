@@ -285,8 +285,8 @@ window.mouse_scroll_event = function(selector,_event_type){
         var _name = new String;  
         if(this.title){
           _name = this.title ;
-        } else if (this.text()) {
-          _name = this.text(); 
+        } else if ($(this).text()) {
+          _name = $(this).text(); 
         } else if (this.alt){
           _name = this.alt;
         }else if (this.src){
