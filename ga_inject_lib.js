@@ -233,7 +233,7 @@ window.mouse_click_event = function (_selector, _event_type, _name) {
      $(_selector).click(function () {    
         
         if (_name === undefined) {
-            _name = get_element_name(this, _event_type);
+            _name = get_element_name(this, _selector);
         }
         
         if (DEBUG === true){
@@ -245,20 +245,20 @@ window.mouse_click_event = function (_selector, _event_type, _name) {
 
 get_element_name = function (_ele, _event_type) {
     var _name = new String; 
-    
+    _ele = $(_ele);
     try {
-        if(_ele.title){
-          _name = _ele.title ;
-        } else if ($(_ele).text()) {
-          _name = $(_ele).text(); 
-        } else if (_ele.alt){
-          _name = _ele.alt;
-        }else if (_ele.src){
-          _name = _ele.src; 
-        }else if (_ele.data_src){
-          _name = _ele.data_src;
-        }else if (_ele.className){
-          _name = _ele.className;
+        if(_ele.attr("title")){
+          _name = _ele.attr("title");
+        } else if (_ele.text()) {
+          _name = _ele.text(); 
+        } else if (_ele.attr("alt")){
+          _name = _ele.attr("alt");
+        }else if (_ele.attr("src")){
+          _name = _ele.attr("src"); 
+        }else if (_ele.attr("data-src")){
+          _name = _ele.attr("data-src");
+        }else if (_ele.attr("className")){
+          _name = _ele.attr("className");
         }
         else{
           _name = _event_type;
@@ -357,7 +357,7 @@ window.mouse_scroll_event = function(selector, _event_type, _name){
         //console.log("目前物件狀態:"+_getObjStatus);
         
         if (_name === undefined) {
-            _name = get_element_name(this, _event_type);
+            _name = get_element_name(_obj, selector);
         }
         
         //偵測目標有無在畫面中
