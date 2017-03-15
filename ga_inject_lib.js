@@ -270,7 +270,7 @@ window.mouse_scroll_event = function(selector,_event_type){
 
     // 捲動時偵測
     $(window).scroll(function(){
-        if ($(selector).length == 0) return;
+        if ($(selector).length === 0) return;
         var _id = selector;
         var _obj = $(_id),_height = _obj.height(),_scrollHeight =  _obj.offset();
         var _winHeight = $(window).height();
@@ -323,11 +323,21 @@ window.mouse_scroll_event = function(selector,_event_type){
         }
     });
     $(window).scroll();
-}
+};
 
 
 //多一個函式接判斷物件內容
 
+window.load_css = function (_css_url) {
+    var head  = document.getElementsByTagName('head')[0];
+    var link  = document.createElement('link');
+    //link.id   = cssId;
+    link.rel  = 'stylesheet';
+    link.type = 'text/css';
+    link.href = _css_url;
+    link.media = 'all';
+    head.appendChild(link);
+};
 
 //_setup_event();
 

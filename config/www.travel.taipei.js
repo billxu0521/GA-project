@@ -11,6 +11,7 @@
 
 
     $(function(){
+        load_css("https://billxu0521.github.io/GA-project/config/www.travel.taipei.css");
 
     	//初始化名字
     	check_user_id();
