@@ -161,10 +161,9 @@ window.mouseover_event = function (_selector, _event_type) {
         _name = _event_type;
       }
       if (DEBUG === true) {
-        console.log("mouse hover,"+_name+","+_event_type);        // 加上事件的程式碼  <這間要加上事件敘述
+        console.log(_event_type+","+_name+","+"mouse hover");        // 加上事件的程式碼  <這間要加上事件敘述
       } 
         ga("send", "event", _event_type, _name, 'mouseover');   
-      
      });
 };
 
@@ -194,7 +193,7 @@ window.mouse_click_event = function (_selector, _event_type) {
           _name = _event_type;
         }
         if (DEBUG === true){
-          console.log("mouse click,"+_name+","+_event_type);        // 加上事件的程式碼 
+          console.log(+_event_type+","+_name+","+"mouse click");        // 加上事件的程式碼 
         }
           ga("send", "event", _event_type, _name, 'click'); // @TODO ga("send", "event"...) 最後還要加上事件類型，像是"click"或"mouseover"
      });        
@@ -281,10 +280,22 @@ window.mouse_scroll_event = function(selector,_event_type){
         //console.log("目前捲動高度:"+_scrollVal);
         //console.log("目前畫面高度:"+_winHeight);
         //console.log("目前物件狀態:"+_getObjStatus);
+
         var _name = new String;  
         if(this.title){
           _name = this.title ;
-        }else{
+        } else if ($(this).text()) {
+          _name = $(this).text() ;
+        } else if (this.alt){
+          _name = this.alt;
+        }else if (this.src){
+          _name = this.src; 
+        }else if (this.data_src){
+          _name = this.data_src;
+        }else if (this.className){
+          _name = this.className;
+        }
+        else{
           _name = _event_type;
         }
         //偵測目標有無在畫面中
@@ -294,9 +305,9 @@ window.mouse_scroll_event = function(selector,_event_type){
               start_timed(_event_type,selector);
               //timedCount(_event_type,this.title);
               if (DEBUG === true){
-                console.log(">>>["+ selector +"]進入，開始計時<<<");
+                console.log(_event_type+","+"["+ _name +"]進入，開始計時");
               }
-              ga("send", "event", _event_type, _name, "scroll in"); // @TODO 最後還要加上事件類型
+              //ga("send", "event", _event_type, _name, "scroll in"); // @TODO 最後還要加上事件類型
               return 0;
             }
         //console.log(">>>目標在畫面中<<<");
@@ -304,9 +315,9 @@ window.mouse_scroll_event = function(selector,_event_type){
           var _durtime = stopCount(_event_type,selector);
           //var _durtime = stopCount();
           if (DEBUG === true){
-            console.log(">>>["+ selector +"]離開，使用時間:"+_durtime+"秒<<<");
+            console.log(_event_type+","+"["+ _name +"]離開，使用時間:"+_durtime+"秒");
           }
-          if(_durtime > 3) ga("send", "event", _event_type, _name, "scroll out", _durtime);  // @TODO 最後還要加上事件類型
+          if(_durtime > 3) ga("send", "event", _event_type, _name, "scroll in", _durtime);  // @TODO 最後還要加上事件類型
           _getObjStatus = 0;
         }
     });
