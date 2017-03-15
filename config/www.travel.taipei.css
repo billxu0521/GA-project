@@ -13,6 +13,7 @@
 .content-left-blk .tripadvisor-rating.show-owl {
     display: none;
 }
-.smart-banner {
-    display: none;
+.smart-banner, .tripadvisor-rating {
+    display: none !important;
 }
+
