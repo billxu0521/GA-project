@@ -166,6 +166,10 @@ window.set_user_id = function (_customUserId){
     _customUserId = _customUserId.trim();
     _customUserId = _customUserId + "-" + date.yyyymmdd();
     
+    if (DEBUG === true) {
+      console.log("Set user id: " + _customUserId);
+    } 
+   
     window.name = _customUserId;
     
     ga('create', GA_TRACE_CODE, {'userId': _customUserId});
