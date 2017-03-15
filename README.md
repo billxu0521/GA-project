@@ -27,7 +27,7 @@ https://github.com/billxu0521/GA-project/issues
 3. 切換至網站(Sites)分頁，選擇Add new site
 ![2017-03-15 1 26 02](https://cloud.githubusercontent.com/assets/3469079/23913617/858a0a44-091e-11e7-9d8b-3cc42abf9b4d.png)
 
-4. 左上角輸入台北旅遊網網址 「https://www.travel.taipei/*」 (注意*星號)，JS欄位要寫上 「 //blank 」
+4. 左上角輸入台北旅遊網網址 「https://www.travel.taipei/*」 (注意*星號)，JS欄位要寫上 「 DEGUB = true; 」
 ![2017-03-15 1 26 42](https://cloud.githubusercontent.com/assets/3469079/23913612/820a21ec-091e-11e7-8f1c-3840f44c2668.png)
 
 5. 開啟設定，如圖打勾
