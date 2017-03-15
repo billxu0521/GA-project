@@ -65,7 +65,7 @@ window.ga_setup = function (_callback) {
         /**
          * 初始化載入
          */
-        _console_trace("Google analytics injected. User: " + _user);
+        _console_log("Google analytics injected. User: " + _user);
     
         if (typeof(_callback) === "function") {
             setTimeout(function () {
@@ -115,7 +115,7 @@ window.set_user_id = function (_customUserId){
     _customUserId = _customUserId.trim();
     _customUserId = _customUserId + "-" + date;
     
-    _console_trace("Set user id: " + _customUserId);
+    _console_log("Set user id: " + _customUserId);
    
     window.name = _customUserId;
     
@@ -137,7 +137,7 @@ window.ga_mouse_over_event = function (_selector, _event_type, _name) {
     $(_selector).mouseover(function () {
         _name = _get_element_name($(this), _event_type, _name);
         
-        _console_trace([_event_type, _name, _event_key]);
+        _console_log([_event_type, _name, _event_key]);
         ga("send", "event", _event_type, _name, _event_key);   
     });
 };
@@ -161,18 +161,18 @@ window.ga_mouse_over_out_event = function(_selector, _event_type, _name) {
     _obj.mouseover(function() {
         _name = _get_element_name(_obj, _selector, _name);
         GA_TIMER[_id] = (new Date()).getTime();
-        _console_trace([_event_type, _event_key + ": start", _name, GA_TIMER[_id]]);
+        _console_log([_event_type, _event_key + ": start", _name, GA_TIMER[_id]]);
     });
     
     _obj.mouseout(function() {
         _name = _get_element_name(_obj, _selector, _name);
         var _interval = ((new Date()).getTime() - GA_TIMER[_id])/1000;
         if (_interval > SCROLL_SAVE_MIN_INTERVAL) {
-            _console_trace([_event_type, _event_key +  + ": end", _name, _interval, "記錄"]);
+            _console_log([_event_type, _event_key +  + ": end", _name, _interval, "記錄"]);
             ga("send", "event", _event_type, _name, _event_key, _interval);
         }
         else {
-            _console_trace([_event_type, _event_key + ": end", _name, _interval, "不記錄"]);
+            _console_log([_event_type, _event_key + ": end", _name, _interval, "不記錄"]);
         }
         GA_TIMER[_id] = false;
     });
@@ -198,13 +198,13 @@ window.ga_mouse_over_out_event = function(_selector, _event_type, _name) {
     _obj.on("dragstart", function() {
         _name = _get_element_name(_obj, _selector, _name);
         GA_TIMER[_id] = (new Date()).getTime();
-        _console_trace([_event_type, _event_key + ": start", _name, GA_TIMER[_id]]);
+        _console_log([_event_type, _event_key + ": start", _name, GA_TIMER[_id]]);
     });
     
     _obj.on("dragend", function() {
         _name = _get_element_name(_obj, _selector, _name);
         var _interval = (new Date()).getTime() - GA_TIMER[_id];
-        _console_trace([_event_type, _event_key +  + ": end", _name, _interval/1000, "記錄"]);
+        _console_log([_event_type, _event_key +  + ": end", _name, _interval/1000, "記錄"]);
         ga("send", "event", _event_type, _name, _event_key, _interval/1000);
         GA_TIMER[_id] = false;
     });
@@ -221,7 +221,7 @@ window.ga_mouse_click_event = function (_selector, _event_type, _name) {
     $(_selector).click(function () {
         _name = _get_element_name(this, _selector, _name);
         
-        _console_trace([_event_type, _name, _event_key]);
+        _console_log([_event_type, _name, _event_key]);
         ga("send", "event", _event_type, _name, _event_key);
     });
 };
@@ -237,7 +237,7 @@ window.ga_input_change_event = function (_selector, _event_type, _name) {
     $(_selector).change(function () {
         _name = _get_element_name(this, _selector, _name);
         
-        _console_trace([_event_type, _name, _event_key]);
+        _console_log([_event_type, _name, _event_key]);
         ga("send", "event", _event_type, _name, _event_key);
     });
 };
@@ -279,7 +279,7 @@ window.ga_submit_event = function (_selector, _event_type, _name) {
         
         _name = _get_element_name(this, _selector, _name);
         
-        _console_trace([_event_type, _name, _event_key]);
+        _console_log([_event_type, _name, _event_key]);
         ga("send", "event", _event_type, _name, _event_key);
     });        
 };
@@ -324,7 +324,7 @@ window.ga_mouse_scroll_in_out_event = function(_selector, _event_type, _name) {
         else if (_scroll_in_view === true && GA_TIMER[_id] === false) {
             // 進入了，開始記錄事件
             GA_TIMER[_id] = (new Date()).getTime();
-            _console_trace([_event_type, _event_key + ": start", _name, GA_TIMER[_id]]);
+            _console_log([_event_type, _event_key + ": start", _name, GA_TIMER[_id]]);
         }
         else if (_scroll_in_view === true && GA_TIMER[_id] !== false) {
             // 沒事
@@ -333,11 +333,11 @@ window.ga_mouse_scroll_in_out_event = function(_selector, _event_type, _name) {
             // 離開了
             var _interval = ((new Date()).getTime() - GA_TIMER[_id])/1000;
             if (_interval > SCROLL_SAVE_MIN_INTERVAL) {
-                _console_trace([_event_type, _event_key + ": end", _name, _interval, "記錄"]);
+                _console_log([_event_type, _event_key + ": end", _name, _interval, "記錄"]);
                 ga("send", "event", _event_type, _name, "scroll_in", _interval);
             }
             else {
-                _console_trace([_event_type, _event_key + ": end", _name, _interval, "不記錄"]);
+                _console_log([_event_type, _event_key + ": end", _name, _interval, "不記錄"]);
             }
             GA_TIMER[_id] = false;
         }
@@ -434,7 +434,17 @@ var _selector_length_caller = function (_selector, _function, _event_type, _name
 };
 
 /**
- * 顯示偵錯訊息
+ * 顯示偵錯訊息: 簡易資訊
+ * @param {String} _message
+ */
+var _console_log = function (_message) {
+    if (DEBUG === true){
+        console.log(_message);
+    }
+};
+
+/**
+ * 顯示偵錯訊息: 詳細資訊
  * @param {String} _message
  */
 var _console_trace = function (_message) {
