@@ -149,7 +149,7 @@ window.ga_mouse_over_event = function (_selector, _event_type, _name) {
  * @param {String} _name
  */
 window.ga_mouse_over_out_event = function(_selector, _event_type, _name) {
-    if (_selector_length_caller(_selector, this, _event_type, _name) === false) {
+    if (_selector_length_caller(_selector, window.ga_mouse_over_out_event, _event_type, _name) === false) {
         return;
     }
     
@@ -186,7 +186,7 @@ window.ga_mouse_over_out_event = function(_selector, _event_type, _name) {
  * @param {String} _name
  */
 window.ga_mouse_over_out_event = function(_selector, _event_type, _name) {
-    if (_selector_length_caller(_selector, this, _event_type, _name) === false) {
+    if (_selector_length_caller(_selector, window.ga_mouse_over_out_event, _event_type, _name) === false) {
         return;
     }
     
@@ -249,7 +249,7 @@ window.ga_input_change_event = function (_selector, _event_type, _name) {
  * @param {String} _name
  */
 window.ga_submit_event = function (_selector, _event_type, _name) {
-    if (_selector_length_caller(_selector, this, _event_type, _name) === false) {
+    if (_selector_length_caller(_selector, window.ga_submit_event, _event_type, _name) === false) {
         return;
     }
     var _event_key = "mouse_click";
@@ -295,7 +295,7 @@ window.ga_submit_event = function (_selector, _event_type, _name) {
  */
 window.ga_mouse_scroll_in_out_event = function(_selector, _event_type, _name) {
     
-    if (_selector_length_caller(_selector, this, _event_type, _name) === false) {
+    if (_selector_length_caller(_selector, window.ga_mouse_scroll_in_out_event, _event_type, _name) === false) {
         return;
     }
     
