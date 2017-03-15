@@ -11,11 +11,11 @@ $(function () {
  * @type Boolean
  * @author Pudding 20170203
  */ 
-var DEBUG = true;
+DEBUG = true;
     
-if (DEBUG === true) {    
-    console.log("GaEventScript20170127@billxu");//初始化確認有載入腳本
-}
+//if (DEBUG === true) {    
+    //console.log("GaEventScript20170127@billxu");//初始化確認有載入腳本
+//}
 
 /**
  * @TODO 要改成從window.name讀取
@@ -90,18 +90,25 @@ function _setup_event(){
 *檢查ID
 */
 window.check_user_id = function(){
-    if (window.name === null){
+    if (window.name === null 
+            || window.name === undefined 
+            || window.name.trim() === ""){
+        
       save_user_id("anonymity");
+      
       if (DEBUG === true) {
-        console.log("Set Default UserID");
+        console.log("Set Default UserID: anonymity");
       }
       return false;
-    }else {
+    } 
+    else {
       //window.name = CUSTOM_USER_ID;
-      console.log("UserID:"+window.name);
+      var _name = window.name;
+      _name = _name.trim();
+      console.log("UserID:" + _name);
       return true;
     }    
-}
+};
 
 /**
  * 將ID資訊記錄到視窗屬性中
@@ -299,6 +306,11 @@ window.mouse_scroll_event = function(selector,_event_type){
         else{
           _name = _event_type;
         }
+        
+        if (typeof(_name) === "string") {
+            _name = _name.trim();
+        }
+        
         //偵測目標有無在畫面中
         if ((_scrollVal + _winHeight) - _scrollHeight.top > 0 && _scrollVal < (_scrollHeight.top + _height)  ){
             if (_getObjStatus === 0){
@@ -306,7 +318,7 @@ window.mouse_scroll_event = function(selector,_event_type){
               start_timed(_event_type,selector);
               //timedCount(_event_type,this.title);
               if (DEBUG === true){
-                console.log(_event_type+","+"["+ _name +"]進入，開始計時");
+                console.log(_event_type+", "+" ["+ _name +"] 進入，開始計時");
               }
               //ga("send", "event", _event_type, _name, "scroll in"); // @TODO 最後還要加上事件類型
               return 0;
@@ -316,9 +328,11 @@ window.mouse_scroll_event = function(selector,_event_type){
           var _durtime = stopCount(_event_type,selector);
           //var _durtime = stopCount();
           if (DEBUG === true){
-            console.log(_event_type+","+"["+ _name +"]離開，使用時間:"+_durtime+"秒");
+            console.log(_event_type+", "+"["+ _name +"]離開，使用時間: "+_durtime+"秒");
           }
-          if(_durtime > 3) ga("send", "event", _event_type, _name, "scroll in", _durtime);  // @TODO 最後還要加上事件類型
+          if(_durtime > 3) { 
+              ga("send", "event", _event_type, _name, "scroll in", _durtime);  // @TODO 最後還要加上事件類型
+          }
           _getObjStatus = 0;
         }
     });

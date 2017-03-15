@@ -7,3 +7,7 @@
  {
  	display: none;
  }
+ 
+.content-left-blk .tripadvisor-rating.show-owl {
+    display: none;
+}
