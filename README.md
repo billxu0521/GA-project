@@ -14,8 +14,6 @@ https://github.com/billxu0521/GA-project/issues
 - 許多函式缺少說明，函式前面的說明全部改成
 - ga("send", "event"...) 最後還要加上事件類型，像是"click"或"mouseover"
 
-# =============================
-
 # 匯入(安裝)教學
 * 注意：要將 page_inject_js 中的*.js對應到網站中的網址，例如「config/www.travel.taipei.js」對應到「 https://www.travel.taipei/ 」。
 每個網頁都會套用不同的事件偵測，所以匯入匯出必須要能批次處理多個網頁

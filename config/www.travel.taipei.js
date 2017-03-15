@@ -106,6 +106,7 @@ $(function () {
         $.getScript("https://billxu0521.github.io/GA-project/ga_inject_lib.js", function () {
             load_css(CSS);
             setTimeout(function () {
+                setup_ga();
                 exec();
             }, 1000);
         });

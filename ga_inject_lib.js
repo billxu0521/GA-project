@@ -43,12 +43,16 @@ if (DEBUG === true) {
 }
 
 
-//這邊填入GA專案追蹤碼  
-ga('create', GA_TRACE_CODE, {'userId': CUSTOM_USER_ID});  
-ga('send', 'pageview');
-ga('require', 'displayfeatures');
-ga('set', 'userId', CUSTOM_USER_ID); // 使用已登入的 user_id 設定 User-ID。
-ga('set', 'dimension1', CUSTOM_USER_ID);
+//這邊填入GA專案追蹤碼
+window.setup_ga = function () {
+    CUSTOM_USER_ID = get_user_id();
+    ga('create', GA_TRACE_CODE, {'userId': CUSTOM_USER_ID});  
+    ga('send', 'pageview');
+    ga('require', 'displayfeatures');
+    ga('set', 'userId', CUSTOM_USER_ID); // 使用已登入的 user_id 設定 User-ID。
+    ga('set', 'dimension1', CUSTOM_USER_ID);
+};
+
 
 
 // ===================================================================
@@ -155,7 +159,12 @@ window.set_user_id = function (_customUserId){
     _customUserId = _customUserId.trim();
     _customUserId = _customUserId + "-" + date.yyyymmdd();
     window.name = _customUserId;
+    
+    ga('create', GA_TRACE_CODE, {'userId': _customUserId});
+    ga('set', 'userId', _customUserId); // 使用已登入的 user_id 設定 User-ID。
+    ga('set', 'dimension1', _customUserId); 
 };
+/*
 window.save_user_id = function(_customUserId){
     
     ga('create', GA_TRACE_CODE, {'userId': _customUserId});
@@ -168,6 +177,7 @@ window.save_user_id = function(_customUserId){
       console.log("Set UserID;"+CUSTOM_USER_ID);
     }
 };
+*/
 
 /**
  * @TODO 許多函式缺少說明
