@@ -281,20 +281,20 @@ window.mouse_scroll_event = function(selector,_event_type){
         //console.log("目前捲動高度:"+_scrollVal);
         //console.log("目前畫面高度:"+_winHeight);
         //console.log("目前物件狀態:"+_getObjStatus);
-        console.log(this);
+        console.log($(selector));
         var _name = new String;  
-        if(this.title){
-          _name = this.title ;
-        } else if ($(this).text()) {
-          _name = $(this).text(); 
-        } else if (this.alt){
-          _name = this.alt;
-        }else if (this.src){
-          _name = this.src; 
-        }else if (this.data_src){
-          _name = this.data_src;
-        }else if (this.className){
-          _name = this.className;
+        if($(selector).title){
+          _name = $(selector).title ;
+        } else if ($(selector).text()) {
+          _name = $(selector).text(); 
+        } else if ($(selector).alt){
+          _name = $(selector).alt;
+        }else if ($(selector).src){
+          _name = $(selector).src; 
+        }else if ($(selector).data_src){
+          _name = $(selector).data_src;
+        }else if ($(selector).className){
+          _name = $(selector).className;
         }
         else{
           _name = _event_type;
