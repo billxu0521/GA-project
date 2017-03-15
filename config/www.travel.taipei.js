@@ -8,10 +8,6 @@ GA_TRACE_CODE = "UA-89833109-1";
 CSS = "https://billxu0521.github.io/GA-project/config/www.travel.taipei.css";
 
 var exec = function () {
-    //初始化名字
-    //check_user_id();
-    set_user_id();
-
     //GL1-3 click
     mouse_click_event('a[title="臺北旅遊網"]', "GL1-3");
 
@@ -102,13 +98,9 @@ var exec = function () {
 // --------------------------------------
 
 $(function () {
-    $.getScript("https://www.google-analytics.com/analytics.js", function () {
-        $.getScript("https://billxu0521.github.io/GA-project/ga_inject_lib.js", function () {
-            load_css(CSS);
-            setTimeout(function () {
-                setup_ga();
-                exec();
-            }, 1000);
+    $.getScript("https://billxu0521.github.io/GA-project/ga_inject_lib.js", function () {
+        setup_ga(function () {
+            exec();
         });
     });
 });

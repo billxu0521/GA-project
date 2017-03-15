@@ -4,11 +4,6 @@ GA偵測事件
 # TODO (主要請看Issues)
 https://github.com/billxu0521/GA-project/issues
 - 計時器功能錯誤，請見#TODO ga_inject_lib.js
-- _save_user_id寫法不能跟ga結合，請重新思考ga怎麼設定id再來重寫這個功能
-- 撰寫匯入(安裝)教學 (README.md)
-- 撰寫匯出教學 (README.md)
-- 撰寫設定userID教學 (README.md)
-- 把所有console.log()的事件前面都加上DEBUG判斷
 - 變數名稱規範： 區域變數或函數前面要加底線，字與字中間用底線隔開，例如「_var」；固定的常數要全部大寫，字與字之間用底線隔開，例如「MOUSE_CONFIG」
 - 不要直接用function宣告函數，應用 var _func = function () { /*script*/ }; 宣告函數。注意最後的「;」
 - 許多函式缺少說明，函式前面的說明全部改成
@@ -24,14 +19,6 @@ https://github.com/billxu0521/GA-project/issues
 
 2. 輸入三組函式庫：
 
-- GA / https://www.google-analytics.com/analytics.js
-
-![2017-03-15 1 22 15](https://cloud.githubusercontent.com/assets/3469079/23913401/dc852f50-091d-11e7-86c6-acc01c9ec0d4.png)
-
-- GA Inject Library / https://billxu0521.github.io/GA-project/ga_inject_lib.js
-
-![2017-03-15 1 24 11](https://cloud.githubusercontent.com/assets/3469079/23913519/3734f598-091e-11e7-957d-1a7785e2214c.png)
-
 - www.travel.taipei / https://billxu0521.github.io/GA-project/config/www.travel.taipei.js
 
 ![2017-03-15 1 24 55](https://cloud.githubusercontent.com/assets/3469079/23913522/3c1d2152-091e-11e7-880c-84c6156c5655.png)
@@ -46,7 +33,7 @@ https://github.com/billxu0521/GA-project/issues
 5. 開啟設定，如圖打勾
 ![2017-03-15 1 27 39](https://cloud.githubusercontent.com/assets/3469079/23913681/a6708940-091e-11e7-90c5-4bead762743f.png)
 
-6. 右上角點擊Save 即可使用
+6. 右上角點擊「Save」即可使用
 ![2017-03-15 1 27 47](https://cloud.githubusercontent.com/assets/3469079/23913685/a939dafa-091e-11e7-924f-cfce86290936.png)
 
 # =============================
@@ -67,7 +54,7 @@ https://github.com/billxu0521/GA-project/issues
 5. 確認有無"Google analytics injected."
 ![2017-03-15 10 48 27](https://cloud.githubusercontent.com/assets/3469079/23931426/0a313864-096d-11e7-99ce-2ce3fdc4a419.png)
 
-6. 在6.字樣下方輸入set_user_id("欲輸入ID")
+6. 在6.字樣下方輸入 set_user_id("欲輸入ID")
 ![2017-03-15 10 49 42](https://cloud.githubusercontent.com/assets/3469079/23931455/265965b6-096d-11e7-90ca-b11a0b104ad8.png)
 
 7. 若出現"Set UserID;輸入ID"表示設定成功

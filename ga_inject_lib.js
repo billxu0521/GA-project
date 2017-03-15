@@ -44,16 +44,23 @@ if (DEBUG === true) {
 
 
 //這邊填入GA專案追蹤碼
-window.setup_ga = function () {
-    CUSTOM_USER_ID = get_user_id();
-    ga('create', GA_TRACE_CODE, {'userId': CUSTOM_USER_ID});  
-    ga('send', 'pageview');
-    ga('require', 'displayfeatures');
-    ga('set', 'userId', CUSTOM_USER_ID); // 使用已登入的 user_id 設定 User-ID。
-    ga('set', 'dimension1', CUSTOM_USER_ID);
+window.setup_ga = function (_callback) {
+    $.getScript("https://www.google-analytics.com/analytics.js", function () {
+        load_css(CSS);
+        CUSTOM_USER_ID = get_user_id();
+        ga('create', GA_TRACE_CODE, {'userId': CUSTOM_USER_ID});  
+        ga('send', 'pageview');
+        ga('require', 'displayfeatures');
+        ga('set', 'userId', CUSTOM_USER_ID); // 使用已登入的 user_id 設定 User-ID。
+        ga('set', 'dimension1', CUSTOM_USER_ID);
+        
+        if (typeof(_callback) === "function") {
+            setTimeout(function () {
+                _callback();
+            }, 1000);
+        }
+    });
 };
-
-
 
 // ===================================================================
 /**
@@ -158,6 +165,7 @@ window.set_user_id = function (_customUserId){
     }
     _customUserId = _customUserId.trim();
     _customUserId = _customUserId + "-" + date.yyyymmdd();
+    
     window.name = _customUserId;
     
     ga('create', GA_TRACE_CODE, {'userId': _customUserId});
@@ -221,32 +229,44 @@ window.mouseover_event = function (_selector, _event_type) {
  * /**
  *  * 偵測滑鼠點擊物件
  *  */
-window.mouse_click_event = function (_selector, _event_type) {
+window.mouse_click_event = function (_selector, _event_type, _name) {
      $(_selector).click(function () {    
         
-        var _name = new String;  
-        if(this.title){
-          _name = this.title ;
-        } else if ($(this).text()) {
-          _name = $(this).text(); 
-        } else if (this.alt){
-          _name = this.alt;
-        }else if (this.src){
-          _name = this.src; 
-        }else if (this.data_src){
-          _name = this.data_src;
-        }else if (this.className){
-          _name = this.className;
+        if (_name === undefined) {
+            _name = get_element_name(this, _event_type);
+        }
+        
+        if (DEBUG === true){
+            console.log(_event_type+","+_name+", "+"mouse click");        // 加上事件的程式碼 
+        }
+        ga("send", "event", _event_type, _name, 'click'); // @TODO ga("send", "event"...) 最後還要加上事件類型，像是"click"或"mouseover"
+     });        
+};
+
+get_element_name = function (_ele, _event_type) {
+    var _name = new String;  
+        if(_ele.title){
+          _name = _ele.title ;
+        } else if ($(_ele).text()) {
+          _name = $(_ele).text(); 
+        } else if (_ele.alt){
+          _name = _ele.alt;
+        }else if (_ele.src){
+          _name = _ele.src; 
+        }else if (_ele.data_src){
+          _name = _ele.data_src;
+        }else if (_ele.className){
+          _name = _ele.className;
         }
         else{
           _name = _event_type;
         }
-        if (DEBUG === true){
-          console.log(_event_type+","+_name+","+"mouse click");        // 加上事件的程式碼 
+        
+        if (typeof(_name) === "string") {
+            _name = _name.trim();
         }
-          ga("send", "event", _event_type, _name, 'click'); // @TODO ga("send", "event"...) 最後還要加上事件類型，像是"click"或"mouseover"
-     });        
-};
+        return _name;
+}
 
 /**
  * 事件計時器
@@ -330,27 +350,7 @@ window.mouse_scroll_event = function(selector,_event_type){
         //console.log("目前畫面高度:"+_winHeight);
         //console.log("目前物件狀態:"+_getObjStatus);
 
-        var _name = new String;  
-        if($(selector).title){
-          _name = $(selector).title ;
-        } else if ($(selector).text()) {
-          _name = $(selector).text(); 
-        } else if ($(selector).alt){
-          _name = $(selector).alt;
-        }else if ($(selector).src){
-          _name = $(selector).src; 
-        }else if ($(selector).data_src){
-          _name = $(selector).data_src;
-        }else if ($(selector).className){
-          _name = $(selector).className;
-        }
-        else{
-          _name = _event_type;
-        }
-        
-        if (typeof(_name) === "string") {
-            _name = _name.trim();
-        }
+        var _name = get_element_name(this, _event_type);
         
         //偵測目標有無在畫面中
         if ((_scrollVal + _winHeight) - _scrollHeight.top > 0 && _scrollVal < (_scrollHeight.top + _height)  ){
@@ -365,11 +365,12 @@ window.mouse_scroll_event = function(selector,_event_type){
               return 0;
             }
         //console.log(">>>目標在畫面中<<<");
-        }else if(_getObjStatus === 1){
+        }
+        else if(_getObjStatus === 1){
           var _durtime = stopCount(_event_type,selector);
           //var _durtime = stopCount();
           
-          if(_durtime > 3) { 
+          if( _durtime > 3) { 
               if (DEBUG === true){
                 console.log(_event_type+", "+"["+ _name +"]離開，使用時間: "+_durtime+"秒 記錄");
               }
@@ -390,6 +391,9 @@ window.mouse_scroll_event = function(selector,_event_type){
 //多一個函式接判斷物件內容
 
 window.load_css = function (_css_url) {
+    if (typeof(_css_url) !== "string") {
+        return;
+    }
     var head  = document.getElementsByTagName('head')[0];
     var link  = document.createElement('link');
     //link.id   = cssId;
