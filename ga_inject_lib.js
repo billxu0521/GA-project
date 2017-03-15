@@ -24,7 +24,7 @@ DEBUG = true;
  * 3. 使用一種特殊的方法來設定 customUserId
  * @type String|userIdInput
  */
-var CUSTOM_USER_ID = "";  //輸入ID
+//var CUSTOM_USER_ID = "";  //輸入ID
 
 /********
 埋入GA追蹤資訊
@@ -244,7 +244,9 @@ window.mouse_click_event = function (_selector, _event_type, _name) {
 };
 
 get_element_name = function (_ele, _event_type) {
-    var _name = new String;  
+    var _name = new String; 
+    
+    try {
         if(_ele.title){
           _name = _ele.title ;
         } else if ($(_ele).text()) {
@@ -261,12 +263,16 @@ get_element_name = function (_ele, _event_type) {
         else{
           _name = _event_type;
         }
+    }
+    catch (e) {
         
-        if (typeof(_name) === "string") {
-            _name = _name.trim();
-        }
-        return _name;
-}
+    }
+
+    if (typeof(_name) === "string") {
+        _name = _name.trim();
+    }
+    return _name;
+};
 
 /**
  * 事件計時器

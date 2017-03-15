@@ -1,11 +1,13 @@
 /* https://billxu0521.github.io/GA-project/config/www.travel.taipei.css */ 
+/*
 .page-content-wrapper{
- 	
- 	
+
+
  }
+ */
  .tripadvisor-info-blk
  {
- 	display: none;
+    display: none;
  }
  
 .content-left-blk .tripadvisor-rating.show-owl {

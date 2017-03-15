@@ -63,7 +63,7 @@ https://github.com/billxu0521/GA-project/issues
 
 # 參考連結
 - GitHub Project Homepage: https://github.com/billxu0521/GA-project
-- Google Analytics: https://analytics.google.com/analytics/web/
+- Google Analytics: https://analytics.google.com/analytics/web/#realtime/rt-overview/a89833109w133278856p137301362/
 - 臺北旅遊網: https://www.travel.taipei/
 - Google Chrome: https://www.google.com.tw/intl/zh-TW/chrome/
 - (Chrome Extension) User JavaScript and CSS: https://chrome.google.com/webstore/detail/user-javascript-and-css/nbhcbdghjpllgmfilhnhkllmkecfmpld?utm_source=chrome-app-launcher-info-dialog
