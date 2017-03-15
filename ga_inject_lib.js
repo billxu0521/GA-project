@@ -69,7 +69,7 @@ function _setup_event(){
     //mouse_click_event("#btn-open-menu","GL1-4");
 
     //GL1-5 麵包屑/首頁 click
-    //mouse_scroll_event('.btn-more',"GL1-5");
+    mouse_scroll_event('.btn-more',"GL1-5");
     //GL1-6 click
     //mouse_click_event(".unit:eq(0)","GL1-6");
     //G1-7 click
@@ -161,8 +161,8 @@ window.mouseover_event = function (_selector, _event_type) {
         _name = _event_type;
       }
       if (DEBUG === true) {
-        console.log("mouse hover,"+_name);        // 加上事件的程式碼
-      }
+        console.log("mouse hover,"+_name+","+_event_type);        // 加上事件的程式碼  <這間要加上事件敘述
+      } 
         ga("send", "event", _event_type, _name, 'mouseover');   
       
      });
@@ -211,6 +211,22 @@ window.mouse_click_event = function (_selector, _event_type) {
 var TIME_COUNT_ARRAY = new Array();
 var TIME_ARRAY = new Array();
 
+//新版計時器
+window.start_timed = function(_event_type,_obj_name){
+  if (!TIME_COUNT_ARRAY[_event_type+_obj_name]){
+//var dateMsec = date.getTime();
+    var _date = new Date;
+    TIME_COUNT_ARRAY[_event_type + _obj_name] = _date;
+  }
+}
+window.stopCount = function(_event_type,_obj_name){
+  var _date = new Date;
+  var _interval = _date - TIME_COUNT_ARRAY[_event_type + _obj_name];
+  TIME_COUNT_ARRAY[_event_type + _obj_name] = 0;
+  var _durtime = Math.floor(_interval / 1000 );
+  return _durtime;
+}
+/*
 //開始計時
 window.start_timed = function(_event_type,_obj_name){
     if (!TIME_COUNT_ARRAY[_event_type+_obj_name]){
@@ -231,7 +247,7 @@ window.stopCount = function(_event_type,_obj_name){
     TIME_COUNT_ARRAY[_event_type + _obj_name] = 0;
     return _durtime;
     }
-
+*/1
 /**
  * 偵測畫面捲動的事件
  * /**
@@ -299,7 +315,7 @@ window.mouse_scroll_event = function(selector,_event_type){
 //多一個函式接判斷物件內容
 
 
-_setup_event();
+//_setup_event();
 
 }); //$(function () {
 

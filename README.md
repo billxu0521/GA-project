@@ -44,7 +44,7 @@ GA project index/https://billxu0521.github.io/GA-project/page_inject_js/index.js
 ![2017-03-15 1 27 47](https://cloud.githubusercontent.com/assets/3469079/23913685/a939dafa-091e-11e7-924f-cfce86290936.png)
 
 
-# 匯出教學
+# CSS設定教學
 1. step1
 2. step2
 
