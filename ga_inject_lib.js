@@ -147,7 +147,7 @@ window.mouse_over_event = function (_selector, _event_type, _name) {
  */
 window.mouse_click_event = function (_selector, _event_type, _name) {
      $(_selector).click(function () {
-        _name = get_element_name(this, _selector, _name);
+        _name = _get_element_name(this, _selector, _name);
         
         if (DEBUG === true){
             console.log([_event_type, _name, "mouse_click"]);        // 加上事件的程式碼 
@@ -185,7 +185,7 @@ window.mouse_scroll_event = function(_selector, _event_type, _name) {
         _name = _get_element_name(_obj, _selector, _name);
         
         var _scroll_in_view = ((_scrollVal + _winHeight) - _scrollHeight > 0 
-                && _scrollVal < (_scrollHeight.top + _height));
+                && _scrollVal < (_scrollHeight + _height));
         
         if (_scroll_in_view === false && SCROLL_TIME[_id] === false) {
             // 沒事
