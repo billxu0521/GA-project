@@ -16,4 +16,8 @@
 .smart-banner, .tripadvisor-rating {
     display: none !important;
 }
-
+@media (max-width: 767px) and (min-width: 0) {
+    .has-smart-banner .header-wrapper {
+        top: 0px !important;
+    }
+}
