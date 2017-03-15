@@ -32,6 +32,15 @@ if (typeof(DEBUG) === "undefined") {
     DEBUG = true;
 }
 
+/**
+ * 是否要載入額外的CSS
+ * 沒事不需要做
+ * @type String
+ */
+if (false) {
+    CSS = "";
+}
+
 // -------------------------------------------------
 
 /**
@@ -129,7 +138,6 @@ window.set_user_id = function (_customUserId){
  */
 window.mouse_over_event = function (_selector, _event_type, _name) {
     $(_selector).mouseover(function () {
-        
         _name = _get_element_name($(this), _event_type, _name);
         
         if (DEBUG === true) {
@@ -157,7 +165,6 @@ window.mouse_click_event = function (_selector, _event_type, _name) {
 };
 
 SCROLL_TIME = [];
-
 /**
  * 偵測畫面捲動的事件
  * 可偵測物件是否出現在畫面中，並計算時間
@@ -168,6 +175,14 @@ SCROLL_TIME = [];
 window.mouse_scroll_event = function(_selector, _event_type, _name) {
     
     if ($(_selector).length === 0) {
+        return;
+    }
+    else if ($(_selector).length > 1) {
+        // 如果要鎖定的物件很多個，應該用這種方式來避免重複
+        var _obj_list = $(_selector);
+        for (var _i = 0; _i < _obj_list.length; _i++) {
+            window.mouse_scroll_event(_obj_list.eq(_i), _event_type, _name);
+        }
         return;
     }
     
