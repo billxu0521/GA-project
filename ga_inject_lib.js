@@ -218,9 +218,9 @@ window.mouseover_event = function (_selector, _event_type) {
         _name = _event_type;
     }
     if (DEBUG === true) {
-        console.log([_event_type, 'mouseover', _name]);        // 加上事件的程式碼  <這間要加上事件敘述
+        console.log([_event_type, _name, 'mouseover']);        // 加上事件的程式碼  <這間要加上事件敘述
     } 
-        ga("send", "event", _event_type, 'mouseover', _name);   
+        ga("send", "event", _event_type, _name, 'mouseover');   
    });
 };
 
@@ -237,9 +237,9 @@ window.mouse_click_event = function (_selector, _event_type, _name) {
         }
         
         if (DEBUG === true){
-            console.log([_event_type, "mouse_click", _name]);        // 加上事件的程式碼 
+            console.log([_event_type, _name, "mouse_click"]);        // 加上事件的程式碼 
         }
-        ga("send", "event", _event_type, 'mouse_click', _name); // @TODO ga("send", "event"...) 最後還要加上事件類型，像是"click"或"mouseover"
+        ga("send", "event", _event_type, _name, 'mouse_click'); // @TODO ga("send", "event"...) 最後還要加上事件類型，像是"click"或"mouseover"
      });        
 };
 
@@ -383,7 +383,7 @@ window.mouse_scroll_event = function(selector, _event_type, _name){
                 console.log([_event_type, _name, "離開", _durtime+"秒", "記錄"]);
               }
               
-              ga("send", "event", _event_type, "scroll_in", _name, _durtime);  // @TODO 最後還要加上事件類型
+              ga("send", "event", _event_type, _name, "scroll_in", _durtime);  // @TODO 最後還要加上事件類型
           }
           else {
               if (DEBUG === true){
