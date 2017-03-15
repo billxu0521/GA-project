@@ -194,7 +194,7 @@ window.mouse_click_event = function (_selector, _event_type) {
           _name = _event_type;
         }
         if (DEBUG === true){
-          console.log("mouse click,"+_name);        // 加上事件的程式碼 
+          console.log("mouse click,"+_name+","+_event_type);        // 加上事件的程式碼 
         }
           ga("send", "event", _event_type, _name, 'click'); // @TODO ga("send", "event"...) 最後還要加上事件類型，像是"click"或"mouseover"
      });        
