@@ -1,6 +1,6 @@
 /**
  * 適用網頁：https://www.travel.taipei/
- * 事件查詢表：https://docs.google.com/spreadsheets/d/1whsqwgC8Y_9gm5i8ISbUTb7vtDNYXmxH7JcQy15yToM/edit?usp=sharing
+ * 事件查詢表：https://docs.google.com/spreadsheets/d/1MtMtw9lKLDTUzfBd6Ld0fAe_FGe5u-Mlkh5WfZiH5qM/edit
  * @author Pudding 20170203
  */
 
@@ -36,7 +36,7 @@ var exec = function () {
     ga_mouse_click_event('.btn-add-diamond.adj.js-add-diamond',"GL2-5");
 
     //GL2-6  底部
-    ga_mouse_scroll_in_out_event('.footer',"GL2-6");
+    ga_mouse_scroll_in_out_event('.footer .contact-info-blk',"GL2-6");
 
     //GL2-8  電話
     ga_mouse_click_event('.tel-link',"GL2-8");
