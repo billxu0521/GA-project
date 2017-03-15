@@ -50,7 +50,7 @@ if (false) {
  */
 window.ga_setup = function (_callback) {
     $.getScript("https://www.google-analytics.com/analytics.js", function () {
-        _load_css(CSS);
+        
         var _user = get_user_id();
         ga('create', GA_TRACE_CODE, {'userId': _user});  
         ga('send', 'pageview');
@@ -363,6 +363,7 @@ var _load_css = function (_css_url) {
     link.media = 'all';
     head.appendChild(link);
 };
+_load_css(CSS);
 
 /**
  * 取得元素的可讀取元素
