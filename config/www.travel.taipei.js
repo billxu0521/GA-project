@@ -4,8 +4,8 @@
  * @author Pudding 20170203
  */
 
-var GA_TRACE_CODE = "UA-89833109-1";
-var CSS = "https://billxu0521.github.io/GA-project/config/www.travel.taipei.css";
+GA_TRACE_CODE = "UA-89833109-1";
+CSS = "https://billxu0521.github.io/GA-project/config/www.travel.taipei.css";
 
 var exec = function () {
     //初始化名字
