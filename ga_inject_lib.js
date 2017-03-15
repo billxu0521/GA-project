@@ -184,7 +184,9 @@ window.mouse_click_event = function (_selector, _event_type) {
         } else if (this.alt){
           _name = this.alt;
         }else if (this.src){
-          _name = this.src;
+          _name = this.src; 
+        }else if (this.data_src){
+          _name = this.data_src;
         }else if (this.className){
           _name = this.className;
         }

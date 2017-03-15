@@ -45,18 +45,31 @@ GA project index/https://billxu0521.github.io/GA-project/page_inject_js/index.js
 
 
 # CSS設定教學
-1. step1
-2. step2
+1. 
+2. 
 
 # 設定userID教學
 1. 啟動偵測腳本
-2. 開啟新視窗
-3. 進入台北旅遊網 https://www.travel.taipei
-4. 右鍵選擇檢查
-5. 分頁切換到console
-6. 確認有無"Google analytics injected."
-7. 在6.字樣下方輸入set_user_id("欲輸入ID")
-8. 若出現"Set UserID;輸入ID"表示設定成功
+![2017-03-15 1 27 39](https://cloud.githubusercontent.com/assets/3469079/23931423/07338932-096d-11e7-92f6-08b9a158bdab.png)
+
+2. 進入台北旅遊網 https://www.travel.taipei
+![2017-03-15 10 48 00](https://cloud.githubusercontent.com/assets/3469079/23931418/04a16446-096d-11e7-9c70-03beaa1906e5.png)
+
+3. 右鍵選擇檢查
+![Uploading 螢幕快照 2017-03-15 上午10.48.05.png…]()
+
+4. 分頁切換到console
+![2017-03-15 10 48 14](https://cloud.githubusercontent.com/assets/3469079/23931403/fbda431e-096c-11e7-976a-e4ee104b8565.png)
+
+5. 確認有無"Google analytics injected."
+![2017-03-15 10 48 27](https://cloud.githubusercontent.com/assets/3469079/23931426/0a313864-096d-11e7-99ce-2ce3fdc4a419.png)
+
+6. 在6.字樣下方輸入set_user_id("欲輸入ID")
+![2017-03-15 10 49 42](https://cloud.githubusercontent.com/assets/3469079/23931455/265965b6-096d-11e7-90ca-b11a0b104ad8.png)
+
+7. 若出現"Set UserID;輸入ID"表示設定成功
+![2017-03-15 10 49 47](https://cloud.githubusercontent.com/assets/3469079/23931458/2b2bc570-096d-11e7-8c46-7aff367e1a3b.png)
+
 
 # 參考連結
 - Google Analytics: https://analytics.google.com/analytics/web/
