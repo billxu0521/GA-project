@@ -235,7 +235,7 @@ window.load_css = function (_css_url) {
     //link.id   = cssId;
     link.rel  = 'stylesheet';
     link.type = 'text/css';
-    link.href = _css_url;
+    link.href = _css_url + "?_=" + (new Date()).getTime();
     link.media = 'all';
     head.appendChild(link);
 };
