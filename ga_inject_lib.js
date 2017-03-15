@@ -281,7 +281,6 @@ window.mouse_scroll_event = function(selector,_event_type){
         //console.log("目前捲動高度:"+_scrollVal);
         //console.log("目前畫面高度:"+_winHeight);
         //console.log("目前物件狀態:"+_getObjStatus);
-        console.log($(selector));
         var _name = new String;  
         if($(selector).title){
           _name = $(selector).title ;
