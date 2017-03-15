@@ -98,6 +98,7 @@ window.check_user_id = function(){
       return false;
     }else {
       //window.name = CUSTOM_USER_ID;
+      console.log("UserID:"+window.name);
       return true;
     }    
 }
