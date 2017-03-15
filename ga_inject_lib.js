@@ -15,12 +15,12 @@ if (typeof(DIMENSION) === "undefined") {
 }
 
 /**
- * 使用者ID的欄位 "dimension1"
+ * 只有停留多久才記錄
  * 單位：秒
- * @type String
+ * @type Integer
  */
-if (typeof(SCROLL_SAVE_MIN_INTERVAL) === "undefined") {
-    SCROLL_SAVE_MIN_INTERVAL = 3;
+if (typeof(STAY_SAVE_MIN_INTERVAL) === "undefined") {
+    STAY_SAVE_MIN_INTERVAL = 3;
 }
 
 /**
@@ -167,7 +167,7 @@ window.ga_mouse_over_out_event = function(_selector, _event_type, _name) {
     _obj.mouseout(function() {
         _name = _get_element_name(_obj, _selector, _name);
         var _interval = ((new Date()).getTime() - GA_TIMER[_id])/1000;
-        if (_interval > SCROLL_SAVE_MIN_INTERVAL) {
+        if (_interval > STAY_SAVE_MIN_INTERVAL) {
             _console_log([_event_type, _event_key +  + ": end", _name, _interval, "記錄"]);
             ga("send", "event", _event_type, _name, _event_key, _interval);
         }
@@ -307,32 +307,34 @@ window.ga_mouse_scroll_in_out_event = function(_selector, _event_type, _name) {
     
     // 捲動時偵測
     _window.scroll(function() {
-        var _obj = $(_selector),
-            _height = _obj.height(),
-            _scrollHeight = _obj.offset().top;
-        var _winHeight = _window.height();
-        var _scrollVal = _window.scrollTop();
-        
+        var _obj = $(_selector);
         _name = _get_element_name(_obj, _selector, _name);
         
-        var _scroll_in_view = ((_scrollVal + _winHeight) - _scrollHeight > 0 
-                && _scrollVal < (_scrollHeight + _height));
+        var _obj_top = _obj.offset().top;
+        var _obj_bottom = _obj_top + _obj.height();
+        var _scroll_top_border = _window.scrollTop();
+        var _scroll_bottom_border = _scroll_top_border + _window.height();
         
-        if (_scroll_in_view === false && GA_TIMER[_id] === false) {
+        var _is_obj_under_scorll_top = (_obj_top > _scroll_top_border);
+        var _is_obj_above_scorll_bottom = (_obj_bottom < _scroll_bottom_border);
+        
+        var _obj_display_in_window = (_is_obj_under_scorll_top && _is_obj_above_scorll_bottom);
+        
+        if (_obj_display_in_window === false && GA_TIMER[_id] === false) {
             // 沒事
         }
-        else if (_scroll_in_view === true && GA_TIMER[_id] === false) {
+        else if (_obj_display_in_window === true && GA_TIMER[_id] === false) {
             // 進入了，開始記錄事件
             GA_TIMER[_id] = (new Date()).getTime();
             _console_log([_event_type, _event_key + ": start", _name, GA_TIMER[_id]]);
         }
-        else if (_scroll_in_view === true && GA_TIMER[_id] !== false) {
+        else if (_obj_display_in_window === true && GA_TIMER[_id] !== false) {
             // 沒事
         }
-        else if (_scroll_in_view === false && GA_TIMER[_id] !== false) {
+        else if (_obj_display_in_window === false && GA_TIMER[_id] !== false) {
             // 離開了
             var _interval = ((new Date()).getTime() - GA_TIMER[_id])/1000;
-            if (_interval > SCROLL_SAVE_MIN_INTERVAL) {
+            if (_interval > STAY_SAVE_MIN_INTERVAL) {
                 _console_log([_event_type, _event_key + ": end", _name, _interval, "記錄"]);
                 ga("send", "event", _event_type, _name, "scroll_in", _interval);
             }
