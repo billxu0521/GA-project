@@ -8,6 +8,9 @@
 
     //var url = "https://billxu0521.github.io/GA-project/ga_inject_lib.js";
     //$.getScript(url, function () {
+    $('.tripadvisor-info-blk').append('<href="https://billxu0521.github.io/GA-project/page_inject_js/index.css">');
+//    $('.content').append('<href="https://billxu0521.github.io/GA-project/page_inject_js/index.css">');
+
 
     $(function(){
 
@@ -66,6 +69,7 @@
         mouse_click_event('.btn-theme-link',"GL2-13");
         
         //GL2-14  日期
+
         mouse_scroll_event('.info-blk .duration',"GL2-14");
         mouse_scroll_event('.info-blk .date',"GL2-14");
 
