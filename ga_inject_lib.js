@@ -368,11 +368,17 @@ window.mouse_scroll_event = function(selector,_event_type){
         }else if(_getObjStatus === 1){
           var _durtime = stopCount(_event_type,selector);
           //var _durtime = stopCount();
-          if (DEBUG === true){
-            console.log(_event_type+", "+"["+ _name +"]離開，使用時間: "+_durtime+"秒");
-          }
+          
           if(_durtime > 3) { 
+              if (DEBUG === true){
+                console.log(_event_type+", "+"["+ _name +"]離開，使用時間: "+_durtime+"秒 記錄");
+              }
               ga("send", "event", _event_type, _name, "scroll in", _durtime);  // @TODO 最後還要加上事件類型
+          }
+          else {
+              if (DEBUG === true){
+                console.log(_event_type+", "+"["+ _name +"]離開，時間只有: "+_durtime+"秒 不記錄");
+              }
           }
           _getObjStatus = 0;
         }
