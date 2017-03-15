@@ -32,13 +32,6 @@ if (typeof(DEBUG) === "undefined") {
     DEBUG = true;
 }
 
-/**
- * 初始化載入
- */
-if (DEBUG === true) {
-    console.log("Google analytics injected.");
-}
-
 // -------------------------------------------------
 
 /**
@@ -49,16 +42,23 @@ if (DEBUG === true) {
 window.setup_ga = function (_callback) {
     $.getScript("https://www.google-analytics.com/analytics.js", function () {
         load_css(CSS);
-        CUSTOM_USER_ID = get_user_id();
-        ga('create', GA_TRACE_CODE, {'userId': CUSTOM_USER_ID});  
+        var _user = get_user_id();
+        ga('create', GA_TRACE_CODE, {'userId': _user});  
         ga('send', 'pageview');
         ga('require', 'displayfeatures');
-        ga('set', 'userId', CUSTOM_USER_ID); // 使用已登入的 user_id 設定 User-ID。
-        ga('set', 'dimension1', CUSTOM_USER_ID);
+        ga('set', 'userId', _user); // 使用已登入的 user_id 設定 User-ID。
+        ga('set', 'dimension1', _user);
         
         setTimeout(function () {
             $(window).scroll();
         }, 100);
+        
+        /**
+         * 初始化載入
+         */
+        if (DEBUG === true) {
+            console.log("Google analytics injected. User: " + _user);
+        }
     
         if (typeof(_callback) === "function") {
             setTimeout(function () {
@@ -194,7 +194,7 @@ window.mouse_scroll_event = function(_selector, _event_type, _name) {
             // 進入了，開始記錄事件
             SCROLL_TIME[_id] = (new Date()).getTime();
             if (DEBUG === true){
-                console.log([_event_type, "進入", _name, SCROLL_TIME[_id]]);
+                console.log([_event_type, "捲動進入", _name, SCROLL_TIME[_id]]);
             }
         }
         else if (_scroll_in_view === true && SCROLL_TIME[_id] !== false) {
@@ -206,7 +206,7 @@ window.mouse_scroll_event = function(_selector, _event_type, _name) {
             var _durtime = Math.ceil((_interval/1000));
             if (_durtime > SCROLL_SAVE_MIN_INTERVAL) {
                 if (DEBUG === true){
-                    console.log([_event_type, "離開", _name, _durtime, "記錄"]);
+                    console.log([_event_type, "捲動離開", _name, _durtime, "記錄"]);
                 }
                 ga("send", "event", _event_type, _name, "scroll_in", _durtime);
             }
