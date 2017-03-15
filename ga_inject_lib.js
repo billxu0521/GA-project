@@ -148,8 +148,10 @@ window.set_user_id = function (_customUserId){
            ].join('');
   };
 
-  var date = new Date();
-    
+    var date = new Date();
+    if (typeof(_customUserId) === "undefined") {
+        _customUserId = get_user_id();
+    }
     _customUserId = _customUserId.trim();
     _customUserId = _customUserId + "-" + date.yyyymmdd();
     window.name = _customUserId;
