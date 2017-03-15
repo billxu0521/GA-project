@@ -48,9 +48,9 @@ if (false) {
  * @param {function} _callback
  * @returns {undefined}
  */
-window.setup_ga = function (_callback) {
+window.ga_setup = function (_callback) {
     $.getScript("https://www.google-analytics.com/analytics.js", function () {
-        load_css(CSS);
+        _load_css(CSS);
         var _user = get_user_id();
         ga('create', GA_TRACE_CODE, {'userId': _user});  
         ga('send', 'pageview');
@@ -65,9 +65,7 @@ window.setup_ga = function (_callback) {
         /**
          * 初始化載入
          */
-        if (DEBUG === true) {
-            console.log("Google analytics injected. User: " + _user);
-        }
+        _console_trace("Google analytics injected. User: " + _user);
     
         if (typeof(_callback) === "function") {
             setTimeout(function () {
@@ -117,9 +115,7 @@ window.set_user_id = function (_customUserId){
     _customUserId = _customUserId.trim();
     _customUserId = _customUserId + "-" + date;
     
-    if (DEBUG === true) {
-      console.log("Set user id: " + _customUserId);
-    } 
+    _console_trace("Set user id: " + _customUserId);
    
     window.name = _customUserId;
     
@@ -136,14 +132,50 @@ window.set_user_id = function (_customUserId){
  * @param {String} _event_type
  * @param {String|Function} _name
  */
-window.mouse_over_event = function (_selector, _event_type, _name) {
+window.ga_mouse_over_event = function (_selector, _event_type, _name) {
+    var _event_key = 'mouse_over';
     $(_selector).mouseover(function () {
         _name = _get_element_name($(this), _event_type, _name);
         
-        if (DEBUG === true) {
-            console.log([_event_type, _name, 'mouse_over']);        // 加上事件的程式碼  <這間要加上事件敘述
-        } 
-        ga("send", "event", _event_type, _name, 'mouse_over');   
+        _console_trace([_event_type, _name, _event_key]);
+        ga("send", "event", _event_type, _name, _event_key);   
+    });
+};
+
+/**
+ * 滑鼠移入跟移除的功能
+ * @param {String} _selector
+ * @param {String} _event_type
+ * @param {String} _name
+ */
+window.ga_mouse_over_out_event = function(_selector, _event_type, _name) {
+    if (_selector_length_caller(_selector, this, _event_type, _name) === false) {
+        return;
+    }
+    
+    var _id = GA_TIMER.length;
+    GA_TIMER.push(false);
+    var _event_key = "mouse_over_out";
+    
+    var _obj = $(_selector);
+    _obj.mouseover(function() {
+        _name = _get_element_name(_obj, _selector, _name);
+        GA_TIMER[_id] = (new Date()).getTime();
+        _console_trace([_event_type, _event_key + ": start", _name, GA_TIMER[_id]]);
+    });
+    
+    _obj.mouseout(function() {
+        _name = _get_element_name(_obj, _selector, _name);
+        var _interval = (new Date()).getTime() - GA_TIMER[_id];
+        var _durtime = Math.ceil((_interval/1000));
+        if (_durtime > SCROLL_SAVE_MIN_INTERVAL) {
+            _console_trace([_event_type, _event_key +  + ": end", _name, _durtime, "記錄"]);
+            ga("send", "event", _event_type, _name, _event_key, _durtime);
+        }
+        else {
+            _console_trace([_event_type, _event_key + ": end", _name, _durtime, "不記錄"]);
+        }
+        GA_TIMER[_id] = false;
     });
 };
 
@@ -153,18 +185,76 @@ window.mouse_over_event = function (_selector, _event_type, _name) {
  * @param {String} _event_type
  * @param {String} _name
  */
-window.mouse_click_event = function (_selector, _event_type, _name) {
-     $(_selector).click(function () {
+window.ga_mouse_click_event = function (_selector, _event_type, _name) {
+    var _event_key = 'mouse_click';
+    $(_selector).click(function () {
         _name = _get_element_name(this, _selector, _name);
         
-        if (DEBUG === true){
-            console.log([_event_type, _name, "mouse_click"]);        // 加上事件的程式碼 
-        }
-        ga("send", "event", _event_type, _name, 'mouse_click'); // @TODO ga("send", "event"...) 最後還要加上事件類型，像是"click"或"mouseover"
-     });        
+        _console_trace([_event_type, _name, _event_key]);
+        ga("send", "event", _event_type, _name, _event_key);
+    });
 };
 
-SCROLL_TIME = [];
+/**
+ * 偵測表單改變的事件
+ * @param {String} _selector
+ * @param {String} _event_type
+ * @param {String} _name
+ */
+window.ga_input_change_event = function (_selector, _event_type, _name) {
+    var _event_key = 'input_change';
+    $(_selector).change(function () {
+        _name = _get_element_name(this, _selector, _name);
+        
+        _console_trace([_event_type, _name, _event_key]);
+        ga("send", "event", _event_type, _name, _event_key);
+    });
+};
+
+/**
+ * 偵測滑鼠點擊的事件
+ * @param {String} _selector
+ * @param {String} _event_type
+ * @param {String} _name
+ */
+window.ga_submit_event = function (_selector, _event_type, _name) {
+    if (_selector_length_caller(_selector, this, _event_type, _name) === false) {
+        return;
+    }
+    var _event_key = "mouse_click";
+    
+    var _obj = $(_selector);
+    var _tag_name = _obj.prop("tagName").toLowerCase();
+    
+    if (_tag_name !== "form") {
+        var _form = _obj.parents("form:first");
+        if (_form.length === 0) {
+            return;
+        }
+        else {
+            _obj = _form;
+        }
+    }
+    
+    _obj.submit(function () {
+        // 蒐集form裡面的資料
+        if (_name === undefined) {
+            _name = JSON.stringify( _obj.serializeArray() ).trim();
+            
+            if (_name === "") {
+                _name = undefined;
+            }
+        }
+        
+        _name = _get_element_name(this, _selector, _name);
+        
+        _console_trace([_event_type, _name, _event_key]);
+        ga("send", "event", _event_type, _name, _event_key);
+    });        
+};
+
+
+
 /**
  * 偵測畫面捲動的事件
  * 可偵測物件是否出現在畫面中，並計算時間
@@ -172,65 +262,52 @@ SCROLL_TIME = [];
  * @param {String} _event_type
  * @param {String} _name
  */
-window.mouse_scroll_event = function(_selector, _event_type, _name) {
+window.ga_mouse_scroll_event = function(_selector, _event_type, _name) {
     
-    if ($(_selector).length === 0) {
-        return;
-    }
-    else if ($(_selector).length > 1) {
-        // 如果要鎖定的物件很多個，應該用這種方式來避免重複
-        var _obj_list = $(_selector);
-        for (var _i = 0; _i < _obj_list.length; _i++) {
-            window.mouse_scroll_event(_obj_list.eq(_i), _event_type, _name);
-        }
+    if (_selector_length_caller(_selector, this, _event_type, _name) === false) {
         return;
     }
     
-    var _id = SCROLL_TIME.length;
-    SCROLL_TIME.push(false);
+    var _id = GA_TIMER.length;
+    GA_TIMER.push(false);
     
+    var _window = $(window);
     // 捲動時偵測
-    $(window).scroll(function() {
+    _window.scroll(function() {
         var _obj = $(_selector),
             _height = _obj.height(),
             _scrollHeight = _obj.offset().top;
-        var _winHeight = $(window).height();
-        var _scrollVal = $(window).scrollTop();
+        var _winHeight = _window.height();
+        var _scrollVal = _window.scrollTop();
         
         _name = _get_element_name(_obj, _selector, _name);
         
         var _scroll_in_view = ((_scrollVal + _winHeight) - _scrollHeight > 0 
                 && _scrollVal < (_scrollHeight + _height));
         
-        if (_scroll_in_view === false && SCROLL_TIME[_id] === false) {
+        if (_scroll_in_view === false && GA_TIMER[_id] === false) {
             // 沒事
         }
-        else if (_scroll_in_view === true && SCROLL_TIME[_id] === false) {
+        else if (_scroll_in_view === true && GA_TIMER[_id] === false) {
             // 進入了，開始記錄事件
-            SCROLL_TIME[_id] = (new Date()).getTime();
-            if (DEBUG === true){
-                console.log([_event_type, "捲動進入", _name, SCROLL_TIME[_id]]);
-            }
+            GA_TIMER[_id] = (new Date()).getTime();
+            _console_trace([_event_type, "捲動進入", _name, GA_TIMER[_id]]);
         }
-        else if (_scroll_in_view === true && SCROLL_TIME[_id] !== false) {
+        else if (_scroll_in_view === true && GA_TIMER[_id] !== false) {
             // 沒事
         }
-        else if (_scroll_in_view === false && SCROLL_TIME[_id] !== false) {
+        else if (_scroll_in_view === false && GA_TIMER[_id] !== false) {
             // 離開了
-            var _interval = (new Date()).getTime() - SCROLL_TIME[_id];
+            var _interval = (new Date()).getTime() - GA_TIMER[_id];
             var _durtime = Math.ceil((_interval/1000));
             if (_durtime > SCROLL_SAVE_MIN_INTERVAL) {
-                if (DEBUG === true){
-                    console.log([_event_type, "捲動離開", _name, _durtime, "記錄"]);
-                }
+                _console_trace([_event_type, "捲動離開", _name, _durtime, "記錄"]);
                 ga("send", "event", _event_type, _name, "scroll_in", _durtime);
             }
             else {
-                if (DEBUG === true){
-                    console.log([_event_type, "離開", _name, _durtime, "不記錄"]);
-                }
+                _console_trace([_event_type, "離開", _name, _durtime, "不記錄"]);
             }
-            SCROLL_TIME[_id] = false;
+            GA_TIMER[_id] = false;
         }
     });
 };
@@ -241,7 +318,7 @@ window.mouse_scroll_event = function(_selector, _event_type, _name) {
  * 讀取CSS
  * @param {String} _css_url
  */
-window.load_css = function (_css_url) {
+var _load_css = function (_css_url) {
     if (typeof(_css_url) !== "string") {
         return;
     }
@@ -297,3 +374,44 @@ var _get_element_name = function (_ele, _event_type, _name) {
     }
     return _name;
 };
+
+/**
+ * 偵測物件數量
+ * 0個不執行
+ * 2個以上，變成for loop執行
+ * @param {type} _selector
+ * @param {type} _callback
+ * @returns {Boolean}
+ */
+var _selector_length_caller = function (_selector, _function, _event_type, _name) {
+    var _obj_list = $(_selector);
+    if (_obj_list.length === 0) {
+        return false;
+    }
+    else if (_obj_list.length > 1) {
+        // 如果要鎖定的物件很多個，應該用這種方式來避免重複
+        if (typeof(_function) === "function") {
+            for (var _i = 0; _i < _obj_list.length; _i++) {
+                _function(_obj_list.eq(_i), _event_type, _name);
+            }
+        }
+        return false;
+    }
+    return true;
+};
+
+/**
+ * 顯示偵錯訊息
+ * @param {String} _message
+ */
+var _console_trace = function (_message) {
+    if (DEBUG === true){
+        console.trace(_message);
+    }
+};
+
+/**
+ * 搭配 各種技術器使用
+ * @type Array
+ */
+var GA_TIMER = [];
