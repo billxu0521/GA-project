@@ -21,3 +21,7 @@
         top: 0px !important;
     }
 }
+
+.main-container.has-smart-banner {
+    padding-top: 0 !important;
+}
