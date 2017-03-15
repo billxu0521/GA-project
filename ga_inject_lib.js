@@ -2,7 +2,7 @@
  * 預設GA_TRACE_CODE
  * @type String
  */
-if (GA_TRACE_CODE === undefined) {
+if (typeof(GA_TRACE_CODE) === "undefined") {
     GA_TRACE_CODE = "UA-89833109-1";
 }
 
@@ -10,7 +10,7 @@ if (GA_TRACE_CODE === undefined) {
  * 使用者ID的欄位 "dimension1"
  * @type String
  */
-if (DIMENSION === undefined) {
+if (typeof(DIMENSION) === "undefined") {
     DIMENSION = "dimension1";
 }
 
@@ -19,7 +19,7 @@ if (DIMENSION === undefined) {
  * 單位：秒
  * @type String
  */
-if (SCROLL_SAVE_MIN_INTERVAL === undefined) {
+if (typeof(SCROLL_SAVE_MIN_INTERVAL) === "undefined") {
     SCROLL_SAVE_MIN_INTERVAL = 3;
 }
 
@@ -28,7 +28,7 @@ if (SCROLL_SAVE_MIN_INTERVAL === undefined) {
  * @type Boolean
  * @author Pudding 20170203
  */ 
-if (DEBUG === undefined) {
+if (typeof(DEBUG) === "undefined") {
     DEBUG = true;
 }
 
@@ -46,7 +46,7 @@ if (DEBUG === true) {
  * @param {function} _callback
  * @returns {undefined}
  */
-setup_ga = function (_callback) {
+window.setup_ga = function (_callback) {
     $.getScript("https://www.google-analytics.com/analytics.js", function () {
         load_css(CSS);
         CUSTOM_USER_ID = get_user_id();
