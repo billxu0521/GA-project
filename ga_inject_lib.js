@@ -166,15 +166,46 @@ window.ga_mouse_over_out_event = function(_selector, _event_type, _name) {
     
     _obj.mouseout(function() {
         _name = _get_element_name(_obj, _selector, _name);
-        var _interval = (new Date()).getTime() - GA_TIMER[_id];
-        var _durtime = Math.ceil((_interval/1000));
-        if (_durtime > SCROLL_SAVE_MIN_INTERVAL) {
-            _console_trace([_event_type, _event_key +  + ": end", _name, _durtime, "記錄"]);
-            ga("send", "event", _event_type, _name, _event_key, _durtime);
+        var _interval = ((new Date()).getTime() - GA_TIMER[_id])/1000;
+        if (_interval > SCROLL_SAVE_MIN_INTERVAL) {
+            _console_trace([_event_type, _event_key +  + ": end", _name, _interval, "記錄"]);
+            ga("send", "event", _event_type, _name, _event_key, _interval);
         }
         else {
-            _console_trace([_event_type, _event_key + ": end", _name, _durtime, "不記錄"]);
+            _console_trace([_event_type, _event_key + ": end", _name, _interval, "不記錄"]);
         }
+        GA_TIMER[_id] = false;
+    });
+};
+
+/**
+ * 滑鼠抓起跟放開的功能
+ * https://www.w3schools.com/jsref/event_ondrag.asp
+ * @param {String} _selector
+ * @param {String} _event_type
+ * @param {String} _name
+ */
+window.ga_mouse_over_out_event = function(_selector, _event_type, _name) {
+    if (_selector_length_caller(_selector, this, _event_type, _name) === false) {
+        return;
+    }
+    
+    var _id = GA_TIMER.length;
+    GA_TIMER.push(false);
+    var _event_key = "drag";
+    
+    var _obj = $(_selector);
+    _obj.on("dragstart", function() {
+        _name = _get_element_name(_obj, _selector, _name);
+        GA_TIMER[_id] = (new Date()).getTime();
+        _console_trace([_event_type, _event_key + ": start", _name, GA_TIMER[_id]]);
+    });
+    
+    _obj.on("dragend", function() {
+        _name = _get_element_name(_obj, _selector, _name);
+        var _interval = (new Date()).getTime() - GA_TIMER[_id];
+        _console_trace([_event_type, _event_key +  + ": end", _name, _interval/1000, "記錄"]);
+        ga("send", "event", _event_type, _name, _event_key, _interval/1000);
         GA_TIMER[_id] = false;
     });
 };
@@ -262,16 +293,18 @@ window.ga_submit_event = function (_selector, _event_type, _name) {
  * @param {String} _event_type
  * @param {String} _name
  */
-window.ga_mouse_scroll_event = function(_selector, _event_type, _name) {
+window.ga_mouse_scroll_in_out_event = function(_selector, _event_type, _name) {
     
     if (_selector_length_caller(_selector, this, _event_type, _name) === false) {
         return;
     }
     
+    var _event_key = 'scroll_in_out';
     var _id = GA_TIMER.length;
     GA_TIMER.push(false);
     
     var _window = $(window);
+    
     // 捲動時偵測
     _window.scroll(function() {
         var _obj = $(_selector),
@@ -291,21 +324,20 @@ window.ga_mouse_scroll_event = function(_selector, _event_type, _name) {
         else if (_scroll_in_view === true && GA_TIMER[_id] === false) {
             // 進入了，開始記錄事件
             GA_TIMER[_id] = (new Date()).getTime();
-            _console_trace([_event_type, "捲動進入", _name, GA_TIMER[_id]]);
+            _console_trace([_event_type, _event_key + ": start", _name, GA_TIMER[_id]]);
         }
         else if (_scroll_in_view === true && GA_TIMER[_id] !== false) {
             // 沒事
         }
         else if (_scroll_in_view === false && GA_TIMER[_id] !== false) {
             // 離開了
-            var _interval = (new Date()).getTime() - GA_TIMER[_id];
-            var _durtime = Math.ceil((_interval/1000));
-            if (_durtime > SCROLL_SAVE_MIN_INTERVAL) {
-                _console_trace([_event_type, "捲動離開", _name, _durtime, "記錄"]);
-                ga("send", "event", _event_type, _name, "scroll_in", _durtime);
+            var _interval = ((new Date()).getTime() - GA_TIMER[_id])/1000;
+            if (_interval > SCROLL_SAVE_MIN_INTERVAL) {
+                _console_trace([_event_type, _event_key + ": end", _name, _interval, "記錄"]);
+                ga("send", "event", _event_type, _name, "scroll_in", _interval);
             }
             else {
-                _console_trace([_event_type, "離開", _name, _durtime, "不記錄"]);
+                _console_trace([_event_type, _event_key + ": end", _name, _interval, "不記錄"]);
             }
             GA_TIMER[_id] = false;
         }
