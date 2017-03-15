@@ -194,7 +194,7 @@ window.mouse_scroll_event = function(_selector, _event_type, _name) {
             // 進入了，開始記錄事件
             SCROLL_TIME[_id] = (new Date()).getTime();
             if (DEBUG === true){
-                console.log([_event_type, _name, "進入 ", SCROLL_TIME[_id]]);
+                console.log([_event_type, "進入", _name, SCROLL_TIME[_id]]);
             }
         }
         else if (_scroll_in_view === true && SCROLL_TIME[_id] !== false) {
@@ -206,9 +206,14 @@ window.mouse_scroll_event = function(_selector, _event_type, _name) {
             var _durtime = Math.ceil((_interval/1000));
             if (_durtime > SCROLL_SAVE_MIN_INTERVAL) {
                 if (DEBUG === true){
-                    console.log([_event_type, _name, "離開", _durtime, "記錄"]);
+                    console.log([_event_type, "離開", _name, _durtime, "記錄"]);
                 }
                 ga("send", "event", _event_type, _name, "scroll_in", _durtime);
+            }
+            else {
+                if (DEBUG === true){
+                    console.log([_event_type, "離開", _name, _durtime, "不記錄"]);
+                }
             }
             SCROLL_TIME[_id] = false;
         }
