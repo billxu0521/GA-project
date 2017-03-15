@@ -318,20 +318,20 @@ window.ga_mouse_scroll_in_out_event = function(_selector, _event_type, _name) {
         var _is_obj_under_scorll_top = (_obj_top > _scroll_top_border);
         var _is_obj_above_scorll_bottom = (_obj_bottom < _scroll_bottom_border);
         
-        var _obj_display_in_window = (_is_obj_under_scorll_top && _is_obj_above_scorll_bottom);
+        var _is_obj_display_in_window = (_is_obj_under_scorll_top && _is_obj_above_scorll_bottom);
         
-        if (_obj_display_in_window === false && GA_TIMER[_id] === false) {
+        if (_is_obj_display_in_window === false && GA_TIMER[_id] === false) {
             // 沒事
         }
-        else if (_obj_display_in_window === true && GA_TIMER[_id] === false) {
+        else if (_is_obj_display_in_window === true && GA_TIMER[_id] === false) {
             // 進入了，開始記錄事件
             GA_TIMER[_id] = (new Date()).getTime();
             _console_log([_event_type, _event_key + ": start", _name, GA_TIMER[_id]]);
         }
-        else if (_obj_display_in_window === true && GA_TIMER[_id] !== false) {
+        else if (_is_obj_display_in_window === true && GA_TIMER[_id] !== false) {
             // 沒事
         }
-        else if (_obj_display_in_window === false && GA_TIMER[_id] !== false) {
+        else if (_is_obj_display_in_window === false && GA_TIMER[_id] !== false) {
             // 離開了
             var _interval = ((new Date()).getTime() - GA_TIMER[_id])/1000;
             if (_interval > STAY_SAVE_MIN_INTERVAL) {
