@@ -8,8 +8,6 @@
 
     //var url = "https://billxu0521.github.io/GA-project/ga_inject_lib.js";
     //$.getScript(url, function () {
-    $('.tripadvisor-info-blk').append('<href="https://billxu0521.github.io/GA-project/page_inject_js/index.css">');
-//    $('.content').append('<href="https://billxu0521.github.io/GA-project/page_inject_js/index.css">');
 
 
     $(function(){
