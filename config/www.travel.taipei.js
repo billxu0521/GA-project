@@ -66,7 +66,7 @@ var exec = function () {
     ga_mouse_scroll_in_out_event('.info-blk .date',"GL2-14");
 
     //GL5-2  圖片
-    ga_mouse_over_event('.media-switch-blk',"GL5-2")
+    ga_mouse_over_event('.media-switch-blk',"GL5-2");
 
     //GL5-3  互動
     ga_mouse_click_event('.flickity-prev-next-button',"GL5-3");
@@ -77,7 +77,7 @@ var exec = function () {
     ga_mouse_click_event('.btn-media-photo',"GL5-3");
     ga_mouse_click_event('.btn-media-video',"GL5-3");
     ga_mouse_click_event('.btn-media-pano',"GL5-3");
-    ga_mouse_click_event('.btn-media-voice',"GL5-");
+    ga_mouse_click_event('.btn-media-voice',"GL5-3");
 
     //GL5-5  圖示設計
     ga_mouse_click_event('.thumb',"GL5-5");
