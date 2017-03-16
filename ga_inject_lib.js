@@ -409,6 +409,9 @@ var _get_element_name = function (_ele, _event_type, _name) {
     if (typeof(_name) === "string") {
         _name = _name.trim();
     }
+    
+    _name = window.location.pathname + ": " + _name;
+    
     return _name;
 };
 
