@@ -122,6 +122,8 @@ window.set_user_id = function (_customUserId){
     ga('create', GA_TRACE_CODE, {'userId': _customUserId});
     ga('set', 'userId', _customUserId); // 使用已登入的 user_id 設定 User-ID。
     ga('set', DIMENSION, _customUserId); 
+    
+    ga("send", "event", "set_user_id", _customUserId);
 };
 
 // -------------------------------------------------------------

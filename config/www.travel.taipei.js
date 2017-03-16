@@ -2,6 +2,9 @@
  * 適用網頁：https://www.travel.taipei/
  * 事件查詢表：https://docs.google.com/spreadsheets/d/1MtMtw9lKLDTUzfBd6Ld0fAe_FGe5u-Mlkh5WfZiH5qM/edit
  * @author Pudding 20170203
+ * 
+ * Google分析
+ * 即時 https://analytics.google.com/analytics/web/#realtime/rt-overview/a89833109w133278856p137301362/
  */
 
 GA_TRACE_CODE = "UA-89833109-1";
