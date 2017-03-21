@@ -93,14 +93,7 @@ var exec = function () {
     ga_mouse_click_event('.btn-open-menu',"GL5-6");
 
     //GL6-2     
-    ga_mouse_click_event('a[title="臺北市政府|另開視窗"]',"GL6-2");
-    ga_mouse_click_event('a[title="各科室聯絡電話及傳真|另開視窗"]',"GL6-2");
-    ga_mouse_click_event('a[title="無障礙標章|另開視窗"]',"GL6-2");
-    ga_mouse_click_event('a[title="我的e政府|另開視窗"]',"GL6-2");
-    ga_mouse_click_event('a[title="Youbike|另開視窗"]',"GL6-2");
-    ga_mouse_click_event('a[title="臺北市政府觀光傳播局|另開視窗"]',"GL6-2");
-    ga_mouse_click_event('a[title="即時航班|另開視窗"]',"GL6-2");
-    ga_mouse_click_event('a[title="定期航班|另開視窗"]',"GL6-2");
+    
     ga_mouse_click_event('a[target="_blank"]',"GL6-2");
    
 
