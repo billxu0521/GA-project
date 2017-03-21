@@ -15,7 +15,7 @@ var exec = function () {
     ga_mouse_click_event("#btn-open-menu","GL1-4");
 
     //GL1-5 麵包屑/首頁 click
-    ga_mouse_scroll_event('.breadcrumb:eq(0)',"GL1-5");
+    ga_mouse_scroll_in_out_event('.breadcrumb:eq(0)',"GL1-5");
 
     //GL1-6 click
     ga_mouse_click_event(".unit:eq(0)","GL1-6");
@@ -41,14 +41,14 @@ var exec = function () {
     ga_mouse_click_event('.btn-add-diamond.adj.js-add-diamond',"GL2-5");
 
     //GL2-6  底部
-    ga_mouse_scroll_event('.footer',"GL2-6");
+    ga_mouse_scroll_in_out_event('.footer',"GL2-6");
 
     //GL2-8  電話
     ga_mouse_click_event('.tel-link',"GL2-8");
     ga_mouse_click_event('.info .btn-tel-link',"GL2-8");
 
     //GL2-10  底部條款
-    ga_mouse_scroll_event('.info .link-blk',"GL2-10");
+    ga_mouse_scroll_in_out_event('.info .link-blk',"GL2-10");
 
     //GL2-11  勘誤
     ga_mouse_click_event('.btn-report-issue',"GL2-11");
@@ -67,11 +67,11 @@ var exec = function () {
 
     //GL2-14  日期
 
-    ga_mouse_scroll_event('.info-blk .duration',"GL2-14");
-    ga_mouse_scroll_event('.info-blk .date',"GL2-14");
+    ga_mouse_scroll_in_out_event('.info-blk .duration',"GL2-14");
+    ga_mouse_scroll_in_out_event('.info-blk .date',"GL2-14");
 
     //GL5-2  圖片
-    ga_mouseover_event('.media-switch-blk',"GL5-2")
+    ga_mouse_over_event('.media-switch-blk',"GL5-2")
 
     //GL5-3  互動
     ga_mouse_click_event('.flickity-prev-next-button',"GL5-3");
