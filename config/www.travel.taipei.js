@@ -105,7 +105,7 @@ var exec = function () {
 
 $(function () {
     $.getScript("https://billxu0521.github.io/GA-project/ga_inject_lib.js", function () {
-        setup_ga(function () {
+        ga_setup(function () {
             exec();
         });
     });
