@@ -72,10 +72,10 @@ var exec = function () {
 
     //4-1  
     ga_mouse_click_event('.btn-radio',"GL4-1");
-    ga_mouse_click_event('#start-year',"GL4-1");
-    ga_mouse_click_event('#start-month',"GL4-1");
-    ga_mouse_click_event('#end-year',"GL4-1");
-    ga_mouse_click_event('#end-month',"GL4-1");
+    ga_input_change_event('#start-year',"GL4-1");
+    ga_input_change_event('#start-month',"GL4-1");
+    ga_input_change_event('#end-year',"GL4-1");
+    ga_input_change_event('#end-month',"GL4-1");
     
     //GL5-2  圖片
     ga_mouse_over_event('.media-switch-blk',"GL5-2")
