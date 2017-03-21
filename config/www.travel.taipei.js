@@ -70,6 +70,10 @@ var exec = function () {
     ga_mouse_scroll_in_out_event('.info-blk .duration',"GL2-14");
     ga_mouse_scroll_in_out_event('.info-blk .date',"GL2-14");
 
+    //4-1  
+    ga_mouse_click_event('.btn-radio',"GL4-1");
+
+
     //GL5-2  圖片
     ga_mouse_over_event('.media-switch-blk',"GL5-2")
 
@@ -92,8 +96,7 @@ var exec = function () {
     ga_mouse_click_event('.thumb',"GL5-6");
     ga_mouse_click_event('.btn-open-menu',"GL5-6");
 
-    //GL6-2     
-    
+    //GL6-2  跳離網域   
     ga_mouse_click_event('a[target="_blank"]',"GL6-2");
    
 
