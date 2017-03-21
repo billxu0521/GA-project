@@ -5,7 +5,7 @@
  */
 
 GA_TRACE_CODE = "UA-89833109-1";
-//CSS = "https://billxu0521.github.io/GA-project/config/www.travel.taipei.css";
+CSS = "https://billxu0521.github.io/GA-project/config/www.travel.taipei.css";
 
 var exec = function () {
     //GL1-3 click
@@ -28,10 +28,10 @@ var exec = function () {
     ga_mouse_click_event('.gsc-search-button',"GL1-8");
 
     //GL1-9 
-    ga_mouse_click_event('.first-page',"GL1-8");
-    ga_mouse_click_event('.last-page',"GL1-8");
-    ga_mouse_click_event('.next-page',"GL1-8");
-    ga_mouse_click_event('.prev-page',"GL1-8");
+    ga_mouse_click_event('.first-page',"GL1-9");
+    ga_mouse_click_event('.last-page',"GL1-9");
+    ga_mouse_click_event('.next-page',"GL1-9");
+    ga_mouse_click_event('.prev-page',"GL1-9");
     
     //GL2-2  更多xx
     ga_mouse_click_event('.btn-more',"GL2-2");
