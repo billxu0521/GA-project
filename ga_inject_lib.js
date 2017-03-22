@@ -358,7 +358,7 @@ var _load_css = function (_css_url) {
     if (typeof(String(_css_url)) !== "string") {
         return;
     }
-    var head  = document.getElementsByTagName('head');
+    var head  = document.getElementsByTagName('head')[0];
     var link  = document.createElement('link');
     //link.id   = cssId;
     link.rel  = "stylesheet";
