@@ -1,5 +1,6 @@
 
-.tripadvisor-info-blk {
+.tripadvisor-info-blk,
+.news-detail-blk > h3.news-detail-title {
    display: none;
 }
 
