@@ -359,7 +359,7 @@ var _load_css = function (_css_url) {
         return;
     }
     if (DEBUG === true){
-        console.log("include CSS");
+        console.log("include CSS: " + _css_url);
     }
     var head  = document.getElementsByTagName('head')[0];
     var link  = document.createElement('link');
@@ -451,9 +451,19 @@ var _selector_length_caller = function (_selector, _function, _event_type, _name
  */
 var _console_log = function (_message) {
     if (DEBUG === true){
+        CONSOLE_LOG.push(_message);
+        
+        setTimeout(function () {
+            if (CONSOLE_LOG.length > 0) {
+                console.log(CONSOLE_LOG);
+                CONSOLE_LOG = [];
+            }
+        }, 1);
         console.log(_message);
     }
 };
+
+CONSOLE_LOG = [];
 
 /**
  * 顯示偵錯訊息: 詳細資訊

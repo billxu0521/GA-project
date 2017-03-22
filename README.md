@@ -73,6 +73,3 @@ https://github.com/billxu0521/GA-project/issues
 # Code Reference
 - 變數名稱規範： 區域變數或函數前面要加底線，字與字中間用底線隔開，例如「_var」；固定的常數要全部大寫，字與字之間用底線隔開，例如「MOUSE_CONFIG」
 - 不要直接用function宣告函數，應用 var _func = function () { /*script*/ }; 宣告函數。注意最後的「;」
-
-# Changelog
-- 刪除了祕技，太容易跟其他程式相衝突，不實用
