@@ -355,7 +355,7 @@ window.ga_mouse_scroll_in_out_event = function(_selector, _event_type, _name) {
  * @param {String} _css_url
  */
 var _load_css = function (_css_url) {
-    if (typeof(toString(_css_url)) !== "string" && _css_url.trim() === "") {
+    if (typeof(toString(_css_url)) !== "string" || _css_url.trim() === "") {
         return;
     }
     else {
