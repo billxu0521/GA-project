@@ -361,8 +361,8 @@ var _load_css = function (_css_url) {
     var head  = document.getElementsByTagName('head')[0];
     var link  = document.createElement('link');
     //link.id   = cssId;
-    link.rel  = 'stylesheet';
-    link.type = 'text/css';
+    link.rel  = "stylesheet";
+    link.type = "text/css";
     link.href = _css_url + "?_=" + (new Date()).getTime();
     //link.media = 'all';
     head.appendChild(link);
