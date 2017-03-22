@@ -14,6 +14,7 @@ var exec = function () {
     //GL1-4 導覽列 click
     ga_mouse_click_event("#btn-open-menu","GL1-4");
     ga_mouse_click_event(".mobile-nav-close-mask","GL1-4");
+    ga_mouse_click_event(".btn-back-all","GL1-4");
 
     //GL1-5 麵包屑/首頁 click
     ga_mouse_scroll_in_out_event('.breadcrumb:eq(0)',"GL1-5");
@@ -39,7 +40,7 @@ var exec = function () {
 
     //GL2-5  收藏
     ga_mouse_click_event('#btn-my-collection',"GL2-5");
-    ga_mouse_click_event('.btn-add-diamond.adj.js-add-diamond',"GL2-5");
+    ga_mouse_click_event('.btn-add-diamond',"GL2-5");
 
     //GL2-6  底部
     ga_mouse_scroll_in_out_event('.footer',"GL2-6");
