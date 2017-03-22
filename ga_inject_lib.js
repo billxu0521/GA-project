@@ -455,11 +455,14 @@ var _selector_length_caller = function (_selector, _function, _event_type, _name
  */
 var _console_log = function (_message) {
     if (DEBUG === true){
+        if (typeof(_message) === "object" && typeof(_message.length) === "number") {
+            _message = _message.join(", ");
+        }
         CONSOLE_LOG.push(_message);
         
         setTimeout(function () {
             if (CONSOLE_LOG.length > 0) {
-                console.log(CONSOLE_LOG);
+                console.log(CONSOLE_LOG.join("\n"));
                 CONSOLE_LOG = [];
             }
         }, 1);
