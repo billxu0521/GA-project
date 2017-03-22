@@ -358,6 +358,9 @@ var _load_css = function (_css_url) {
     if (typeof(toString(_css_url)) !== "string") {
         return;
     }
+    if (DEBUG === true){
+        console.log("include CSS");
+    }
     var head  = document.getElementsByTagName('head')[0];
     var link  = document.createElement('link');
     //link.id   = cssId;
@@ -368,8 +371,11 @@ var _load_css = function (_css_url) {
 
     head.appendChild(link);
 };
-var CSS = "https://billxu0521.github.io/GA-project/config/www.travel.taipei.css";
-_load_css(CSS);
+setTimeout(function () {
+                _load_css(CSS);
+            }, 1000);
+
+//_load_css(CSS);
 
 /**
  * 取得元素的可讀取元素
