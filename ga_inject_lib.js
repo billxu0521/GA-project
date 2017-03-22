@@ -462,7 +462,10 @@ var _console_log = function (_message) {
         
         setTimeout(function () {
             if (CONSOLE_LOG.length > 0) {
-                console.log(CONSOLE_LOG.join("\n"));
+                var _m = CONSOLE_LOG.join("\n");
+                var _d = new Date();
+                _m = _d.getHours() + ":" + _d.getMinutes() + ":"+ _d.getSeconds() + "\n" + _m;
+                console.log(_m);
                 CONSOLE_LOG = [];
             }
         }, 1);
