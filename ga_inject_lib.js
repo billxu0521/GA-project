@@ -371,11 +371,8 @@ var _load_css = function (_css_url) {
 
     head.appendChild(link);
 };
-setTimeout(function () {
-                _load_css(CSS);
-            }, 1000);
 
-//_load_css(CSS);
+_load_css(CSS);
 
 /**
  * 取得元素的可讀取元素

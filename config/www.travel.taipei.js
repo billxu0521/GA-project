@@ -5,8 +5,7 @@
  */
 
 GA_TRACE_CODE = "UA-89833109-1";
-CSS = "https://billxu0521.github.io/GA-project/config/www.travel.taipei.css";
-toString(CSS);
+//CSS = "https://billxu0521.github.io/GA-project/config/www.travel.taipei.css";
 
 var exec = function () {
     //GL1-3 click
