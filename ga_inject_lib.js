@@ -364,7 +364,7 @@ var _load_css = function (_css_url) {
     link.rel  = 'stylesheet';
     link.type = 'text/css';
     link.href = _css_url + "?_=" + (new Date()).getTime();
-    link.media = 'all';
+    //link.media = 'all';
     head.appendChild(link);
 };
 _load_css(CSS);
