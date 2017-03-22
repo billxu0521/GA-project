@@ -355,8 +355,11 @@ window.ga_mouse_scroll_in_out_event = function(_selector, _event_type, _name) {
  * @param {String} _css_url
  */
 var _load_css = function (_css_url) {
-    if (typeof(toString(_css_url)) !== "string") {
+    if (typeof(toString(_css_url)) !== "string" && _css_url.trim() === "") {
         return;
+    }
+    else {
+        _css_url = _css_url.trim(); 
     }
     if (DEBUG === true){
         console.log("include CSS: " + _css_url);
