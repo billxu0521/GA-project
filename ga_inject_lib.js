@@ -359,15 +359,16 @@ var _load_css = function (_css_url) {
         return;
     }
     var head  = document.getElementsByTagName('head')[0];
-    //var link  = document.createElement('link');
+    var link  = document.createElement('link');
     //link.id   = cssId;
-    //link.rel  = "stylesheet";
-    //link.type = "text/css";
-    //link.href = _css_url + "?_=" + (new Date()).getTime();
+    link.rel  = "stylesheet";
+    link.type = "text/css";
+    link.href = _css_url + "?_=" + (new Date()).getTime();
     //link.media = 'all';
-    var link = '<link rel="stylesheet" type="text/css" href="https://billxu0521.github.io/GA-project/config/www.travel.taipei.css?_=1490172131977">'; 
+
     head.appendChild(link);
 };
+var CSS = "https://billxu0521.github.io/GA-project/config/www.travel.taipei.css";
 _load_css(CSS);
 
 /**
