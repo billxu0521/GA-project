@@ -98,14 +98,14 @@ var exec = function () {
     ga_mouse_click_event('.btn-open-menu',"GL5-5");
     ga_mouse_click_event('.menu-title',"GL5-5");
     ga_mouse_click_event('.event-news-card-list .item .link',"GL5-5");
-    ga_mouse_click_event(".mobile-nav-close-mask","GL1-4");
+    ga_mouse_click_event(".mobile-nav-close-mask","GL5-5");
 
     //GL5-6  按鈕設計
     ga_mouse_click_event('.thumb',"GL5-6");
     ga_mouse_click_event('.btn-open-menu',"GL5-6");
     ga_mouse_click_event('.menu-title',"GL5-6");
     ga_mouse_click_event('.event-news-card-list .item .link',"GL5-6");
-    ga_mouse_click_event(".mobile-nav-close-mask","GL1-4");
+    ga_mouse_click_event(".mobile-nav-close-mask","GL5-6");
 
     //GL6-2  跳離網域   
     ga_mouse_click_event('a[target="_blank"]',"GL6-2");
