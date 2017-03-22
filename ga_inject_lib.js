@@ -355,7 +355,7 @@ window.ga_mouse_scroll_in_out_event = function(_selector, _event_type, _name) {
  * @param {String} _css_url
  */
 var _load_css = function (_css_url) {
-    console.log([typeof(_css_url), _css_url ]);
+    //console.log([typeof(_css_url), _css_url ]);
     if (typeof(_css_url) !== "string" || _css_url.trim() === "") {
         return;
     }
@@ -463,7 +463,7 @@ var _console_log = function (_message) {
                 CONSOLE_LOG = [];
             }
         }, 1);
-        console.log(_message);
+        //console.log(_message);
     }
 };
 
