@@ -38,7 +38,7 @@ if (typeof(DEBUG) === "undefined") {
  * @type String
  */
 if (false) {
-    CSS = "";
+    CSS_URL = "";
 }
 
 // -------------------------------------------------
@@ -376,7 +376,7 @@ var _load_css = function (_css_url) {
     head.appendChild(link);
 };
 
-_load_css(CSS);
+_load_css(CSS_URL);
 
 /**
  * 取得元素的可讀取元素
