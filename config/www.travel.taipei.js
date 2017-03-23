@@ -15,7 +15,7 @@ var exec = function () {
     ga_mouse_click_event("#btn-open-menu","GL1-4");
     ga_mouse_click_event(".mobile-nav-close-mask","GL1-4");
     ga_mouse_click_event(".btn-back-all","GL1-4");
-ga_mouse_click_event("#btn-open-menu","GL1-4");
+ga_mouse_down_event("#btn-open-menu","GL1-4");
 
     //GL1-5 麵包屑/首頁 click
     ga_mouse_scroll_in_out_event('.breadcrumb:eq(0)',"GL1-5");
