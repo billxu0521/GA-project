@@ -15,7 +15,6 @@ var exec = function () {
     ga_mouse_click_event("#btn-open-menu","GL1-4");
     ga_mouse_click_event(".mobile-nav-close-mask","GL1-4");
     ga_mouse_click_event(".btn-back-all","GL1-4");
-ga_mouse_down_event("#btn-open-menu","GL1-4");
 
     //GL1-5 麵包屑/首頁 click
     ga_mouse_scroll_in_out_event('.breadcrumb:eq(0)',"GL1-5");
@@ -82,9 +81,8 @@ ga_mouse_down_event("#btn-open-menu","GL1-4");
     
     
     //GL5-2  圖片
-    ga_mouse_over_event('thumb flickity-lazyloaded',"GL5-2")
-    ga_mouse_down_event('item is-selected thumb flickity-lazyloaded',"GL5-2")
-    ga_mouse_down_event('pswp__img',"GL5-2")
+    ga_mouse_over_event('.thumb flickity-lazyloaded',"GL5-2")
+    ga_mouse_down_event('.pswp__img',"GL5-2")
 
     //GL5-3  互動
     ga_mouse_click_event('.flickity-prev-next-button',"GL5-3");
