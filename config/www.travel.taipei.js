@@ -81,7 +81,7 @@ var exec = function () {
     
     
     //GL5-2  圖片
-    ga_mouse_over_event('.flickity-viewport',"GL5-2")
+    ga_mouse_over_event('.flickity-lazyloaded',"GL5-2")
     ga_mouse_down_event('.pswp__scroll-wrap',"GL5-2")
 
     //GL5-3  互動
