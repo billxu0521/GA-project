@@ -284,7 +284,13 @@ window.ga_submit_event = function (_selector, _event_type, _name) {
         }
     }
     
+
+    window.DENY_SUBMIT = true;
     _obj.submit(function () {
+        if (window.DENY_SUBMIT === false) {
+          return true;
+        }
+
         // 蒐集form裡面的資料
         if (_name === undefined) {
             _name = JSON.stringify( _obj.serializeArray() ).trim();
@@ -298,6 +304,13 @@ window.ga_submit_event = function (_selector, _event_type, _name) {
         
         _console_log([_event_type, _name, _event_key]);
         ga("send", "event", _event_type, _name, _event_key);
+        var _form = $(this);
+        setTimeout(function () {
+            window.DENY_SUBMIT = false;
+            _form.submit();
+        }, 100);
+        return false;
+
     });        
 };
 
