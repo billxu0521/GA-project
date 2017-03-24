@@ -74,7 +74,7 @@ var exec = function () {
 
     //4-1  
     ga_mouse_click_event('.btn-radio',"GL4-1");
-    ga_input_change_event('select[name="start-year"]',"GL4-1",);
+    ga_input_change_event('select[name="start-year"]',"GL4-1");
     ga_input_change_event('select[name="start-month"]',"GL4-1");
     ga_input_change_event('select[name="end-year"]',"GL4-1");
     ga_input_change_event('select[name="end-month"]',"GL4-1");
