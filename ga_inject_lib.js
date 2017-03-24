@@ -269,7 +269,7 @@ window.ga_submit_event = function (_selector, _event_type, _name) {
     if (_selector_length_caller(_selector, window.ga_submit_event, _event_type, _name) === false) {
         return;
     }
-    var _event_key = "mouse_click";
+    var _event_key = "form_submit";
     
     var _obj = $(_selector);
     var _tag_name = _obj.prop("tagName").toLowerCase();
