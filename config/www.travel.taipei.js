@@ -78,7 +78,10 @@ var exec = function () {
     ga_input_change_event('select[name="start-month"]',"GL4-1");
     ga_input_change_event('select[name="end-year"]',"GL4-1");
     ga_input_change_event('select[name="end-month"]',"GL4-1");
-    ga_submit_event('form[name="start-year"]',"GL4-1");
+    ga_submit_event('.expend-wrapper > form',"GL4-1", 
+        function(form){
+            return form.find('select[name="end-year"]').val();
+        });
     
     
     //GL5-2  圖片
