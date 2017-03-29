@@ -105,7 +105,7 @@ var exec = function () {
     ga_mouse_over_event('.flickity-lazyloaded',"GL5-2")
     ga_mouse_down_event('.pswp__scroll-wrap',"GL5-2")
     ga_mouse_down_event('.pswp__item',"GL5-2")
-    ga_mouse_down_event('.flickity-slider',"GL5-2")
+    ga_mouse_down_event('.flickity-viewport',"GL5-2")
 
     //GL5-3  互動
     ga_mouse_click_event('.flickity-prev-next-button',"GL5-3");
