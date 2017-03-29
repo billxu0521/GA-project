@@ -251,7 +251,7 @@ window.ga_mouse_down_event = function (_selector, _event_type, _name) {
  */
 window.ga_mouse_touch_event = function (_selector, _event_type, _name) {
     var _event_key = 'touch';
-      $(_selector).touchwipe(function () {
+      $(_selector).on("click",function () {
           _name = _get_element_name(this, _selector, _name);
 
           _console_log([_event_type, _name, _event_key]);
