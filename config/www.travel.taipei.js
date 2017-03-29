@@ -78,17 +78,34 @@ var exec = function () {
     ga_input_change_event('select[name="start-month"]',"GL4-1");
     ga_input_change_event('select[name="end-year"]',"GL4-1");
     ga_input_change_event('select[name="end-month"]',"GL4-1");
+        //這邊偵測表單送出後的值
     ga_submit_event('.expend-wrapper > form',"GL4-1", 
-        
+        function(form){
+            console.log("submit act"+form);
+            return form.find('select[name="start-year"]').val();
+        });
+    ga_submit_event('.expend-wrapper > form',"GL4-1", 
         function(form){
             console.log("submit act"+form);
             return form.find('select[name="end-year"]').val();
+        });
+    ga_submit_event('.expend-wrapper > form',"GL4-1", 
+        function(form){
+            console.log("submit act"+form);
+            return form.find('select[name="start-month"]').val();
+        });
+    ga_submit_event('.expend-wrapper > form',"GL4-1", 
+        function(form){
+            console.log("submit act"+form);
+            return form.find('select[name="end-month"]').val();
         });
     
     
     //GL5-2  圖片
     ga_mouse_over_event('.flickity-lazyloaded',"GL5-2")
     ga_mouse_down_event('.pswp__scroll-wrap',"GL5-2")
+    ga_mouse_down_event('.pswp__item',"GL5-2")
+    ga_mouse_down_event('.flickity-slider',"GL5-2")
 
     //GL5-3  互動
     ga_mouse_click_event('.flickity-prev-next-button',"GL5-3");
