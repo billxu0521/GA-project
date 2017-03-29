@@ -254,6 +254,12 @@ window.ga_mouse_touch_event = function (_selector, _event_type, _name) {
     $(document).on("pagecreate",function(){
       $(_selector).on("swipe",function () {
           _name = _get_element_name(this, _selector, _name);
+
+          _console_log([_event_type, _name, _event_key]);
+          ga("send", "event", _event_type, _name, _event_key);
+      });
+      $(_selector).on("tap",function () {
+          _name = _get_element_name(this, _selector, _name);
            
           _console_log([_event_type, _name, _event_key]);
           ga("send", "event", _event_type, _name, _event_key);
