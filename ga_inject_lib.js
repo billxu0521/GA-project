@@ -244,6 +244,22 @@ window.ga_mouse_down_event = function (_selector, _event_type, _name) {
 };
 
 /**
+ * 偵測滑鼠按下的事件
+ * @param {String} _selector
+ * @param {String} _event_type
+ * @param {String} _name
+ */
+window.ga_mouse_touch_event = function (_selector, _event_type, _name) {
+    var _event_key = 'touch';
+    $(_selector).touch(function () {
+        _name = _get_element_name(this, _selector, _name);
+        
+        _console_log([_event_type, _name, _event_key]);
+        ga("send", "event", _event_type, _name, _event_key);
+    });
+};
+
+/**
  * 偵測表單改變的事件
  * @param {String} _selector
  * @param {String} _event_type
