@@ -102,19 +102,19 @@ var exec = function () {
     
     
     //GL5-2  圖片
-    ga_mouse_over_event('.flickity-lazyloaded',"GL5-2");
-    ga_mouse_down_event('.pswp__scroll-wrap',"GL5-2");
-    ga_mouse_down_event('.pswp__item',"GL5-2");
-    ga_mouse_down_event('.item',"GL5-2");
+    ga_mouse_over_event('.spot-photo-slider .flickity-lazyloaded',"GL5-2");
+    ga_mouse_down_event('.spot-photo-slider .pswp__scroll-wrap',"GL5-2");
+    ga_mouse_down_event('.spot-photo-slider .pswp__item',"GL5-2");
+    ga_mouse_down_event('.spot-photo-slider .item',"GL5-2");
 
-    ga_mouse_touch_event('.item',"GL5-2")
-    ga_mouse_touch_event('.pswp__item',"GL5-2")
-    ga_mouse_touch_event('.pswp__scroll-wrap',"GL5-2")
+    ga_mouse_touch_event('.spot-photo-slider .item',"GL5-2")
+    ga_mouse_touch_event('.spot-photo-slider .pswp__item',"GL5-2")
+    ga_mouse_touch_event('.spot-photo-slider .pswp__scroll-wrap',"GL5-2")
 
     //GL5-3  互動
-    ga_mouse_click_event('.flickity-prev-next-button',"GL5-3");
-    ga_mouse_click_event('.flickity-prev-next-button',"GL5-3");
-    ga_mouse_click_event('.flickity-lazyloaded',"GL5-3");
+    ga_mouse_click_event('.spot-photo-slider .flickity-prev-next-button',"GL5-3");
+    ga_mouse_click_event('.spot-photo-slider .flickity-prev-next-button',"GL5-3");
+    ga_mouse_click_event('.spot-photo-slider .flickity-lazyloaded',"GL5-3");
 
     //ga_mouse_click_event('.media-switch-blk',"GL5-3");
     ga_mouse_click_event('.btn-media-photo',"GL5-3");
