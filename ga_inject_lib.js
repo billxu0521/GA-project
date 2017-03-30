@@ -354,6 +354,7 @@ window.ga_mouse_scroll_in_out_event = function(_selector, _event_type, _name) {
     
     // 捲動時偵測
     _window.scroll(function() {
+        console.log(["觸發", _selector]);
         var _obj = $(_selector);
         _name = _get_element_name(_obj, _selector, _name);
         
