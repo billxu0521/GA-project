@@ -108,7 +108,7 @@ var exec = function () {
     ga_mouse_down_event('.spot-photo-slider .item',"GL5-2");
 
     ga_mouse_touch_event('.spot-photo-slider .item',"GL5-2")
-    ga_mouse_touch_event('.spot-photo-slider .pswp__item',"GL5-2")
+    ga_mouse_touch_event('.pswp__item',"GL5-2")
     ga_mouse_touch_event('.spot-photo-slider .pswp__scroll-wrap',"GL5-2")
 
     //GL5-3  互動
