@@ -58,20 +58,21 @@ window.ga_setup = function (_callback) {
         ga('set', 'userId', _user); // 使用已登入的 user_id 設定 User-ID。
         ga('set', 'dimension1', _user);
         
-        setTimeout(function () {
-            console.log("觸發一次捲動");
-            $(window).scroll();
-        }, 100);
-        
         /**
          * 初始化載入
          */
         _console_log("Google analytics injected. User: " + _user);
     
         if (typeof(_callback) === "function") {
-            setTimeout(function () {
-                _callback();
-            }, 1000);
+            $(function () {
+                setTimeout(function () {
+                    setTimeout(function () {
+                        console.log("觸發一次捲動");
+                        $(window).scroll();
+                    }, 100);
+                    _callback();
+                }, 1000);
+            });
         }
     });
 };
