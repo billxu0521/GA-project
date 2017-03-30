@@ -59,6 +59,7 @@ window.ga_setup = function (_callback) {
         ga('set', 'dimension1', _user);
         
         setTimeout(function () {
+            console.log("觸發一次捲動");
             $(window).scroll();
         }, 100);
         
