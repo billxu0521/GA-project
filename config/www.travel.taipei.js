@@ -102,10 +102,10 @@ var exec = function () {
     
     
     //GL5-2  圖片
-    //ga_mouse_over_event('.spot-photo-slider .flickity-lazyloaded',"GL5-2");
+    ga_mouse_over_event('.flickity-lazyloaded',"GL5-2");
     //ga_mouse_down_event('.spot-photo-slider .pswp__scroll-wrap',"GL5-2");
     //ga_mouse_down_event('.spot-photo-slider .pswp__item',"GL5-2");
-    //ga_mouse_down_event('.spot-photo-slider .item',"GL5-2");
+    ga_mouse_touch_event('.spot-photo-slider .item',"GL5-2");
 
     //ga_mouse_touch_event('.spot-photo-slider .item',"GL5-2");
     //ga_mouse_touch_event('.pswp__item',"GL5-2")
