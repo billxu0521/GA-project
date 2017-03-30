@@ -1,6 +1,6 @@
 /**
  * 適用網頁：https://www.travel.taipei/
- * 事件查詢表：https://docs.google.com/spreadsheets/d/1whsqwgC8Y_9gm5i8ISbUTb7vtDNYXmxH7JcQy15yToM/edit?usp=sharing
+ * 事件查詢表：https://docs.google.com/spreadsheets/d/1MtMtw9lKLDTUzfBd6Ld0fAe_FGe5u-Mlkh5WfZiH5qM/edit
  * @author Pudding 20170203
  */
 
@@ -102,14 +102,14 @@ var exec = function () {
     
     
     //GL5-2  圖片
-    ga_mouse_over_event('.spot-photo-slider .flickity-lazyloaded',"GL5-2");
-    ga_mouse_down_event('.spot-photo-slider .pswp__scroll-wrap',"GL5-2");
-    ga_mouse_down_event('.spot-photo-slider .pswp__item',"GL5-2");
-    ga_mouse_down_event('.spot-photo-slider .item',"GL5-2");
+    //ga_mouse_over_event('.spot-photo-slider .flickity-lazyloaded',"GL5-2");
+    //ga_mouse_down_event('.spot-photo-slider .pswp__scroll-wrap',"GL5-2");
+    //ga_mouse_down_event('.spot-photo-slider .pswp__item',"GL5-2");
+    //ga_mouse_down_event('.spot-photo-slider .item',"GL5-2");
 
-    ga_mouse_touch_event('.spot-photo-slider .item',"GL5-2");
+    //ga_mouse_touch_event('.spot-photo-slider .item',"GL5-2");
     //ga_mouse_touch_event('.pswp__item',"GL5-2")
-    ga_mouse_touch_event('.pswp__scroll-wrap',"GL5-2")
+    ga_mouse_touch_event('.pswp__scroll-wrap',"GL5-2");
 
     //GL5-3  互動
     ga_mouse_click_event('.spot-photo-slider .flickity-prev-next-button',"GL5-3");

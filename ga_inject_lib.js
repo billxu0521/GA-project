@@ -436,10 +436,10 @@ var _get_element_name = function (_ele, _event_type, _name) {
     _ele = $(_ele);
     
     if (typeof(_name) === "string") {
-        return _name;
+        return window.location.pathname + ": " + _name;
     }
     else if (typeof(_name) === "function") {
-        return _name(_ele);
+        return window.location.pathname + ": " + _name(_ele);
     }
     
     try {

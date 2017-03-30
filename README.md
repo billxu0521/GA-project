@@ -68,7 +68,7 @@ https://github.com/billxu0521/GA-project/issues
 - Google Chrome: https://www.google.com.tw/intl/zh-TW/chrome/
 - (Chrome Extension) User JavaScript and CSS: https://chrome.google.com/webstore/detail/user-javascript-and-css/nbhcbdghjpllgmfilhnhkllmkecfmpld?utm_source=chrome-app-launcher-info-dialog
 - ga_inject.js: http://billxu0521.github.io/GA-project/ga_inject.js
-- event_type_code 事件編號記錄： https://docs.google.com/spreadsheets/d/1whsqwgC8Y_9gm5i8ISbUTb7vtDNYXmxH7JcQy15yToM/edit?usp=sharing
+- event_type_code 事件編號記錄： https://docs.google.com/spreadsheets/d/1MtMtw9lKLDTUzfBd6Ld0fAe_FGe5u-Mlkh5WfZiH5qM/edit
 
 # Code Reference
 - 變數名稱規範： 區域變數或函數前面要加底線，字與字中間用底線隔開，例如「_var」；固定的常數要全部大寫，字與字之間用底線隔開，例如「MOUSE_CONFIG」
