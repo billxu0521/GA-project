@@ -139,11 +139,10 @@ window.set_user_id = function (_customUserId){
 window.ga_mouse_over_event = function (_selector, _event_type, _name) {
     var _event_key = 'mouse_over';
     $(_selector).mouseover(function () {
-        _name = _get_element_name($(this), _event_type, _name);
-        _name = window.location.pathname + ": " + _name;
+        var _name_data = _get_element_name($(this), _event_type, _name);
         
-        _console_log([_event_type, _name, _event_key]);
-        ga("send", "event", _event_type, _name, _event_key);   
+        _console_log([_event_type, _name_data, _event_key]);
+        ga("send", "event", _event_type, _name_data, _event_key);   
     });
 };
 
@@ -171,7 +170,7 @@ window.ga_mouse_over_out_event = function(_selector, _event_type, _name) {
     
     _obj.mouseout(function() {
         var _name_data = _get_element_name(_obj, _selector, _name);
-        _name_data = window.location.pathname + ": " + _name_data;
+        //_name_data = window.location.pathname + ": " + _name_data;
         var _interval = ((new Date()).getTime() - GA_TIMER[_id])/1000;
         if (_interval > STAY_SAVE_MIN_INTERVAL) {
             _console_log([_event_type, _event_key +  + ": end", _name_data, _interval, "記錄"]);
@@ -440,10 +439,10 @@ var _get_element_name = function (_ele, _event_type, _name) {
     _ele = $(_ele);
     
     if (typeof(_name) === "string") {
-        return _name;
+        return  window.location.pathname + ": " + _name;
     }
     else if (typeof(_name) === "function") {
-        return _name(_ele);
+        return window.location.pathname + ": " + _name(_ele);
     }
     
     try {
@@ -470,7 +469,7 @@ var _get_element_name = function (_ele, _event_type, _name) {
         _name = _name.trim();
     }
     
-    _name = _name;
+    _name = window.location.pathname + ": " + _name;
     
     return _name;
 };
