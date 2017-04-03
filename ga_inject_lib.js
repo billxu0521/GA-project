@@ -98,7 +98,7 @@ var get_user_id = function(){
 
 /**
  * 將ID資訊記錄到視窗屬性中
- * @param {String} customUserId
+ * @param {String} _customUserId
  */
 window.set_user_id = function (_customUserId){
     
@@ -153,6 +153,13 @@ window.ga_mouse_over_event = function (_selector, _event_type, _name) {
  * @param {String} _name
  */
 window.ga_mouse_over_out_event = function(_selector, _event_type, _name) {
+    if ($(_selector).length === 0) {
+        setTimeout(function () {
+            window.ga_mouse_over_out_event(_selector, _event_type, _name);
+        }, 1000);
+        return;
+    }
+    
     if (_selector_length_caller(_selector, window.ga_mouse_over_out_event, _event_type, _name) === false) {
         return;
     }
@@ -190,8 +197,15 @@ window.ga_mouse_over_out_event = function(_selector, _event_type, _name) {
  * @param {String} _event_type
  * @param {String} _name
  */
-window.ga_mouse_over_out_event = function(_selector, _event_type, _name) {
-    if (_selector_length_caller(_selector, window.ga_mouse_over_out_event, _event_type, _name) === false) {
+window.ga_mouse_drag_event = function(_selector, _event_type, _name) {
+    if ($(_selector).length === 0) {
+        setTimeout(function () {
+            window.ga_mouse_drag_event(_selector, _event_type, _name);
+        }, 1000);
+        return;
+    }
+    
+    if (_selector_length_caller(_selector, window.ga_mouse_drag_event, _event_type, _name) === false) {
         return;
     }
     
@@ -222,7 +236,17 @@ window.ga_mouse_over_out_event = function(_selector, _event_type, _name) {
  * @param {String} _name
  */
 window.ga_mouse_click_event = function (_selector, _event_type, _name) {
+    
+    if ($(_selector).length === 0) {
+        setTimeout(function () {
+            window.ga_mouse_click_event(_selector, _event_type, _name);
+        }, 1000);
+        return;
+    }
+    
+    
     var _event_key = 'mouse_click';
+    
     $(_selector).click(function () {
         var _name_data = _get_element_name(this, _selector, _name);
         
@@ -237,6 +261,13 @@ window.ga_mouse_click_event = function (_selector, _event_type, _name) {
  * @param {String} _name
  */
 window.ga_mouse_down_event = function (_selector, _event_type, _name) {
+    if ($(_selector).length === 0) {
+        setTimeout(function () {
+            window.ga_mouse_down_event(_selector, _event_type, _name);
+        }, 1000);
+        return;
+    }
+    
     var _event_key = 'mouse_down';
     $(_selector).mousedown(function () {
         var _name_data = _get_element_name(this, _selector, _name);
@@ -253,6 +284,13 @@ window.ga_mouse_down_event = function (_selector, _event_type, _name) {
  * @param {String} _name
  */
 window.ga_mouse_touch_event = function (_selector, _event_type, _name) {
+    if ($(_selector).length === 0) {
+        setTimeout(function () {
+            window.ga_mouse_touch_event(_selector, _event_type, _name);
+        }, 1000);
+        return;
+    }
+    
     var _event_key = 'touch';
       $(_selector).on("touchstart",function () {
           var _name_data = _get_element_name(this, _selector, _name);
@@ -269,6 +307,13 @@ window.ga_mouse_touch_event = function (_selector, _event_type, _name) {
  * @param {String} _name
  */
 window.ga_input_change_event = function (_selector, _event_type, _name) {
+    if ($(_selector).length === 0) {
+        setTimeout(function () {
+            window.ga_input_change_event(_selector, _event_type, _name);
+        }, 1000);
+        return;
+    }
+    
     var _event_key = 'input_change';
     $(_selector).change(function () {
         var _name_data = _get_element_name(this, _selector, _name);
@@ -285,6 +330,13 @@ window.ga_input_change_event = function (_selector, _event_type, _name) {
  * @param {String} _name
  */
 window.ga_submit_event = function (_selector, _event_type, _name) {
+    if ($(_selector).length === 0) {
+        setTimeout(function () {
+            window.ga_submit_event(_selector, _event_type, _name);
+        }, 1000);
+        return;
+    }
+    
     if (_selector_length_caller(_selector, window.ga_submit_event, _event_type, _name) === false) {
         return;
     }
@@ -343,6 +395,12 @@ window.ga_submit_event = function (_selector, _event_type, _name) {
  * @param {String} _name
  */
 window.ga_mouse_scroll_in_out_event = function(_selector, _event_type, _name) {
+    if ($(_selector).length === 0) {
+        setTimeout(function () {
+            window.ga_mouse_scroll_in_out_event(_selector, _event_type, _name);
+        }, 1000);
+        return;
+    }
     
     if (_selector_length_caller(_selector, window.ga_mouse_scroll_in_out_event, _event_type, _name) === false) {
         return;
@@ -452,14 +510,13 @@ var _get_element_name = function (_ele, _event_type, _name) {
           _name = _ele.text(); 
         } else if (_ele.attr("alt")){
           _name = _ele.attr("alt");
-        }else if (_ele.attr("src")){
+        } else if (_ele.attr("src")){
           _name = _ele.attr("src"); 
-        }else if (_ele.attr("data-src")){
+        } else if (_ele.attr("data-src")){
           _name = _ele.attr("data-src");
-        }else if (_ele.attr("className")){
+        } else if (_ele.attr("className")){
           _name = _ele.attr("className");
-        }
-        else{
+        } else{
           _name = _event_type;
         }
     }
