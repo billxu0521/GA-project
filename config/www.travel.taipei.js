@@ -145,7 +145,7 @@ var exec = function () {
     ga_mouse_click_event('.btn-media-voice',"GL5-6");
 
     //GL6-2  跳離網域   
-    ga_mouse_click_event('a[target="_blank"]',"GL6-2");
+    ga_mouse_click_event('a[target="_blank"]:not(.js-photoswipe-item link)',"GL6-2");
    
 
 };
