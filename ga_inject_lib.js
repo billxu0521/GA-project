@@ -298,8 +298,6 @@ window.ga_mouse_touch_event = function (_selector, _event_type, _name) {
 
           _console_log([_event_type, _name_data, _event_key]);
           ga("send", "event", _event_type, _name_data, _event_key);
-           $.getScript("https://billxu0521.github.io/GA-project/config/www.travel.taipei.js");
-    console.log($(_selector).length );
       });
 };
 
