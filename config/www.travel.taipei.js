@@ -104,7 +104,8 @@ var exec = function () {
     //GL5-2  圖片
     ga_mouse_touch_event('.flickity-lazyloaded',"GL5-2");
     ga_mouse_touch_event('.thumb .flickity-lazyloaded',"GL5-2");
-
+    ga_mouse_touch_event('.item .is-selected',"GL5-2");
+console.log($('.flickity-lazyloaded').length );
     //ga_mouse_down_event('.spot-photo-slider .pswp__scroll-wrap',"GL5-2");
     //ga_mouse_down_event('.spot-photo-slider .pswp__item',"GL5-2");
     //ga_mouse_touch_event('.spot-photo-slider .item',"GL5-2");
