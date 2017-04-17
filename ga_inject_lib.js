@@ -237,11 +237,16 @@ window.ga_mouse_drag_event = function(_selector, _event_type, _name) {
  */
 window.ga_mouse_click_event = function (_selector, _event_type, _name) {
     
-    if ($(_selector).length === 0) {
-        setTimeout(function () {
-            window.ga_mouse_click_event(_selector, _event_type, _name);
-        }, 1000);
-        return;
+    try {
+        if ($(_selector).length === 0) {
+            setTimeout(function () {
+                window.ga_mouse_click_event(_selector, _event_type, _name);
+            }, 1000);
+            return;
+        }
+    }
+    catch (e) {
+        console.log("ERROR SELECTOR: " + _selector);
     }
     
     

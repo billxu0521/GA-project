@@ -5,7 +5,19 @@
  */
 
 GA_TRACE_CODE = "UA-89833109-1";
-CSS_URL = "https://billxu0521.github.io/GA-project/config/www.travel.taipei.css";
+
+var _local_debug = false;
+
+if (_local_debug === true) {
+    CSS_URL = "https://localhost/GA-project/config/www.travel.taipei.css";
+    LIB_URL = "https://localhost/GA-project/ga_inject_lib.js";
+    console.log("[LOCAL TEST MODE]");
+}
+else {
+    CSS_URL = "https://billxu0521.github.io/GA-project/config/www.travel.taipei.css";
+    LIB_URL = "https://billxu0521.github.io/GA-project/ga_inject_lib.js";
+}
+
 
 var exec = function () {
     //GL1-3 click
@@ -102,8 +114,17 @@ var exec = function () {
     
     
     //GL5-2  圖片
-    ga_mouse_touch_event('.flickity-lazyloaded',"GL5-2");
-    ga_mouse_touch_event('.thumb .flickity-lazyloaded',"GL5-2");
+    // https://www.travel.taipei/zh-tw/attraction/details/9
+    //ga_mouse_touch_event('.flickity-lazyloaded',"GL5-2");
+    setInterval(function () {
+        ga_mouse_touch_event('.flickity-lazyloaded:not(.event-binded)',"GL5-2");
+        $('.flickity-lazyloaded:not(.event-binded)').addClass("event-binded");
+    }, 500);
+    setInterval(function () {
+        ga_mouse_touch_event('.thumb .flickity-lazyloaded:not(.event-binded)',"GL5-2");
+        $('.thumb .flickity-lazyloaded:not(.event-binded)').addClass("event-binded");
+    }, 500);
+    
     ga_mouse_touch_event('.item .is-selected',"GL5-2");
     //ga_mouse_down_event('.spot-photo-slider .pswp__scroll-wrap',"GL5-2");
     //ga_mouse_down_event('.spot-photo-slider .pswp__item',"GL5-2");
@@ -147,7 +168,7 @@ var exec = function () {
     ga_mouse_click_event('.btn-media-voice',"GL5-6");
 
     //GL6-2  跳離網域   
-    ga_mouse_click_event('a[target="_blank"]:not[classs="js-photoswipe-item"]',"GL6-2");
+    ga_mouse_click_event('a[target="_blank"]:not(.js-photoswipe-item)',"GL6-2");
    
 
 };
@@ -155,7 +176,7 @@ var exec = function () {
 // --------------------------------------
 
 $(function () {
-    $.getScript("https://billxu0521.github.io/GA-project/ga_inject_lib.js", function () {
+    $.getScript(LIB_URL, function () {
         ga_setup(function () {
             exec();
         });
