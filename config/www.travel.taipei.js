@@ -120,6 +120,8 @@ var exec = function () {
         ga_mouse_touch_event('.flickity-lazyloaded:not(.event-binded)',"GL5-2");
         $('.flickity-lazyloaded:not(.event-binded)').addClass("event-binded");
     }, 500);
+    // :not()
+    // [target="_blank"]
     setInterval(function () {
         ga_mouse_touch_event('.thumb .flickity-lazyloaded:not(.event-binded)',"GL5-2");
         $('.thumb .flickity-lazyloaded:not(.event-binded)').addClass("event-binded");
@@ -135,7 +137,6 @@ var exec = function () {
     ga_mouse_touch_event('.pswp__scroll-wrap',"GL5-2");
 
     //GL5-3  互動
-    ga_mouse_click_event('.spot-photo-slider .flickity-prev-next-button',"GL5-3");
     ga_mouse_click_event('.spot-photo-slider .flickity-prev-next-button',"GL5-3");
     ga_mouse_click_event('.spot-photo-slider .flickity-lazyloaded',"GL5-3");
 
