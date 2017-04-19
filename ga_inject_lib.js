@@ -251,14 +251,15 @@ window.ga_mouse_click_event = function (_selector, _event_type, _name) {
     
     
     var _event_key = 'mouse_click';
+    var _classname = _event_key + _event_type;
     
-    $(_selector).click(function () {
+    $(_selector + ":not(." + _classname + ")").click(function () {
         var _name_data = _get_element_name(this, _selector, _name);
         
         _console_log([_event_type, _name_data, _event_key]);
         ga("send", "event", _event_type, _name_data, _event_key);
-    });
-
+    }).addClass(_classname);
+    
 };
 /**
  * 偵測滑鼠按下的事件
