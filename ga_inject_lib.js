@@ -355,7 +355,7 @@ window.ga_submit_event = function (_selector, _event_type, _name) {
     var _event_key = "form_submit";
     var _classname = _event_key + _event_type;
     
-    var _obj = $(_selector + ":not(." + _classname + ")");
+    var _obj = $(_selector);
     var _tag_name = _obj.prop("tagName").toLowerCase();
     
     if (_tag_name !== "form") {
@@ -429,7 +429,7 @@ window.ga_mouse_scroll_in_out_event = function(_selector, _event_type, _name) {
     // 捲動時偵測
     _window.scroll(function() {
         //console.log(["觸發", _selector]);
-        var _obj = $(_selector + ":not(." + _classname + ")");
+        var _obj = $(_selector);
         var _name_data = _get_element_name(_obj, _selector, _name);
         
         var _obj_top = _obj.offset().top;
