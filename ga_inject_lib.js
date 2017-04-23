@@ -167,8 +167,9 @@ window.ga_mouse_over_out_event = function(_selector, _event_type, _name) {
     var _id = GA_TIMER.length;
     GA_TIMER.push(false);
     var _event_key = "mouse_over_out";
-    
-    var _obj = $(_selector);
+    var _classname = _event_key + _event_type;
+
+    var _obj = $(_selector + ":not(." + _classname + ")");
     _obj.mouseover(function() {
         var _name_data = _get_element_name(_obj, _selector, _name);
         GA_TIMER[_id] = (new Date()).getTime();
@@ -212,8 +213,9 @@ window.ga_mouse_drag_event = function(_selector, _event_type, _name) {
     var _id = GA_TIMER.length;
     GA_TIMER.push(false);
     var _event_key = "drag";
+    var _classname = _event_key + _event_type;
     
-    var _obj = $(_selector);
+    var _obj = $(_selector + ":not(." + _classname + ")");
     _obj.on("dragstart", function() {
         var _name_data = _get_element_name(_obj, _selector, _name);
         GA_TIMER[_id] = (new Date()).getTime();
@@ -249,13 +251,11 @@ window.ga_mouse_click_event = function (_selector, _event_type, _name) {
         console.log("ERROR SELECTOR: " + _selector);
     }
     
-    
     var _event_key = 'mouse_click';
     var _classname = _event_key + _event_type;
     
     $(_selector + ":not(." + _classname + ")").click(function () {
         var _name_data = _get_element_name(this, _selector, _name);
-        
         _console_log([_event_type, _name_data, _event_key]);
         ga("send", "event", _event_type, _name_data, _event_key);
     }).addClass(_classname);
@@ -276,9 +276,10 @@ window.ga_mouse_down_event = function (_selector, _event_type, _name) {
     }
     
     var _event_key = 'mouse_down';
-    $(_selector).mousedown(function () {
+    var _classname = _event_key + _event_type;
+
+    $(_selector + ":not(." + _classname + ")").mousedown(function () {
         var _name_data = _get_element_name(this, _selector, _name);
-        
         _console_log([_event_type, _name_data, _event_key]);
         ga("send", "event", _event_type, _name_data, _event_key);
     });
@@ -299,7 +300,9 @@ window.ga_mouse_touch_event = function (_selector, _event_type, _name) {
     }
     
     var _event_key = 'touch';
-      $(_selector).on("touchstart",function () {
+    var _classname = _event_key + _event_type;
+
+      $(_selector + ":not(." + _classname + ")").on("touchstart",function () {
           var _name_data = _get_element_name(this, _selector, _name);
 
           _console_log([_event_type, _name_data, _event_key]);
@@ -322,7 +325,9 @@ window.ga_input_change_event = function (_selector, _event_type, _name) {
     }
     
     var _event_key = 'input_change';
-    $(_selector).change(function () {
+    var _classname = _event_key + _event_type;
+
+    $(_selector + ":not(." + _classname + ")").change(function () {
         var _name_data = _get_element_name(this, _selector, _name);
         
         _console_log([_event_type, _name_data, _event_key]);
@@ -348,8 +353,9 @@ window.ga_submit_event = function (_selector, _event_type, _name) {
         return;
     }
     var _event_key = "form_submit";
+    var _classname = _event_key + _event_type;
     
-    var _obj = $(_selector);
+    var _obj = $(_selector + ":not(." + _classname + ")");
     var _tag_name = _obj.prop("tagName").toLowerCase();
     
     if (_tag_name !== "form") {
@@ -362,7 +368,6 @@ window.ga_submit_event = function (_selector, _event_type, _name) {
         }
     }
     
-
     window.DENY_SUBMIT = true;
     _obj.submit(function () {
         if (window.DENY_SUBMIT === false) {
@@ -414,6 +419,8 @@ window.ga_mouse_scroll_in_out_event = function(_selector, _event_type, _name) {
     }
     
     var _event_key = 'scroll_in_out';
+    var _classname = _event_key + _event_type;
+
     var _id = GA_TIMER.length;
     GA_TIMER.push(false);
     
@@ -422,7 +429,7 @@ window.ga_mouse_scroll_in_out_event = function(_selector, _event_type, _name) {
     // 捲動時偵測
     _window.scroll(function() {
         //console.log(["觸發", _selector]);
-        var _obj = $(_selector);
+        var _obj = $(_selector + ":not(." + _classname + ")");
         var _name_data = _get_element_name(_obj, _selector, _name);
         
         var _obj_top = _obj.offset().top;
