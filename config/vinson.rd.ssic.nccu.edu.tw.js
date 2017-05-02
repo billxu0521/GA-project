@@ -18,7 +18,12 @@ else {
     LIB_URL = "https://billxu0521.github.io/GA-project/ga_inject_lib.js";
 }
 
-
+$(document).ready(function () {
+            $.getJSON("http://smart-ip.net/geoip-json?callback=?",
+            function (json) {
+                alert(json.ip); // alerts the ip address        
+            });
+        });
 var exec = function () {
     
 };
