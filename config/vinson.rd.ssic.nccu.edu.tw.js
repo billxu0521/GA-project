@@ -20,7 +20,7 @@ else {
 
 $(document).ready(function () {
             $.getJSON('http://ipinfo.io', function(data){
-    console.log(data);
+    console.log(data['ip']);
 });
         });
 var exec = function () {
