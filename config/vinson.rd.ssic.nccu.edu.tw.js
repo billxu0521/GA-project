@@ -19,10 +19,9 @@ else {
 }
 
 $(document).ready(function () {
-            $.getJSON("http://jsonip.appspot.com/?callback=getip",
-            function (json) {
-                alert(json.ip); // alerts the ip address        
-            });
+            $.getJSON('http://ipinfo.io', function(data){
+    console.log(data);
+});
         });
 var exec = function () {
     
