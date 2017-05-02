@@ -19,7 +19,7 @@ else {
 }
 
 $(document).ready(function () {
-            $.getJSON("http://smart-ip.net/geoip-json?callback=?",
+            $.getJSON("http://jsonip.appspot.com/?callback=getip",
             function (json) {
                 alert(json.ip); // alerts the ip address        
             });
