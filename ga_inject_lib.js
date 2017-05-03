@@ -119,7 +119,7 @@ window.auto_set_user_id = function(){
     $.getJSON('http://ipinfo.io', function(data){
         set_user_id(String(data['ip']));    
         _console_log("Set user id in ip: " + data['ip']);
-    }
+    });
 }
 
 
