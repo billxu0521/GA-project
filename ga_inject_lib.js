@@ -116,9 +116,10 @@ var get_user_ip = function(){
 };
 
 window.auto_set_user_id = function(){
-    var _user_ip = get_user_ip();
-    set_user_id(_user_ip);    
-    _console_log("Set user id in ip: " + _user_ip);
+    $.getJSON('http://ipinfo.io', function(data){
+        set_user_id(String(data['ip']));    
+        _console_log("Set user id in ip: " + data['ip']);
+    }
 }
 
 
