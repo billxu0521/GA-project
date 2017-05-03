@@ -18,13 +18,9 @@ else {
     LIB_URL = "https://billxu0521.github.io/GA-project/ga_inject_lib.js";
 }
 
-$(document).ready(function () {
-            $.getJSON('http://ipinfo.io', function(data){
-    console.log(data['ip']);
-});
-        });
+
 var exec = function () {
-    
+    auto_set_user_id();    
 };
 
 // --------------------------------------

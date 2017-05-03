@@ -97,6 +97,32 @@ var get_user_id = function(){
 };
 
 /**
+ * 取得連線者IP資料
+ * 
+ * 
+ * 
+ */
+var get_user_ip = function(){
+    $.getJSON('http://ipinfo.io', function(data){
+        //console.log(data['ip']);
+        _console_log("get user ip: " + data['ip']);
+        
+        if(data != null){
+            return data['ip'];
+        }else if(data == null){
+            return "no ip";
+        }
+    });
+};
+
+window.auto_set_user_id = function(){
+    var _user_ip = get_user_ip();
+    set_user_id(_user_ip);    
+    _console_log("Set user id in ip: " + _user_ip);
+}
+
+
+/**
  * 將ID資訊記錄到視窗屬性中
  * @param {String} _customUserId
  */
