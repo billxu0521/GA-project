@@ -20,8 +20,16 @@ else {
 
 
 var exec = function () {
-    auto_set_user_id();    
+    auto_set_user_id();   
+
+    //麵包導航
+    ga_mouse_click_event(".locationBar","導航");
+    //按鈕
+    ga_mouse_click_event(".btn","按鈕");
+
+
 };
+
 
 // --------------------------------------
 
