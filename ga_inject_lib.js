@@ -155,6 +155,17 @@ window.set_user_id = function (_customUserId){
     ga("send", "event", "set_user_id", _customUserId);
 };
 
+/**
+ * 結束本次實驗，重置資訊
+ */
+window.fin_exp = function (){
+    window.name = '';
+     _console_log('end_exp');
+    
+    ga("send", "event", "end_exp", 'end_exp');
+};
+
+
 // -------------------------------------------------------------
 
 /**

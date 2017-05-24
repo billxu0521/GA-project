@@ -167,6 +167,8 @@ var exec = function () {
     ga_mouse_click_event('.btn-media-video',"GL5-6");
     ga_mouse_click_event('.btn-media-pano',"GL5-6");
     ga_mouse_click_event('.btn-media-voice',"GL5-6");
+    ga_mouse_click_event('.lang-link-list .link',"GL5-3");
+
 
     //GL6-2  跳離網域   
     ga_mouse_click_event('a[target="_blank"]:not(.js-photoswipe-item)',"GL6-2");
