@@ -139,6 +139,7 @@ window.auto_set_user_id = function(_callback){
     }
 };
 
+USER_TIMER = 0;
 
 /**
  * 將ID資訊記錄到視窗屬性中
@@ -170,6 +171,8 @@ window.set_user_id = function (_customUserId){
     ga('set', DIMENSION, _customUserId); 
     
     ga("send", "event", "set_user_id", _customUserId);
+    
+    USER_TIMER = (new Date()).getTime();
 };
 
 window.start_exp = function (_customUserId) {
@@ -180,11 +183,14 @@ window.start_exp = function (_customUserId) {
  * 結束本次實驗，重置資訊
  */
 window.fin_exp = function (){
+    var _time = USER_TIMER - (new Date()).getTime();
+    _time = _time / 1000;
+    
     var _name = window.location.pathname + ": " + window.name;
     window.name = '';
-     _console_log('end_exp: ' + _name);
+     _console_log('end_exp: ' + _name + ", sec: " + _time);
     
-    ga("send", "event", "end_exp", _name);
+    ga("send", "event", "end_exp", _name, _time);
     auto_set_user_id();
 };
 
