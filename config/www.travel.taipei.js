@@ -61,6 +61,9 @@ var exec = function () {
     ga_mouse_click_event('.tel-link',"GL2-8");
     ga_mouse_click_event('.info .btn-tel-link',"GL2-8");
 
+    //GL2-9 多語言轉換
+    ga_mouse_click_event('.lang-link-list .link',"GL2-9");
+    
     //GL2-10  底部條款
     ga_mouse_scroll_in_out_event('.info .link-blk',"GL2-10");
 
@@ -167,7 +170,7 @@ var exec = function () {
     ga_mouse_click_event('.btn-media-video',"GL5-6");
     ga_mouse_click_event('.btn-media-pano',"GL5-6");
     ga_mouse_click_event('.btn-media-voice',"GL5-6");
-    ga_mouse_click_event('.lang-link-list .link',"GL5-3");
+    
 
 
     //GL6-2  跳離網域   
