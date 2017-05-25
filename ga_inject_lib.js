@@ -245,6 +245,7 @@ window.ga_mouse_over_out_event = function(_selector, _event_type, _name) {
         var _name_data = _get_element_name(_obj, _selector, _name);
         //_name_data = window.location.pathname + ": " + _name_data;
         var _interval = ((new Date()).getTime() - GA_TIMER[_id])/1000;
+        _interval = parseInt(_interval, 10);
         if (_interval > STAY_SAVE_MIN_INTERVAL) {
             _console_log([_event_type, _event_key +  + ": end", _name_data, _interval, "記錄"]);
             ga("send", "event", _event_type, _name_data, _event_key, _interval);
@@ -290,8 +291,9 @@ window.ga_mouse_drag_event = function(_selector, _event_type, _name) {
     _obj.on("dragend", function() {
         var _name_data = _get_element_name(_obj, _selector, _name);
         var _interval = (new Date()).getTime() - GA_TIMER[_id];
-        _console_log([_event_type, _event_key +  + ": end", _name_data, _interval/1000, "記錄"]);
-        ga("send", "event", _event_type, _name_data, _event_key, _interval/1000);
+        _interval = parseInt(_interval/1000, 10);
+        _console_log([_event_type, _event_key +  + ": end", _name_data, _interval, "記錄"]);
+        ga("send", "event", _event_type, _name_data, _event_key, _interval);
         GA_TIMER[_id] = false;
     });
 };
