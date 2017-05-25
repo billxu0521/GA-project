@@ -122,7 +122,7 @@ var get_user_ip = function(){
 
 window.auto_set_user_id = function(){
     if (get_user_id() === "anonymous") {
-        $.getJSON('http://ipinfo.io', function(data){
+        $.getJSON('https://ipinfo.io', function(data){
             set_user_id(String(data['ip']));    
             _console_log("Set user id in ip: " + data['ip']);
         });
