@@ -182,7 +182,7 @@ window.start_exp = function (_customUserId) {
 window.fin_exp = function (){
     var _name = window.name;
     window.name = '';
-     _console_log('end_exp');
+     _console_log('end_exp: ' + _name);
     
     ga("send", "event", "end_exp", _name);
     auto_set_user_id();
