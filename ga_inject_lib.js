@@ -107,9 +107,9 @@ var get_user_ip = function(){
         //console.log(data['ip']);
         _console_log("get user ip: " + data['ip']);
         
-        if(data != null){
+        if(data !== null){
             return String(data['ip']);
-        }else if(data == null){
+        }else if(data === null){
             return "no ip";
         }
     });
@@ -155,6 +155,10 @@ window.set_user_id = function (_customUserId){
     ga("send", "event", "set_user_id", _customUserId);
 };
 
+window.start_exp = function (_customUserId) {
+    return window.set_user_id(_customUserId);
+};
+
 /**
  * 結束本次實驗，重置資訊
  */
@@ -163,6 +167,10 @@ window.fin_exp = function (){
      _console_log('end_exp');
     
     ga("send", "event", "end_exp", 'end_exp');
+};
+
+window.end_exp = function () {
+    return window.fin_exp();
 };
 
 

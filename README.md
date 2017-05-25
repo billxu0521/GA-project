@@ -1,6 +1,11 @@
 # Google Analytics Injection (for Taipei Travel)
 GA偵測事件
 
+1. 活動開始，記錄使用者 start_exp("使用者名字")
+2. 活動結束 end_exp()
+
+=====================
+
 # TODO (主要請看Issues)
 https://github.com/billxu0521/GA-project/issues
 - 計時器功能錯誤，請見#TODO ga_inject_lib.js

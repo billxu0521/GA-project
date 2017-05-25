@@ -1,6 +1,7 @@
 /**
  * 適用網頁：https://www.travel.taipei/
  * 事件查詢表：https://docs.google.com/spreadsheets/d/1MtMtw9lKLDTUzfBd6Ld0fAe_FGe5u-Mlkh5WfZiH5qM/edit
+ * 程式碼位置：https://billxu0521.github.io/GA-project/config/www.travel.taipei.js
  * @author Pudding 20170203
  */
 
