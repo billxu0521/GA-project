@@ -1,4 +1,9 @@
 /**
+ * @author BillXu
+ * https://billxu0521.github.io/GA-project/ga_inject_lib.js
+ */
+
+/**
  * 預設GA_TRACE_CODE
  * @type String
  */
@@ -116,11 +121,13 @@ var get_user_ip = function(){
 };
 
 window.auto_set_user_id = function(){
-    $.getJSON('http://ipinfo.io', function(data){
-        set_user_id(String(data['ip']));    
-        _console_log("Set user id in ip: " + data['ip']);
-    });
-}
+    if (get_user_id() === "anonymous") {
+        $.getJSON('http://ipinfo.io', function(data){
+            set_user_id(String(data['ip']));    
+            _console_log("Set user id in ip: " + data['ip']);
+        });
+    }
+};
 
 
 /**

@@ -21,6 +21,8 @@ else {
 
 
 var exec = function () {
+    auto_set_user_id();
+    
     //GL1-3 click
     ga_mouse_click_event('a[title="臺北旅遊網"]', "GL1-3");
 
