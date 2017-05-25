@@ -63,22 +63,24 @@ window.ga_setup = function (_callback) {
         ga('set', 'userId', _user); // 使用已登入的 user_id 設定 User-ID。
         ga('set', 'dimension1', _user);
         
-        /**
-         * 初始化載入
-         */
-        _console_log("Google analytics injected. User: " + _user);
-    
-        if (typeof(_callback) === "function") {
-            $(function () {
-                setTimeout(function () {
+        auto_set_user_id(function () {
+            /**
+             * 初始化載入
+             */
+            _console_log("Google analytics injected. User: " + _user);
+
+            if (typeof(_callback) === "function") {
+                $(function () {
                     setTimeout(function () {
-                        //console.log("觸發一次捲動");
-                        $(window).scroll();
-                    }, 100);
-                    _callback();
-                }, 1000);
-            });
-        }
+                        setTimeout(function () {
+                            //console.log("觸發一次捲動");
+                            $(window).scroll();
+                        }, 100);
+                        _callback();
+                    }, 1000);
+                });
+            }
+        });
     });
 };
 
@@ -120,12 +122,16 @@ var get_user_ip = function(){
     });
 };
 
-window.auto_set_user_id = function(){
+window.auto_set_user_id = function(_callback){
     if (get_user_id() === "anonymous") {
         $.getJSON('https://ipinfo.io', function(data){
             set_user_id(String(data['ip']));    
             _console_log("Set user id in ip: " + data['ip']);
+            _callback();
         });
+    }
+    else {
+        _callback();
     }
 };
 
@@ -174,6 +180,7 @@ window.fin_exp = function (){
      _console_log('end_exp');
     
     ga("send", "event", "end_exp", 'end_exp');
+    auto_set_user_id();
 };
 
 window.end_exp = function () {
