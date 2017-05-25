@@ -520,7 +520,7 @@ window.ga_mouse_scroll_in_out_event = function(_selector, _event_type, _name) {
         }
         else if (_is_obj_display_in_window === false && GA_TIMER[_id] !== false) {
             // 離開了
-            var _interval = ((new Date()).getTime() - GA_TIMER[_id])/1000;
+            var _interval = parseInt(((new Date()).getTime() - GA_TIMER[_id])/1000, 10);
             if (_interval > STAY_SAVE_MIN_INTERVAL) {
                 _console_log([_event_type, _event_key + ": end", _name_data, _interval, "記錄"]);
                 ga("send", "event", _event_type, _name_data, "scroll_in", _interval);
