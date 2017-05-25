@@ -184,7 +184,7 @@ window.start_exp = function (_customUserId) {
  */
 window.fin_exp = function (){
     var _time = USER_TIMER - (new Date()).getTime();
-    _time = _time / 1000;
+    _time = parseInt(_time / 1000, 10);
     
     var _name = window.location.pathname + ": " + window.name;
     window.name = '';
