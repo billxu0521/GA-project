@@ -190,7 +190,7 @@ window.fin_exp = function (){
     //var _time = (new Date()).getTime() - USER_TIMER;
     //_time = parseInt(_time / 1000, 10);
     
-    var _name = window.location.pathname + ": " + window.name;
+    var _name = window.location.pathname + " (" + window.name + ")";
     window.name = '';
     //_console_log('end_exp: ' + _name + ", sec: " + _time);
     _console_log('end_exp: ' + _name);
@@ -589,10 +589,10 @@ var _get_element_name = function (_ele, _event_type, _name) {
     _ele = $(_ele);
     
     if (typeof(_name) === "string") {
-        return  window.location.pathname + ": " + _name;
+        return  window.location.pathname + "(" + get_user_id() + ")" + ": " + _name;
     }
     else if (typeof(_name) === "function") {
-        return window.location.pathname + ": " + _name(_ele);
+        return window.location.pathname + "(" + get_user_id() + ")" + ": " + _name(_ele);
     }
     
     try {
@@ -618,7 +618,7 @@ var _get_element_name = function (_ele, _event_type, _name) {
         _name = _name.trim();
     }
     
-    _name = window.location.pathname + ": " + _name;
+    _name = window.location.pathname + "(" + get_user_id() + ")" + ": " + _name;
     
     return _name;
 };
