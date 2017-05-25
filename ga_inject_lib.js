@@ -180,7 +180,7 @@ window.start_exp = function (_customUserId) {
  * 結束本次實驗，重置資訊
  */
 window.fin_exp = function (){
-    var _name = window.name;
+    var _name = window.location.pathname + ": " + window.name;
     window.name = '';
      _console_log('end_exp: ' + _name);
     
