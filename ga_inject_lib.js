@@ -243,7 +243,7 @@ window.ga_mouse_over_out_event = function(_selector, _event_type, _name) {
     var _id = GA_TIMER.length;
     GA_TIMER.push(false);
     var _event_key = "mouse_over_out";
-    var _classname = _event_key + _event_type;
+    var _classname = _get_event_classname(_event_key, _event_type);
 
     var _obj = $(_selector + ":not(." + _classname + ")");
     _obj.mouseover(function() {
@@ -268,6 +268,14 @@ window.ga_mouse_over_out_event = function(_selector, _event_type, _name) {
     });
 };
 
+var _get_event_classname = function (_event_key, _event_type) {
+    var _classname = _event_key + _event_type;
+    _classname = _classname.split(":").join("");
+    _classname = _classname.split(";").join("");
+    _classname = _classname.split(" ").join("");
+    return _classname;
+};
+
 /**
  * 滑鼠抓起跟放開的功能
  * https://www.w3schools.com/jsref/event_ondrag.asp
@@ -290,7 +298,7 @@ window.ga_mouse_drag_event = function(_selector, _event_type, _name) {
     var _id = GA_TIMER.length;
     GA_TIMER.push(false);
     var _event_key = "drag";
-    var _classname = _event_key + _event_type;
+    var _classname = _get_event_classname(_event_key, _event_type);
     
     var _obj = $(_selector + ":not(." + _classname + ")");
     _obj.on("dragstart", function() {
@@ -330,15 +338,22 @@ window.ga_mouse_click_event = function (_selector, _event_type, _name) {
     }
     
     var _event_key = 'mouse_click';
-    var _classname = _event_key + _event_type;
+    var _classname = _get_event_classname(_event_key, _event_type);
     
     $(_selector + ":not(." + _classname + ")").click(function () {
-        var _name_data = _get_element_name(this, _selector, _name);
-        _console_log([_event_type, _name_data, _event_key]);
-        ga("send", "event", _event_type, _name_data, _event_key);
+        //var _name_data = _get_element_name(this, _selector, _name);
+        //_console_log([_event_type, _name_data, _event_key]);
+        //ga("send", "event", _event_type, _name_data, _event_key);
+        ga_mouse_click_event_trigger(this, _selector, _name, _event_type, _event_key);
     }).addClass(_classname);
-    
 };
+
+window.ga_mouse_click_event_trigger = function (_obj, _selector, _name, _event_type, _event_key) {
+    var _name_data = _get_element_name(_obj, _selector, _name);
+    _console_log([_event_type, _name_data, _event_key]);
+    ga("send", "event", _event_type, _name_data, _event_key);
+};
+
 /**
  * 偵測滑鼠按下的事件
  * @param {String} _selector
@@ -354,7 +369,7 @@ window.ga_mouse_down_event = function (_selector, _event_type, _name) {
     }
     
     var _event_key = 'mouse_down';
-    var _classname = _event_key + _event_type;
+    var _classname = _get_event_classname(_event_key, _event_type);
 
     $(_selector + ":not(." + _classname + ")").mousedown(function () {
         var _name_data = _get_element_name(this, _selector, _name);
@@ -378,7 +393,7 @@ window.ga_mouse_touch_event = function (_selector, _event_type, _name) {
     }
     
     var _event_key = 'touch';
-    var _classname = _event_key + _event_type;
+    var _classname = _get_event_classname(_event_key, _event_type);
 
       $(_selector + ":not(." + _classname + ")").on("touchstart",function () {
           var _name_data = _get_element_name(this, _selector, _name);
@@ -403,7 +418,7 @@ window.ga_input_change_event = function (_selector, _event_type, _name) {
     }
     
     var _event_key = 'input_change';
-    var _classname = _event_key + _event_type;
+    var _classname = _get_event_classname(_event_key, _event_type);
 
     $(_selector + ":not(." + _classname + ")").change(function () {
         var _name_data = _get_element_name(this, _selector, _name);
@@ -431,7 +446,7 @@ window.ga_submit_event = function (_selector, _event_type, _name) {
         return;
     }
     var _event_key = "form_submit";
-    var _classname = _event_key + _event_type;
+    var _classname = _get_event_classname(_event_key, _event_type);
     
     var _obj = $(_selector);
     var _tag_name = _obj.prop("tagName").toLowerCase();
@@ -497,7 +512,7 @@ window.ga_mouse_scroll_in_out_event = function(_selector, _event_type, _name) {
     }
     
     var _event_key = 'scroll_in_out';
-    var _classname = _event_key + _event_type;
+    var _classname = _get_event_classname(_event_key, _event_type);
 
     var _id = GA_TIMER.length;
     GA_TIMER.push(false);
