@@ -183,7 +183,7 @@ window.start_exp = function (_customUserId) {
  * 結束本次實驗，重置資訊
  */
 window.fin_exp = function (){
-    var _time = USER_TIMER - (new Date()).getTime();
+    var _time = (new Date()).getTime() - USER_TIMER;
     _time = parseInt(_time / 1000, 10);
     
     var _name = window.location.pathname + ": " + window.name;
