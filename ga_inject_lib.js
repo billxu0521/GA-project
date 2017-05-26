@@ -139,6 +139,24 @@ window.auto_set_user_id = function(_callback){
     }
 };
 
+Number.prototype.padLeft = function(base,chr){
+    var  len = (String(base || 10).length - String(this).length)+1;
+    return len > 0? new Array(len).join(chr || '0')+this : this;
+};
+
+var _get_time = function () {
+    var d = new Date,
+    d = [
+        d.getFullYear(),
+        (d.getMonth()+1).padLeft(),
+        d.getDate().padLeft(),
+        d.getHours().padLeft(),
+        d.getMinutes().padLeft(),
+        d.getSeconds().padLeft()
+        ].join('');
+    return d;
+};
+
 USER_TIMER = 0;
 
 /**
@@ -170,7 +188,7 @@ window.set_user_id = function (_customUserId){
     ga('set', 'userId', _customUserId); // 使用已登入的 user_id 設定 User-ID。
     ga('set', DIMENSION, _customUserId); 
     
-    ga("send", "event", "set_user_id",  window.location.pathname + ": " + _customUserId);
+    ga("send", "event", "set_user_id",  _get_time() + ": " + window.location.pathname + ": " + _customUserId);
     //set_user_timer();
 };
 
@@ -189,7 +207,7 @@ window.fin_exp = function (){
     //var _time = (new Date()).getTime() - USER_TIMER;
     //_time = parseInt(_time / 1000, 10);
     
-    var _name = window.location.pathname + ": " + window.name;
+    var _name = _get_time() + ": " + window.location.pathname + ": " + window.name;
     window.name = '';
     //_console_log('end_exp: ' + _name + ", sec: " + _time);
     _console_log('end_exp: ' + _name);
@@ -603,10 +621,10 @@ var _get_element_name = function (_ele, _event_type, _name) {
     _ele = $(_ele);
     
     if (typeof(_name) === "string") {
-        return  window.location.pathname + ": " + get_user_id() + ": " + _name;
+        return  _get_time() + ": " + window.location.pathname + ": " + get_user_id() + ": " + _name;
     }
     else if (typeof(_name) === "function") {
-        return window.location.pathname + ": " + get_user_id() + ": " + _name(_ele);
+        return _get_time() + ": " + window.location.pathname + ": " + get_user_id() + ": " + _name(_ele);
     }
     
     try {
@@ -632,7 +650,7 @@ var _get_element_name = function (_ele, _event_type, _name) {
         _name = _name.trim();
     }
     
-    _name = window.location.pathname + ": " + get_user_id() + ": " + _name;
+    _name = _get_time() + ": " + window.location.pathname + ": " + get_user_id() + ": " + _name;
     
     return _name;
 };
