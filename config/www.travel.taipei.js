@@ -65,7 +65,7 @@ var exec = function () {
     ga_mouse_click_event('.btn-add-diamond',"GL2-5");
 
     //GL2-6  底部
-    ga_mouse_scroll_in_out_event('.footer',"GL2-6");
+    ga_mouse_scroll_in_event('.footer',"GL2-6");
 
     //GL2-8  電話
     ga_mouse_click_event('.tel-link',"GL2-8");
@@ -75,7 +75,7 @@ var exec = function () {
     ga_mouse_click_event('.lang-link-list .link',"GL2-9");
     
     //GL2-10  底部條款
-    ga_mouse_scroll_in_out_event('.info .link-blk',"GL2-10");
+    ga_mouse_scroll_in_event('.info .link-blk',"GL2-10");
 
     //GL2-11  勘誤
     ga_mouse_click_event('.btn-report-issue',"GL2-11");
@@ -94,8 +94,8 @@ var exec = function () {
 
     //GL2-14  日期
 
-    ga_mouse_scroll_in_out_event('.info-blk .duration',"GL2-14");
-    ga_mouse_scroll_in_out_event('.info-blk .date',"GL2-14");
+    ga_mouse_scroll_in_event('.info-blk .duration',"GL2-14");
+    ga_mouse_scroll_in_event('.info-blk .date',"GL2-14");
 
     //4-1  
     ga_mouse_click_event('.btn-radio',"GL4-1");
