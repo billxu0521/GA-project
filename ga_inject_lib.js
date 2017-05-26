@@ -145,7 +145,7 @@ Number.prototype.padLeft = function(base,chr){
 };
 
 var _get_time = function () {
-    var d = new Date,
+    var d = new Date;
     d = [
         //d.getFullYear(),
         //(d.getMonth()+1).padLeft(),
@@ -190,6 +190,8 @@ window.set_user_id = function (_customUserId){
     
     ga("send", "event", "start_exp",  _customUserId + ": " + _get_time() + ": " + window.location.pathname);
     //set_user_timer();
+    
+    ga_display_timer();
 };
 
 window.start_exp = function (_customUserId) {
@@ -734,6 +736,34 @@ var _console_log = function (_message) {
         }, 1);
         //console.log(_message);
     }
+};
+
+window.ga_display_timer = function () {
+    if ($("#ga_display_timer").length > 0) {
+        return;
+    }
+    
+    var _timer = $('<div id="ga_display_timer"></div>').appendTo('body');
+    _timer.css({
+        "position": "fixed",
+        "bottom": 0,
+        "left": 0,
+        "background-color": "#FFF",
+        "font-size": "10px",
+        "opacity": 0.7,
+        "color":  "#333",
+        "border-radius": "0 5px 0 0",
+        "z-index": 999999
+    });
+    
+    setInterval(function () {
+        var d = new Date;
+        d = [
+            d.getMinutes().padLeft(),
+            d.getSeconds().padLeft()
+        ].join(':');
+        _timer.text(d);
+    }, 1000);
 };
 
 CONSOLE_LOG = [];
