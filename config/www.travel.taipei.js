@@ -95,7 +95,9 @@ var exec = function () {
     //GL2-14  日期
 
     ga_mouse_scroll_in_event('.info-blk .duration',"GL2-14");
-    ga_mouse_scroll_in_event('.info-blk .date',"GL2-14");
+    ga_mouse_scroll_in_event('.info-blk .date',"GL2-14", function (_span) {
+        return $(_span).parent().text();
+    });
 
     //4-1  
     ga_mouse_click_event('.btn-radio',"GL4-1");
