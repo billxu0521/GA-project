@@ -737,7 +737,7 @@ var _console_log = function (_message) {
     }
 };
 
-window.ga_display_timer = function () {
+window.ga_display_timer = function (_style) {
     if ($("#ga_display_timer").length > 0) {
         return;
     }
@@ -745,8 +745,8 @@ window.ga_display_timer = function () {
     var _timer = $('<div id="ga_display_timer"></div>').appendTo('body');
     _timer.css({
         "position": "fixed",
-        "bottom": 0,
-        "left": 0,
+        //"bottom": 0,
+        //"left": 0,
         "background-color": "#FFF",
         "font-size": "10px",
         "opacity": 0.7,
@@ -754,6 +754,31 @@ window.ga_display_timer = function () {
         "border-radius": "0 5px 0 0",
         "z-index": 999999
     });
+    
+    if (_style === undefined || _style === 9) {
+        _timer.css({
+            "top": 0,
+            "right": 0
+        });
+    }
+    else if (_style === 3) {
+        _timer.css({
+            "bottom": 0,
+            "right": 0
+        });
+    }
+    else if (_style === 1) {
+        _timer.css({
+            "bottom": 0,
+            "left": 0
+        });
+    }
+    else if (_style === 1) {
+        _timer.css({
+            "top": 0,
+            "left": 0
+        });
+    }
     
     setInterval(function () {
         var d = new Date;
