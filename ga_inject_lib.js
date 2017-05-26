@@ -439,8 +439,8 @@ window.ga_input_change_event = function (_selector, _event_type, _name) {
     var _classname = _get_event_classname(_event_key, _event_type);
 
     $(_selector + ":not(." + _classname + ")").change(function () {
-        //var _name_data = _get_element_name(this, _selector, _name);
-        var _name_data = $(this).val();
+        var _name_data = _get_element_name(this, _selector, $(this).val());
+        //var _name_data = $(this).val();
         var _input_name = $(this).attr("name");
         _name_data = _input_name + "=" + _name_data;
             
