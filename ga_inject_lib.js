@@ -405,6 +405,7 @@ window.ga_mouse_down_event = function (_selector, _event_type, _name) {
 window.ga_send_event = function (_event_type, _name) {
     var _event_key = 'send_event';
     var _name_data = _get_element_name(document, "", _name);
+    _console_log([_event_type, _name_data, _event_key]);
     ga("send", "event", _event_type, _name_data, _event_key);
 };
 
