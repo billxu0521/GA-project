@@ -43,6 +43,7 @@ var exec = function () {
 
     //GL1-8 搜尋列 click
     //ga_mouse_click_event('.btn-search-submit',"GL1-8");
+    ga_submit_event("#keyword", "GL1-8");
     ga_mouse_click_event('input.gsc-search-button',"GL1-8");
     ga_input_keydown_enter_event(".gsc-search-box input.gsc-input", "GL1-8", function (_input) {
         return $(_input).val();
