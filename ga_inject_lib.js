@@ -402,6 +402,18 @@ window.ga_mouse_down_event = function (_selector, _event_type, _name) {
  * @param {String} _event_type
  * @param {String} _name
  */
+window.ga_send_event = function (_event_type, _name) {
+    var _event_key = 'send_event';
+    var _name_data = _get_element_name(document, "", _name);
+    ga("send", "event", _event_type, _name_data, _event_key);
+};
+
+/**
+ * 偵測滑鼠按下的事件
+ * @param {String} _selector
+ * @param {String} _event_type
+ * @param {String} _name
+ */
 window.ga_mouse_touch_event = function (_selector, _event_type, _name) {
     if ($(_selector).length === 0) {
         setTimeout(function () {
@@ -743,13 +755,15 @@ _load_css(CSS_URL);
  * window.location.pathname + ": " + 
  */
 var _get_element_name = function (_ele, _event_type, _name) {
-    _ele = $(_ele);
     
+    var _name_header = get_user_id() + ": " + _get_time() + ": " + window.location.pathname + ": ";
+    
+    _ele = $(_ele);
     if (typeof(_name) === "string") {
-        return  get_user_id() + ": " + _get_time() + ": " + window.location.pathname + ": " + _name;
+        return _name_header + _name;
     }
     else if (typeof(_name) === "function") {
-        return get_user_id() + ": " + _get_time() + ": " + window.location.pathname + ": " + _name(_ele);
+        return _name_header + _name(_ele);
     }
     
     try {
@@ -779,7 +793,7 @@ var _get_element_name = function (_ele, _event_type, _name) {
         }
     }
     
-    _name = get_user_id() + ": " + _get_time() + ": " + window.location.pathname + ": " + _name;
+    _name = _name_header + _name;
     
     return _name;
 };
@@ -891,14 +905,15 @@ window.ga_display_timer = function (_style) {
     }, 1000);
 };
 
-window.enable_screen_recorder = function () {
+window.enable_screen_recorder_link = function () {
     $("body").keydown(function (_e) {
         if (_e.keyCode === 82) {
             window.open("https://www.apowersoft.tw/free-online-screen-recorder", "apowersoft");
         }
     });
-    
-    /*
+};
+
+window.enable_screen_recorder = function () {
     
     if ($("#screen_recorder").length > 0) {
         return;
@@ -926,8 +941,6 @@ window.enable_screen_recorder = function () {
             }
         });
     });
-    // <script src="" defer></script>
-    */
 };
 
 CONSOLE_LOG = [];
