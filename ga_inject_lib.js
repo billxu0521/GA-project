@@ -149,7 +149,7 @@ var _get_time = function () {
     d = [
         //d.getFullYear(),
         //(d.getMonth()+1).padLeft(),
-        d.getDate().padLeft(),
+        //d.getDate().padLeft(),
         d.getHours().padLeft(),
         d.getMinutes().padLeft(),
         d.getSeconds().padLeft()
