@@ -796,7 +796,12 @@ window.ga_display_timer = function (_style) {
 };
 
 window.enable_screen_recorder = function () {
-    window.open("https://www.apowersoft.tw/free-online-screen-recorder", "apowersoft");
+    $("body").keydown(function (_e) {
+        if (_e.keyCode === 82) {
+            window.open("https://www.apowersoft.tw/free-online-screen-recorder", "apowersoft");
+        }
+    });
+    
     /*
     
     if ($("#screen_recorder").length > 0) {
