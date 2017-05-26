@@ -442,7 +442,8 @@ window.ga_input_change_event = function (_selector, _event_type, _name) {
         
         _console_log([_event_type, _name_data, _event_key]);
         ga("send", "event", _event_type, _name_data, _event_key);
-    }).keypress(function (_e) {
+    }).keydown(function (_e) {
+        console.log([$(this).prop("tagName").toLowerCase(), _e.keyCode]);
         if ($(this).prop("tagName").toLowerCase() === "input" && _e.keyCode === 13) {
             $(this).change();
         }
