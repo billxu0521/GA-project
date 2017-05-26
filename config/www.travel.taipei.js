@@ -44,7 +44,9 @@ var exec = function () {
     //GL1-8 搜尋列 click
     ga_mouse_click_event('.btn-search-submit',"GL1-8");
     ga_mouse_click_event('.gsc-search-button',"GL1-8");
-    ga_submit_event(".gsc-search-box", "GL1-8");
+    ga_input_change_event(".gsc-search-box .gsc-input", "GL1-8", function (_input) {
+        return $(_input).val();
+    });
 
     //GL1-9 
     ga_mouse_click_event('.first-page',"GL1-9");
@@ -182,8 +184,8 @@ var exec = function () {
     ga_mouse_click_event('a[target="_blank"]:not(.js-photoswipe-item)',"GL6-2");
    
    setInterval(function () {
-        ga_mouse_click_event('.gsc-resultsbox-visible .gs-title:not(.event-binded)',"GL6-2");
-        $('.gsc-resultsbox-visible .gs-title:not(.event-binded)').addClass("event-binded");
+        ga_mouse_click_event('.gsc-resultsbox-visible .gs-title > .gs-title:not(.event-binded)',"GL6-2");
+        $('.gsc-resultsbox-visible .gs-title > .gs-title:not(.event-binded)').addClass("event-binded");
     }, 500);
 
 };

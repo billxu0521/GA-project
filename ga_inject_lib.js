@@ -443,6 +443,7 @@ window.ga_input_change_event = function (_selector, _event_type, _name) {
         _console_log([_event_type, _name_data, _event_key]);
         ga("send", "event", _event_type, _name_data, _event_key);
     });
+    $(_selector).addClass(_classname);
 };
 
 /**
