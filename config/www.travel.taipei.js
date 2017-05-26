@@ -2,6 +2,7 @@
  * 適用網頁：https://www.travel.taipei/
  * 事件查詢表：https://docs.google.com/spreadsheets/d/1MtMtw9lKLDTUzfBd6Ld0fAe_FGe5u-Mlkh5WfZiH5qM/edit
  * 程式碼位置：https://billxu0521.github.io/GA-project/config/www.travel.taipei.js
+ * GA https://analytics.google.com/analytics/web/#realtime/rt-overview/a89833109w133278856p137301362/
  * @author Pudding 20170203
  */
 
@@ -43,6 +44,7 @@ var exec = function () {
     //GL1-8 搜尋列 click
     ga_mouse_click_event('.btn-search-submit',"GL1-8");
     ga_mouse_click_event('.gsc-search-button',"GL1-8");
+    ga_submit_event(".gsc-search-box", "GL1-8");
 
     //GL1-9 
     ga_mouse_click_event('.first-page',"GL1-9");
@@ -179,6 +181,10 @@ var exec = function () {
     //GL6-2  跳離網域   
     ga_mouse_click_event('a[target="_blank"]:not(.js-photoswipe-item)',"GL6-2");
    
+   setInterval(function () {
+        ga_mouse_click_event('.gsc-resultsbox-visible .gs-title:not(.event-binded)',"GL6-2");
+        $('.gsc-resultsbox-visible .gs-title:not(.event-binded)').addClass("event-binded");
+    }, 500);
 
 };
 
