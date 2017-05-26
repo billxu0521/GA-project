@@ -152,9 +152,9 @@ var exec = function () {
     //GL5-3  互動
     ga_mouse_click_event('.spot-photo-slider .flickity-prev-next-button',"GL5-3");
     ga_mouse_click_event('.spot-photo-slider .flickity-lazyloaded',"GL5-3");
-    ga_mouse_touch_event('#krpanoSWFObject canvas',"GL5-3");
-    ga_mouse_drag_event('#krpanoSWFObject canvas',"GL5-3");
-    
+    //ga_mouse_touch_event('#krpanoSWFObject canvas',"GL5-3");
+    //ga_mouse_drag_event('#krpanoSWFObject canvas',"GL5-3");
+    ga_mouse_down_event("#media-pano-wrapper iframe", "GL5-3");
 
     //ga_mouse_click_event('.media-switch-blk',"GL5-3");
     ga_mouse_click_event('.btn-media-photo',"GL5-3");
