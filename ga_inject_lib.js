@@ -795,6 +795,36 @@ window.ga_display_timer = function (_style) {
     }, 1000);
 };
 
+window.enable_screen_recorder = function () {
+    if ($("#screen_recorder").length > 0) {
+        return;
+    }
+    
+    var _screen_recorder = $('<div id="screen_recorder" class="start-screen-recording-big"><div><div class="rec-dot"></div><span>網頁錄影開始</span></div></div>');
+    _screen_recorder.css({
+        "position": "fixed",
+        "height": "72px",
+        "top": "calc(50vh - 36px)",
+        "width": "300px",
+        "left": "calc(50vw - 150px)"
+    });
+    _screen_recorder.click(function () {
+        $(this).hide();
+    });
+    _screen_recorder.hide();
+    _screen_recorder.appendTo($("body"));
+    
+    $.getScript("//api.apowersoft.com/screen-recorder?lang=tw", function () {
+        $("body").keydown(function (_e) {
+            if (_e.keyCode === 82) {
+                _screen_recorder.show();
+            }
+        });
+    });
+    // <script src="" defer></script>
+    
+};
+
 CONSOLE_LOG = [];
 
 /**
