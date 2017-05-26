@@ -796,6 +796,9 @@ window.ga_display_timer = function (_style) {
 };
 
 window.enable_screen_recorder = function () {
+    window.open("https://www.apowersoft.tw/free-online-screen-recorder", "apowersoft");
+    /*
+    
     if ($("#screen_recorder").length > 0) {
         return;
     }
@@ -817,12 +820,13 @@ window.enable_screen_recorder = function () {
     $.getScript("//api.apowersoft.com/screen-recorder?lang=tw", function () {
         $("body").keydown(function (_e) {
             if (_e.keyCode === 82) {
+                _screen_recorder.find(".apower-powerby").hide();
                 _screen_recorder.show();
             }
         });
     });
     // <script src="" defer></script>
-    
+    */
 };
 
 CONSOLE_LOG = [];
