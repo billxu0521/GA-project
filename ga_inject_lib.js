@@ -147,8 +147,8 @@ Number.prototype.padLeft = function(base,chr){
 var _get_time = function () {
     var d = new Date,
     d = [
-        d.getFullYear(),
-        (d.getMonth()+1).padLeft(),
+        //d.getFullYear(),
+        //(d.getMonth()+1).padLeft(),
         d.getDate().padLeft(),
         d.getHours().padLeft(),
         d.getMinutes().padLeft(),
