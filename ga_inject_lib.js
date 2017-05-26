@@ -191,7 +191,6 @@ window.set_user_id = function (_customUserId){
     ga("send", "event", "start_exp",  _customUserId + ": " + _get_time() + ": " + window.location.pathname);
     //set_user_timer();
     
-    ga_display_timer();
 };
 
 window.start_exp = function (_customUserId) {
