@@ -107,22 +107,22 @@ var exec = function () {
     ga_submit_event('.expend-wrapper > form',"GL4-1", 
         function(form){
             console.log("submit act"+form);
-            return form.find('select[name="start-year"]').val();
+            return "start-year=" + form.find('select[name="start-year"]').val();
         });
     ga_submit_event('.expend-wrapper > form',"GL4-1", 
         function(form){
             console.log("submit act"+form);
-            return form.find('select[name="end-year"]').val();
+            return "end-year=" + form.find('select[name="end-year"]').val();
         });
     ga_submit_event('.expend-wrapper > form',"GL4-1", 
         function(form){
             console.log("submit act"+form);
-            return form.find('select[name="start-month"]').val();
+            return "start-month=" + form.find('select[name="start-month"]').val();
         });
     ga_submit_event('.expend-wrapper > form',"GL4-1", 
         function(form){
             console.log("submit act"+form);
-            return form.find('select[name="end-month"]').val();
+            return "end-month=" + form.find('select[name="end-month"]').val();
         });
     
     
