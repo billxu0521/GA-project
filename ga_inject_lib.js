@@ -516,7 +516,14 @@ window.ga_submit_event = function (_selector, _event_type, _name) {
 
         // 蒐集form裡面的資料
         if (_name === undefined) {
-            _name = JSON.stringify( _obj.serializeArray() ).trim();
+             var _ary = _obj.serializeArray();
+             var _data = {};
+             for (var _i = 0; _i < _ary.length; _i++) {
+                 var _name = _ary[_i].name;
+                 var _value = _ary[_i].value;
+                 _data[_name] = _value;
+             }
+            _name = JSON.stringify(_data).trim();
             
             if (_name === "") {
                 _name = undefined;
