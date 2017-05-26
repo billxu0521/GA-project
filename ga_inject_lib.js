@@ -749,9 +749,11 @@ window.ga_display_timer = function (_style) {
         //"left": 0,
         "background-color": "#FFF",
         "font-size": "10px",
-        "opacity": 0.7,
+        "opacity": 0.5,
         "color":  "#333",
-        "z-index": 999999
+        "z-index": 999999,
+        "padding": "1px",
+        "line-height": "12px"
     });
     
     if (_style === undefined || _style === 9) {
