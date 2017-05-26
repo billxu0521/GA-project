@@ -42,7 +42,7 @@ var exec = function () {
     ga_mouse_click_event(".breadcrumb .unit:not(':eq(0)')","GL1-7");
 
     //GL1-8 搜尋列 click
-    ga_mouse_click_event('.btn-search-submit',"GL1-8"); // 遊客人數調查
+    ga_submit_event('.btn-search-submit',"GL1-8"); // 遊客人數調查
     ga_submit_event("#keyword", "GL1-8", function (_form) {
         return $("#keyword").val();
     });
