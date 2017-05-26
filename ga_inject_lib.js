@@ -618,6 +618,91 @@ window.ga_mouse_scroll_in_out_event = function(_selector, _event_type, _name) {
     });
 };
 
+/**
+ * 偵測畫面捲動的事件
+ * 可偵測物件是否出現在畫面中，並計算時間
+ * @param {String} _selector
+ * @param {String} _event_type
+ * @param {String} _name
+ */
+window.ga_mouse_scroll_in_event = function(_selector, _event_type, _name) {
+    if ($(_selector).length === 0) {
+        setTimeout(function () {
+            window.ga_mouse_scroll_in_event(_selector, _event_type, _name);
+        }, 1000);
+        return;
+    }
+    
+    if (_selector_length_caller(_selector, window.ga_mouse_scroll_in_event, _event_type, _name) === false) {
+        return;
+    }
+    
+    var _event_key = 'scroll_in_out';
+    var _classname = _get_event_classname(_event_key, _event_type);
+
+    var _id = GA_TIMER.length;
+    GA_TIMER.push(false);
+    
+    var _window = $(window);
+    
+    var _check_is_obj_display_in_window = function (_obj) {
+        var _obj_top = _obj.offset().top;
+        var _obj_bottom = _obj_top + _obj.height();
+        var _scroll_top_border = _window.scrollTop();
+        var _scroll_bottom_border = _scroll_top_border + _window.height();
+        
+        var _is_obj_under_scorll_top = (_obj_top > _scroll_top_border);
+        var _is_obj_above_scorll_bottom = (_obj_bottom < _scroll_bottom_border);
+        
+        var _is_obj_display_in_window = (_is_obj_under_scorll_top && _is_obj_above_scorll_bottom);
+        return _is_obj_display_in_window;
+    };
+    
+    // 捲動時偵測
+    _window.scroll(function() {
+        //console.log(["觸發", _selector]);
+        var _obj = $(_selector);
+        var _name_data = _get_element_name(_obj, _selector, _name);
+        
+        var _is_obj_display_in_window = _check_is_obj_display_in_window(_obj);
+        
+        if (_is_obj_display_in_window === false && GA_TIMER[_id] === false) {
+            // 沒事
+        }
+        else if (_is_obj_display_in_window === true && GA_TIMER[_id] === false) {
+            // 進入了，開始記錄事件
+            GA_TIMER[_id] = (new Date()).getTime();
+            _console_log([_event_type, _event_key + ": start", _name_data, GA_TIMER[_id]]);
+            
+            setTimeout(function () {
+                if (_check_is_obj_display_in_window(_obj)) {
+                    var _interval = parseInt(((new Date()).getTime() - GA_TIMER[_id])/1000, 10);
+                    _console_log([_event_type, _event_key + ": end", _name_data, _interval, "記錄"]);
+                    ga("send", "event", _event_type, _name_data, "scroll_in", _interval);
+                    GA_TIMER[_id] = false;
+                }
+            }, STAY_SAVE_MIN_INTERVAL * 1000);
+        }
+        /*
+        else if (_is_obj_display_in_window === true && GA_TIMER[_id] !== false) {
+            // 沒事
+        }
+        else if (_is_obj_display_in_window === false && GA_TIMER[_id] !== false) {
+            // 離開了
+            var _interval = parseInt(((new Date()).getTime() - GA_TIMER[_id])/1000, 10);
+            if (_interval > STAY_SAVE_MIN_INTERVAL) {
+                _console_log([_event_type, _event_key + ": end", _name_data, _interval, "記錄"]);
+                ga("send", "event", _event_type, _name_data, "scroll_in", _interval);
+            }
+            else {
+                _console_log([_event_type, _event_key + ": end", _name_data, _interval, "不記錄"]);
+            }
+            GA_TIMER[_id] = false;
+        }
+        */
+    });
+};
+
 // ------------------------------------
 
 /**

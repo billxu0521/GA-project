@@ -33,7 +33,7 @@ var exec = function () {
     ga_mouse_click_event(".btn-back-all","GL1-4");
 
     //GL1-5 麵包屑/首頁 click
-    ga_mouse_scroll_in_out_event('.breadcrumb:eq(0)',"GL1-5");
+    ga_mouse_scroll_in_event('.breadcrumb:eq(0)',"GL1-5");
 
     //GL1-6 click
     ga_mouse_click_event(".unit:eq(0)","GL1-6");
