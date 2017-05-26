@@ -170,8 +170,7 @@ window.set_user_id = function (_customUserId){
     ga('set', 'userId', _customUserId); // 使用已登入的 user_id 設定 User-ID。
     ga('set', DIMENSION, _customUserId); 
     
-    ga("send", "event", "set_user_id", _customUserId);
-    
+    ga("send", "event", "set_user_id",  window.location.pathname + ": " + _customUserId);
     //set_user_timer();
 };
 
@@ -190,7 +189,7 @@ window.fin_exp = function (){
     //var _time = (new Date()).getTime() - USER_TIMER;
     //_time = parseInt(_time / 1000, 10);
     
-    var _name = window.location.pathname + " :" + window.name;
+    var _name = window.location.pathname + ": " + window.name;
     window.name = '';
     //_console_log('end_exp: ' + _name + ", sec: " + _time);
     _console_log('end_exp: ' + _name);
@@ -607,7 +606,7 @@ var _get_element_name = function (_ele, _event_type, _name) {
         return  window.location.pathname + ": " + get_user_id() + ": " + _name;
     }
     else if (typeof(_name) === "function") {
-        return window.location.pathname + ":" + get_user_id() + ": " + _name(_ele);
+        return window.location.pathname + ": " + get_user_id() + ": " + _name(_ele);
     }
     
     try {
