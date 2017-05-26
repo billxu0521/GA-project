@@ -520,6 +520,9 @@ window.ga_submit_event = function (_selector, _event_type, _name) {
              var _data = {};
              for (var _i = 0; _i < _ary.length; _i++) {
                  var _name = _ary[_i].name;
+                 if (_name === "__RequestVerificationToken") {
+                     continue;
+                 }
                  var _value = _ary[_i].value;
                  _data[_name] = _value;
              }
