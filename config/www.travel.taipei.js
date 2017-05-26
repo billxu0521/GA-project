@@ -172,6 +172,7 @@ var exec = function () {
     ga_mouse_click_event('.btn-media-video',"GL5-5");
     ga_mouse_click_event('.btn-media-pano',"GL5-5");
     ga_mouse_click_event('.btn-media-voice',"GL5-5");
+    ga_mouse_click_event('.fast-link-list a.link',"GL5-5");
 
     //GL5-6  按鈕設計
     //ga_mouse_click_event('.thumb',"GL5-6");
@@ -183,8 +184,8 @@ var exec = function () {
     ga_mouse_click_event('.btn-media-video',"GL5-6");
     ga_mouse_click_event('.btn-media-pano',"GL5-6");
     ga_mouse_click_event('.btn-media-voice',"GL5-6");
+    ga_mouse_click_event('.fast-link-list a.link',"GL5-6");
     
-
 
     //GL6-2  跳離網域   
     ga_mouse_click_event('a[target="_blank"]:not(.js-photoswipe-item)',"GL6-2");
