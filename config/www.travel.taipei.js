@@ -195,7 +195,8 @@ var exec = function () {
         });
         $('.gsc-resultsbox-visible .gs-title > .gs-title:not(.event-binded)').addClass("event-binded");
     }, 500);
-
+    
+    ga_display_timer();
 };
 
 // --------------------------------------
