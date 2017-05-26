@@ -189,6 +189,7 @@ var exec = function () {
 
     //GL6-2  跳離網域   
     ga_mouse_click_event('a[target="_blank"]:not(.js-photoswipe-item)',"GL6-2");
+    ga_mouse_click_event('a:not([target="_blank"])',"GL6-2");
    
    setInterval(function () {
         ga_mouse_click_event('.gsc-resultsbox-visible .gs-title > .gs-title:not(.event-binded)',"GL6-2", function (_a) {
