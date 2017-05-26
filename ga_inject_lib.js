@@ -439,8 +439,11 @@ window.ga_input_change_event = function (_selector, _event_type, _name) {
     var _classname = _get_event_classname(_event_key, _event_type);
 
     $(_selector + ":not(." + _classname + ")").change(function () {
-        var _name_data = _get_element_name(this, _selector, _name);
-        
+        //var _name_data = _get_element_name(this, _selector, _name);
+        var _name_data = $(this).val();
+        var _input_name = $(this).attr("name");
+        _name_data = _input_name + "=" + _name_data;
+            
         _console_log([_event_type, _name_data, _event_key]);
         ga("send", "event", _event_type, _name_data, _event_key);
     }).addClass(_classname);
@@ -455,7 +458,7 @@ window.ga_input_change_event = function (_selector, _event_type, _name) {
 window.ga_input_keydown_enter_event = function (_selector, _event_type, _name) {
     if ($(_selector).length === 0) {
         setTimeout(function () {
-            window.ga_input_change_event(_selector, _event_type, _name);
+            window.ga_input_keydown_enter_event(_selector, _event_type, _name);
         }, 1000);
         return;
     }
@@ -464,9 +467,11 @@ window.ga_input_keydown_enter_event = function (_selector, _event_type, _name) {
     var _classname = _get_event_classname(_event_key, _event_type);
 
     $(_selector + ":not(." + _classname + ")").keydown(function (_e) {
-        console.log([$(this).prop("tagName").toLowerCase(), _e.keyCode]);
+        //console.log([$(this).prop("tagName").toLowerCase(), _e.keyCode]);
         if ($(this).prop("tagName").toLowerCase() === "input" && _e.keyCode === 13) {
             var _name_data = _get_element_name(this, _selector, _name);
+            var _input_name = $(this).attr("name");
+            _name_data = _input_name + "=" + _name_data;
 
             _console_log([_event_type, _name_data, _event_key]);
             ga("send", "event", _event_type, _name_data, _event_key);
