@@ -751,32 +751,35 @@ window.ga_display_timer = function (_style) {
         "font-size": "10px",
         "opacity": 0.7,
         "color":  "#333",
-        "border-radius": "0 5px 0 0",
         "z-index": 999999
     });
     
     if (_style === undefined || _style === 9) {
         _timer.css({
             "top": 0,
-            "right": 0
+            "right": 0,
+            "border-radius": "0 0 0 5px"
         });
     }
     else if (_style === 3) {
         _timer.css({
             "bottom": 0,
-            "right": 0
+            "right": 0,
+            "border-radius": "5px 0 0 0"
         });
     }
     else if (_style === 1) {
         _timer.css({
             "bottom": 0,
-            "left": 0
+            "left": 0,
+            "border-radius": "0 5px 0 0"
         });
     }
     else if (_style === 1) {
         _timer.css({
             "top": 0,
-            "left": 0
+            "left": 0,
+            "border-radius": "0 5px 0 0"
         });
     }
     
