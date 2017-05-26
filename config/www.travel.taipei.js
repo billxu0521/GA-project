@@ -197,6 +197,7 @@ var exec = function () {
     }, 500);
     
     ga_display_timer(9);
+    enable_screen_recorder();
 };
 
 // --------------------------------------
