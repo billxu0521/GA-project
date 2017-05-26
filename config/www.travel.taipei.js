@@ -184,7 +184,9 @@ var exec = function () {
     ga_mouse_click_event('a[target="_blank"]:not(.js-photoswipe-item)',"GL6-2");
    
    setInterval(function () {
-        ga_mouse_click_event('.gsc-resultsbox-visible .gs-title > .gs-title:not(.event-binded)',"GL6-2");
+        ga_mouse_click_event('.gsc-resultsbox-visible .gs-title > .gs-title:not(.event-binded)',"GL6-2", function (_a) {
+            return $(_a).text();
+        });
         $('.gsc-resultsbox-visible .gs-title > .gs-title:not(.event-binded)').addClass("event-binded");
     }, 500);
 
