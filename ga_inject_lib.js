@@ -676,6 +676,10 @@ var _get_element_name = function (_ele, _event_type, _name) {
 
     if (typeof(_name) === "string") {
         _name = _name.trim();
+        
+        while (_name.indexOf("  ") > -1) {
+            _name = _name.split("  ").join(" ");
+        }
     }
     
     _name = get_user_id() + ": " + _get_time() + ": " + window.location.pathname + ": " + _name;
