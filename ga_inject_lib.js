@@ -392,7 +392,7 @@ window.ga_mouse_down_event = function (_selector, _event_type, _name) {
         var _name_data = _get_element_name(this, _selector, _name);
         _console_log([_event_type, _name_data, _event_key]);
         ga("send", "event", _event_type, _name_data, _event_key);
-    });
+    }).addClass(_classname);
 };
 
 /**
@@ -417,7 +417,7 @@ window.ga_mouse_touch_event = function (_selector, _event_type, _name) {
 
           _console_log([_event_type, _name_data, _event_key]);
           ga("send", "event", _event_type, _name_data, _event_key);
-      });
+      }).addClass(_classname);
 };
 
 /**
