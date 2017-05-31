@@ -182,6 +182,10 @@ window.set_user_id = function (_customUserId){
     
     _console_log("Set user id: " + _customUserId);
    
+    if (window.name !== _customUserId) {
+        ga("send", "event", "end_exp", window.name);
+    }
+   
     window.name = _customUserId;
     
     ga('create', GA_TRACE_CODE, {'userId': _customUserId});
