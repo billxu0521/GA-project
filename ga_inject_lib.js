@@ -194,6 +194,7 @@ window.set_user_id = function (_customUserId){
     ga('set', 'userId', _customUserId); // 使用已登入的 user_id 設定 User-ID。
     ga('set', DIMENSION, _customUserId); 
     
+    // 改用統一取得header的方式
     var _name_header = _get_element_name();
     ga("send", "event", "start_exp", _name_header);
     //set_user_timer();
