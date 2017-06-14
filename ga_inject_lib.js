@@ -122,11 +122,13 @@ var get_user_ip = function(){
     });
 };
 
+USER_IP = undefined;
 window.auto_set_user_id = function(_callback){
     if (get_user_id() === "anonymous") {
         $.getJSON('https://ipinfo.io', function(data){
-            set_user_id(String(data['ip']));    
-            _console_log("Set user id in ip: " + data['ip']);
+            USER_IP = String(data['ip']);
+            set_user_id(USER_IP);    
+            _console_log("Set user id in ip: " + USER_IP);
             if (typeof(_callback) === "function") {
                 _callback();
             }
@@ -192,7 +194,8 @@ window.set_user_id = function (_customUserId){
     ga('set', 'userId', _customUserId); // 使用已登入的 user_id 設定 User-ID。
     ga('set', DIMENSION, _customUserId); 
     
-    ga("send", "event", "start_exp",  _customUserId + ": " + _get_time() + ": " + window.location.pathname);
+    var _name_header = _get_element_name();
+    ga("send", "event", "start_exp", _name_header);
     //set_user_timer();
     
 };
@@ -761,7 +764,14 @@ _load_css(CSS_URL);
  */
 var _get_element_name = function (_ele, _event_type, _name) {
     
-    var _name_header = get_user_id() + ": " + _get_time() + ": " + window.location.pathname + ": ";
+    var _name_header = get_user_id() + ": " + USER_IP + ": " + _get_time() + ": " + window.location.pathname;
+    
+    if (_ele !== undefined) {
+        _name_header = _name_header + ": ";
+    }
+    else {
+        return _name_header;
+    }
     
     _ele = $(_ele);
     if (typeof(_name) === "string") {
