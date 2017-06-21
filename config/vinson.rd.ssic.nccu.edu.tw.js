@@ -22,11 +22,15 @@ else {
 var exec = function () {
     auto_set_user_id();   
 
-    //麵包導航
-    ga_mouse_click_event(".locationBar","導航");
-    //按鈕
-    ga_mouse_click_event(".btn","按鈕");
+    //搜尋按鈕
+    ga_mouse_click_event(".glyphicon glyphicon-search","Click");
 
+    //偵測搜尋表單
+     ga_submit_event('.tquery > form',"Form", 
+        function(form){
+            console.log("submit act"+form);
+            return "start-year=" + form.find('select[name="start-year"]').val();
+        });
 
 };
 
