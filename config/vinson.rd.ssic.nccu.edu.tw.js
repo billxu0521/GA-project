@@ -24,6 +24,9 @@ var exec = function () {
 
     //搜尋按鈕
     ga_mouse_click_event(".glyphicon glyphicon-search","Click");
+    ga_mouse_click_event('a[title="文集瀏覽"]', "Click");
+    ga_mouse_click_event(".evenRowEvenCol", "Click");
+
 
     //偵測搜尋表單
      ga_submit_event('.tquery > form',"Form", 
@@ -31,6 +34,8 @@ var exec = function () {
             console.log("submit act"+form);
             return "start-year=" + form.find('select[name="start-year"]').val();
         });
+
+     
 
 };
 
