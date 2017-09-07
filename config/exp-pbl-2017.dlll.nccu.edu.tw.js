@@ -20,7 +20,7 @@ else {
 
 
 var exec = function () {
-    auto_set_user_id();   
+    
 
     //這邊放偵測腳本內文
    
