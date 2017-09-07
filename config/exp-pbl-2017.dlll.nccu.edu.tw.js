@@ -4,7 +4,7 @@
  * @author Pudding 20170203
  */
 
-GA_TRACE_CODE = "這邊放GA碼";
+GA_TRACE_CODE = "UA-106072632-1";
 
 var _local_debug = false;
 
