@@ -54,7 +54,10 @@ if (false) {
  * @returns {undefined}
  */
 window.ga_setup = function (_callback) {
+	_console_log("1. 在插入GA之前");
+	
     $.getScript("https://www.google-analytics.com/analytics.js", function () {
+		_console_log("2. 插入GA了");
         
         var _user = get_user_id();
         ga('create', GA_TRACE_CODE, {'userId': _user});  
@@ -62,8 +65,12 @@ window.ga_setup = function (_callback) {
         ga('require', 'displayfeatures');
         ga('set', 'userId', _user); // 使用已登入的 user_id 設定 User-ID。
         ga('set', 'dimension1', _user);
+		
+		_console_log("3. GA設定了");
         
         auto_set_user_id(function () {
+			_console_log("4. User ID設定好了");
+			
             /**
              * 初始化載入
              */
@@ -93,13 +100,18 @@ window.ga_setup = function (_callback) {
  * @returns {window.name|window.get_user_id|DOMString|String}
  */
 var get_user_id = function(){
-    if (window.name === null 
-            || window.name === undefined 
-            || window.name.trim() === ""){
+	var _win = window;
+	if (typeof(_win.top) === "object") {
+		_win = _win.top;
+	}
+	
+    if (_win.name === null 
+            || _win.name === undefined 
+            || _win.name.trim() === ""){
       return "anonymous";
     } 
     else {
-        return window.name;
+        return _win.name;
     }    
 };
 
@@ -124,12 +136,22 @@ var get_user_ip = function(){
 
 USER_IP = undefined;
 window.auto_set_user_id = function(_callback){
+	
+	_console_log("3.1. 開始 auto_set_user_id");
+	
     if (get_user_id() === "anonymous") {
-        $.getJSON('https://ipinfo.io', function(data){
+		_console_log("3.2. anonymous");
+		
+        getJSONP('https://ipinfo.io', function(data){
+			_console_log("3.3. https://ipinfo.io");
+			
+			
             USER_IP = String(data['ip']);
             set_user_id(USER_IP);    
             _console_log("Set user id in ip: " + USER_IP);
             if (typeof(_callback) === "function") {
+				
+				_console_log("3.4. ok");
                 _callback();
             }
         });
@@ -140,6 +162,24 @@ window.auto_set_user_id = function(_callback){
         }
     }
 };
+
+window.getJSONP = function (_url, _callback) {
+	$.ajax({
+	  url: _url,
+	  cache: false,
+	  dataType: "jsonp",
+	  success: _callback,
+	  contentType: "application/json; charset=utf-8",
+	  error: function (request, status, error) { alert(status + ", " + error); }
+	});
+};
+
+if (!String.prototype.trim) {
+  String.prototype.trim = function () {
+    return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
+  };
+}
+
 
 Number.prototype.padLeft = function(base,chr){
     var  len = (String(base || 10).length - String(this).length)+1;
@@ -184,11 +224,17 @@ window.set_user_id = function (_customUserId){
     
     _console_log("Set user id: " + _customUserId);
    
-    if (window.name !== _customUserId) {
-        ga("send", "event", "end_exp", window.name);
+   
+    var _win = window;
+	if (typeof(_win.top) === "object") {
+		_win = _win.top;
+	}
+   
+    if (_win.name !== _customUserId) {
+        ga("send", "event", "end_exp", _win.name);
     }
    
-    window.name = _customUserId;
+    _win.name = _customUserId;
     
     ga('create', GA_TRACE_CODE, {'userId': _customUserId});
     ga('set', 'userId', _customUserId); // 使用已登入的 user_id 設定 User-ID。
@@ -199,6 +245,12 @@ window.set_user_id = function (_customUserId){
     ga("send", "event", "start_exp", _name_header);
     //set_user_timer();
     
+};
+
+window.set_user_id_by_trigger = function (_trigger_selector, _user_id_getter) {
+	if ($(_trigger_selector).length > 0) {
+		set_user_id(_user_id_getter());
+	}
 };
 
 window.start_exp = function (_customUserId) {
@@ -217,7 +269,13 @@ window.fin_exp = function (){
     //_time = parseInt(_time / 1000, 10);
     
     var _name = get_user_id() + ": " + _get_time() + ": " + window.location.pathname;
-    window.name = '';
+	
+	var _win = window;
+	if (typeof(_win.top) === "object") {
+		_win = _win.top;
+	}
+	
+    _win.name = '';
     //_console_log('end_exp: ' + _name + ", sec: " + _time);
     _console_log('end_exp: ' + _name);
     
@@ -345,9 +403,9 @@ window.ga_mouse_drag_event = function(_selector, _event_type, _name) {
 
 /**
  * 偵測滑鼠點擊的事件
- * @param {String} _selector
- * @param {String} _event_type
- * @param {String} _name
+ * @param {String} _selector CSS的選取器
+ * @param {String} _event_type GA event type (field name)
+ * @param {String} _name GA other information
  */
 window.ga_mouse_click_event = function (_selector, _event_type, _name) {
     
@@ -724,6 +782,7 @@ window.ga_mouse_scroll_in_event = function(_selector, _event_type, _name) {
     });
 };
 
+
 // ------------------------------------
 
 /**
@@ -752,7 +811,10 @@ var _load_css = function (_css_url) {
     head.appendChild(link);
 };
 
-_load_css(CSS_URL);
+if (typeof(CSS_URL) === "string") {
+	_load_css(CSS_URL);
+}
+
 
 /**
  * 取得元素的可讀取元素
@@ -958,6 +1020,37 @@ window.enable_screen_recorder = function () {
         });
     });
 };
+
+window.getCookie = function(cname) {
+	var name = cname + "=";
+	var decodedCookie;
+	//var decodedCookie = decodeURIComponent(document.cookie);
+	try {
+		decodedCookie = decodeURIComponent(document.cookie);
+	}
+	catch (e) {
+		decodedCookie = document.cookie;
+	}
+		
+	var ca = decodedCookie.split(';');
+	for(var i = 0; i <ca.length; i++) {
+		var c = ca[i];
+		while (c.charAt(0) == ' ') {
+			c = c.substring(1);
+		}
+		if (c.indexOf(name) == 0) {
+			var result = c.substring(name.length, c.length);
+			result = decodeURIComponent(result);
+			// encodeURI / decodeURI
+			// encodeURIComponent / dece..
+			// escape / unescape
+			return result;
+		}
+	}
+	return "";
+};
+
+// -----------------------------------------------
 
 CONSOLE_LOG = [];
 
