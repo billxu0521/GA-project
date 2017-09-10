@@ -4,17 +4,17 @@
  * @author Pudding 20170203
  */
 
-GA_TRACE_CODE = "UA-106072632-1";
+GA_TRACE_CODE = "UA-93246317-1";
 
 var _local_debug = false;
 
 if (_local_debug === true) {
-    CSS_URL = "https://localhost/GA-project/config/exp-pbl-2017.dlll.nccu.edu.tw.css";
+    CSS_URL = "https://localhost/GA-project/config/andylain.blogspot.tw.css";
     LIB_URL = "https://localhost/GA-project/ga_inject_lib.js";
     console.log("[LOCAL TEST MODE]");
 }
 else {
-    CSS_URL = "https://billxu0521.github.io/GA-project/config/exp-pbl-2017.dlll.nccu.edu.tw.css";
+    CSS_URL = "https://billxu0521.github.io/GA-project/config/andylain.blogspot.tw.css";
     LIB_URL = "https://billxu0521.github.io/GA-project/ga_inject_lib.js";
 }
 
@@ -23,7 +23,8 @@ var exec = function () {
     
 
     //這邊放偵測腳本內文
-   
+   	ga_mouse_click_event('a[href]', "link", function (_ele) {
+		return _ele.attr("href");
 };
 
 
