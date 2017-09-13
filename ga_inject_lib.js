@@ -268,7 +268,12 @@ window.fin_exp = function (){
     //var _time = (new Date()).getTime() - USER_TIMER;
     //_time = parseInt(_time / 1000, 10);
     
-    var _name = get_user_id() + ": " + _get_time() + ": " + window.location.pathname;
+	var _hash = location.hash;
+	if (_hash !== "") {
+		_hash = "#" + _hash;
+	}
+	
+    var _name = get_user_id() + ": " + _get_time() + ": " + window.location.pathname + window.location.search + _hash;
 	
 	var _win = window;
 	if (typeof(_win.top) === "object") {
@@ -827,7 +832,12 @@ if (typeof(CSS_URL) === "string") {
  */
 var _get_element_name = function (_ele, _event_type, _name) {
     
-    var _name_header = get_user_id() + ": " + USER_IP + ": " + _get_time() + ": " + window.location.pathname;
+	var _hash = location.hash;
+	if (_hash !== "") {
+		_hash = "#" + _hash;
+	}
+	
+    var _name_header = get_user_id() + ": " + USER_IP + ": " + _get_time() + ": " + window.location.pathname + window.location.search + _hash;
     
     if (_ele !== undefined) {
         _name_header = _name_header + ": ";
