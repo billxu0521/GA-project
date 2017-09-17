@@ -28,6 +28,7 @@ var exec = function () {
     ga_mouse_click_event(".evenRowEvenCol", "Click");
     ga_mouse_click_event(".oddRowEvenCol", "Click");
     ga_mouse_click_event("[href]", "Click");
+    ga_mouse_click_event("[name='submit']", "Click");
 
     //偵測搜尋表單
     /*ga_submit_event('#glyphicon glyphicon-search > form',"Form", 
