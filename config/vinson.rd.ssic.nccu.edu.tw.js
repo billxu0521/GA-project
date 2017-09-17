@@ -36,7 +36,7 @@ var exec = function () {
             return "start-year=" + form.find('select[name="start-year"]').val();
         });
     */
-    ga_submit_event("input[class='submit']","Form");
+    ga_submit_event("form","Form");
      
 
 };
