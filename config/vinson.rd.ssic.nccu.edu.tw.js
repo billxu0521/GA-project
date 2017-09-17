@@ -37,8 +37,9 @@ var exec = function () {
         });
     */
     ga_submit_event("form","Form");
-     
-
+    $( "form" ).submit(function() {
+        console.log("HELLO");
+    });
 };
 
 
