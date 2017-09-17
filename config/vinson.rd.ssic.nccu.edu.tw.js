@@ -30,13 +30,13 @@ var exec = function () {
     ga_mouse_click_event("[href]", "Click");
 
     //偵測搜尋表單
-     ga_submit_event('#glyphicon glyphicon-search > form',"Form", 
+    ga_submit_event('#glyphicon glyphicon-search > form',"Form", 
         function(form){
             console.log("submit act"+form);
             return "start-year=" + form.find('select[name="start-year"]').val();
         });
 
-    ga_submit_event('#tquery',"Form");
+    ga_submit_event('#tquery',"Form",'123');
      
 
 };
