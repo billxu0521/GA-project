@@ -622,6 +622,9 @@ window.ga_submit_event = function (_selector, _event_type, _name) {
         _console_log([_event_type, _name_data, _event_key]);
         ga("send", "event", _event_type, _name_data, _event_key);
         var _form = $(this);
+        if (_form.prop("tagName").toLowerCase() !== "form") {
+            _form = _form.parents("form:first");
+        }
         setTimeout(function () {
             window.DENY_SUBMIT = false;
             _form.submit();
