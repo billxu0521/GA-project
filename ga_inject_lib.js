@@ -595,10 +595,8 @@ window.ga_submit_event = function (_selector, _event_type, _name) {
     window.DENY_SUBMIT = true;
     _obj.submit(function () {
         if (window.DENY_SUBMIT === false) {
-          console.log("5");
           return;
         }
-        console.log("0");
         // 蒐集form裡面的資料
         if (_name === undefined) {
              var _ary = _obj.serializeArray();
@@ -626,16 +624,11 @@ window.ga_submit_event = function (_selector, _event_type, _name) {
         if (_form.prop("tagName").toLowerCase() !== "form") {
             _form = _form.parents("form:first");
         }
-        console.log("1");
         setTimeout(function () {
             window.DENY_SUBMIT = false;
-            console.log("2");
             _form.submit();
-            console.log("3");
         }, 200);
-        console.log("4");
-        //return ;
-
+        return ;
     });        
 };
 
