@@ -596,7 +596,7 @@ window.ga_submit_event = function (_selector, _event_type, _name) {
     _obj.submit(function () {
         if (window.DENY_SUBMIT === false) {
           console.log("5");
-          return true;
+          return;
         }
         console.log("0");
         // 蒐集form裡面的資料
@@ -634,7 +634,7 @@ window.ga_submit_event = function (_selector, _event_type, _name) {
             console.log("3");
         }, 200);
         console.log("4");
-        return false;
+        return ;
 
     });        
 };
