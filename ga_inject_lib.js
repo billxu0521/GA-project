@@ -631,7 +631,7 @@ window.ga_submit_event = function (_selector, _event_type, _name) {
             console.log("2");
             _form.submit();
             console.log("3");
-        }, 100);
+        }, 200);
         console.log("4");
         return false;
 
