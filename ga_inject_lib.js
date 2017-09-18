@@ -627,7 +627,7 @@ window.ga_submit_event = function (_selector, _event_type, _name) {
         setTimeout(function () {
             window.DENY_SUBMIT = false;
             _form.submit();
-        }, 200);
+        }, 1000);
         return false ;
     });        
 };
