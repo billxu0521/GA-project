@@ -622,14 +622,17 @@ window.ga_submit_event = function (_selector, _event_type, _name) {
         _console_log([_event_type, _name_data, _event_key]);
         ga("send", "event", _event_type, _name_data, _event_key);
         var _form = $(this);
-        console.log("_form"+_form.prop("tagName"));
         if (_form.prop("tagName").toLowerCase() !== "form") {
             _form = _form.parents("form:first");
         }
+        console.log("1");
         setTimeout(function () {
             window.DENY_SUBMIT = false;
+            console.log("2");
             _form.submit();
+            console.log("3");
         }, 100);
+        console.log("4");
         return false;
 
     });        
