@@ -622,7 +622,7 @@ window.ga_submit_event = function (_selector, _event_type, _name) {
         _console_log([_event_type, _name_data, _event_key]);
         ga("send", "event", _event_type, _name_data, _event_key);
         var _form = $(this);
-        console.log("_form"+_form);
+        console.log("_form"+_form.prop("tagName"));
         if (_form.prop("tagName").toLowerCase() !== "form") {
             _form = _form.parents("form:first");
         }
