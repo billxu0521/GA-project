@@ -634,7 +634,7 @@ window.ga_submit_event = function (_selector, _event_type, _name) {
             console.log("3");
         }, 200);
         console.log("4");
-        return ;
+        //return ;
 
     });        
 };
