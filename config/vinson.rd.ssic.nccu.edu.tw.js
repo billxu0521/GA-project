@@ -24,22 +24,26 @@ var exec = function () {
 
     //搜尋按鈕
     ga_mouse_click_event(".glyphicon glyphicon-search","Click");
-    ga_mouse_click_event('a[title="文集瀏覽"]', "Click");
+    ga_mouse_click_event('a[title="文集瀏覽"]', "Click", function (_ele) {
+        return _ele.text();});
     ga_mouse_click_event(".evenRowEvenCol", "Click");
     ga_mouse_click_event(".oddRowEvenCol", "Click");
-    ga_mouse_click_event("[href]", "Click");
-    ga_mouse_click_event("[name='submit']", "Click");
+    ga_mouse_click_event("[href]", "Click", function (_ele) {
+        return _ele.text();});
+    ga_mouse_click_event("[name='submit']", "Click", function (_ele) {
+        return _ele.text();});
    
 
-
     //偵測搜尋表單
-    /*ga_submit_event('#glyphicon glyphicon-search > form',"Form", 
+    /*
+    ga_submit_event('#glyphicon glyphicon-search > form',"Form", 
         function(form){
             console.log("submit act"+form);
             return "start-year=" + form.find('select[name="start-year"]').val();
         });
     */
-    ga_submit_event("form","Form");
+    ga_submit_event("form", "Form", function (_ele) {
+        return _ele.text();});
     
 };
 
