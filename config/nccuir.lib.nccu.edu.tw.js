@@ -23,7 +23,7 @@ var exec = function () {
     auto_set_user_id();   
 
     //偵測語法
-    
+    ga_mouse_click_event("選擇要素","準則");
 
 
 // --------------------------------------
