@@ -4,7 +4,7 @@
  * @author Pudding 20170203
  */
 
-GA_TRACE_CODE = "GA的追蹤碼";
+GA_TRACE_CODE = "UA-4495770-9";
 
 var _local_debug = false;
 
