@@ -4,7 +4,8 @@
  * @author Pudding 20170203
  */
 
-GA_TRACE_CODE = "UA-4495770-9";
+//GA_TRACE_CODE = "UA-4495770-9";  //-> nccur
+GA_TRACE_CODE = "UA-107585606-1";  //->acdemichub
 
 var _local_debug = false;
 
