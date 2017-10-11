@@ -4,8 +4,7 @@
  * @author Pudding 20170203
  */
 
-//GA_TRACE_CODE = "UA-4495770-9";  //-> nccur
-GA_TRACE_CODE = "UA-107585606-1";  //->acdemichub
+GA_TRACE_CODE = "UA-107585606-1";
 
 var _local_debug = false;
 
@@ -24,7 +23,15 @@ var exec = function () {
     auto_set_user_id();   
 
     //偵測語法
-    ga_mouse_click_event("選擇要素","準則");
+    //ga_mouse_click_event("選擇要素","準則");
+    ga_mouse_click_event('a[title="主頁"]', "Click");
+    ga_mouse_click_event('a[title="登入"]', "Click");
+    ga_mouse_click_event('a[title="關於學術集成"]', "Click");
+    ga_mouse_click_event('a[title="研究者"]', "Click");
+    ga_mouse_click_event('a[title="學系"]', "Click");
+    ga_mouse_click_event('a[title="學術產出"]', "Click");
+    ga_mouse_click_event(".btn","Click");
+    ga_mouse_click_event(".btn scholar_href","Click");
 };
 
 // --------------------------------------
