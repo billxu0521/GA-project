@@ -24,14 +24,10 @@ var exec = function () {
 
     //偵測語法
     //ga_mouse_click_event("選擇要素","準則");
-    ga_mouse_click_event('a[title="主頁"]', "Click");
-    ga_mouse_click_event('a[title="登入"]', "Click");
-    ga_mouse_click_event('a[title="關於學術集成"]', "Click");
-    ga_mouse_click_event('a[title="研究者"]', "Click");
-    ga_mouse_click_event('a[title="學系"]', "Click");
-    ga_mouse_click_event('a[title="學術產出"]', "Click");
     ga_mouse_click_event(".btn","Click");
     ga_mouse_click_event(".btn scholar_href","Click");
+    ga_mouse_click_event("[href]", "Click", function (_ele) {
+        return _ele.text();});
 };
 
 // --------------------------------------
