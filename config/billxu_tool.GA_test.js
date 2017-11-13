@@ -22,8 +22,8 @@ else {
 var exec = function () {
     auto_set_user_id();   
 
-    //搜尋按鈕
-    ga_mouse_click_event(".btn","Click");
+    //按鈕
+    ga_mouse_click_event("#btn_1","Click");
     
 };
 
