@@ -9,12 +9,12 @@ GA_TRACE_CODE = "UA-89833109-5";
 var _local_debug = false;
 
 if (_local_debug === true) {
-    CSS_URL = "https://localhost/GA-project/config/billxu0521.github.io/billxu_tool/GA_test.css";
+    CSS_URL = "https://localhost/GA-project/config/billxu_tool.GA_test.css";
     LIB_URL = "https://localhost/GA-project/ga_inject_lib.js";
     console.log("[LOCAL TEST MODE]");
 }
 else {
-    CSS_URL = "https://billxu0521.github.io/GA-project/config/billxu0521.github.io/billxu_tool/GA_test.css";
+    CSS_URL = "https://billxu0521.github.io/GA-project/config/billxu_tool.GA_test.css";
     LIB_URL = "https://billxu0521.github.io/GA-project/ga_inject_lib.js";
 }
 
