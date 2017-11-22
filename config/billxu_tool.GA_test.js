@@ -31,7 +31,7 @@ var exec = function () {
 
     //表單送出
     ga_submit_event($(".form_text", "submit", function (_ele) {
-          return _ele.text();});
+          return _ele.text();  
       });
 };
 
