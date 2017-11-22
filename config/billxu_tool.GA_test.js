@@ -5,7 +5,7 @@
  */
 
 GA_TRACE_CODE = "UA-89833109-5";
-
+        
 var _local_debug = false;
 
 if (_local_debug === true) {
@@ -23,8 +23,16 @@ var exec = function () {
     auto_set_user_id();   
 
     //按鈕
-    ga_mouse_click_event("#btn_1","Click");
+    ga_mouse_click_event("#btn_1","Click Btn_1");
+    ga_mouse_click_event(".btn","Click Btn");
 
+    //滑鼠滑入滑出
+    ga_mouse_over_event(".img","Hover img");
+
+    //表單送出
+    ga_submit_event($(".form_text", "submit", function (_ele) {
+          return _ele.text();});
+      });
 };
 
 
