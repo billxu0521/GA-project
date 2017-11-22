@@ -23,8 +23,8 @@ var exec = function () {
     auto_set_user_id();   
 
     //按鈕
-    ga_mouse_click_event($('.text').val(),"Click");
-    
+    ga_mouse_click_event($('#btn_1').val(),"Click");
+
 };
 
 
