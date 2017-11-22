@@ -30,9 +30,9 @@ var exec = function () {
     ga_mouse_over_event(".img","Hover img");
 
     //表單送出
-    ga_submit_event($(".form_text", "submit", function (_ele) {
-          return _ele.text();  
-      });
+    ga_submit_event(".form_text", "submit", function (_ele) {
+        return _ele.text();});
+    
 };
 
 
