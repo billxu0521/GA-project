@@ -22,8 +22,8 @@ else {
 var exec = function () {
     auto_set_user_id();   
 //這邊放腳本
-
-    
+    ga_mouse_click_event(".btn","Click");
+    ga_mouse_click_event("[href]","Click");    
 };
 
 
