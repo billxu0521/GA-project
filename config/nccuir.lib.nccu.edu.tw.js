@@ -25,10 +25,11 @@ var exec = function () {
     //偵測語法
     //ga_mouse_click_event("選擇要素","準則");
     ga_mouse_click_event(".btn","Click");
+    ga_mouse_click_event(".btn gsc-search-button gsc-search-button-v2","Click"); //GOOGLE站內搜尋
     ga_mouse_click_event(".btn scholar_href","Click");
     ga_mouse_click_event(".btn btn-info btn-lg mouse_clickClick","Click");
     ga_mouse_click_event("[href]", "Click", function (_ele) {
-        return _ele.text();});
+        return _ele.text()+_ele.;});
     ga_submit_event("form", "Form", function (_ele) {
         return _ele.text();});
 };
