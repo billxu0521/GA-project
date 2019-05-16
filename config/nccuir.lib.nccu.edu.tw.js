@@ -25,8 +25,6 @@ var exec = function () {
     //偵測語法
     //ga_mouse_click_event("選擇要素","準則");
     ga_mouse_click_event(".btn","Click");
-    ga_mouse_click_event("[input]", "Click", function (_ele) {
-        return _ele.text();});
     ga_mouse_click_event(".btn gsc-search-button gsc-search-button-v2","Click"); //GOOGLE站內搜尋
     ga_mouse_click_event(".btn scholar_href","Click");
     ga_mouse_click_event(".btn mouse_clickClick","Click"); //首頁「統計資訊-更多...>>」、「學術動態-更多...>>」…首頁的眾多滑鼠事件
