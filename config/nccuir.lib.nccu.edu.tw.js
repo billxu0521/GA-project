@@ -31,6 +31,8 @@ var exec = function () {
     ga_mouse_click_event(".btn scholar_href mouse_clickClick","Click");
     ga_mouse_click_event(".btn scholar_href","Click");
     ga_mouse_click_event(".btn btn-info btn-lg mouse_clickClick","Click"); //首頁「研究/學術產出」搜尋按鈕
+    ga_mouse_click_event("[input]", "Click", function (_ele) {
+        return _ele.value();});
     ga_mouse_click_event("[href]", "Click", function (_ele) {
         return _ele.text();});
     ga_submit_event("form", "Form", function (_ele) {
