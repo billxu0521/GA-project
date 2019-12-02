@@ -42,8 +42,7 @@ var exec = function () {
         return _ele.text();});
     ga_submit_event("form", "Form", function (_ele) {
         return _ele.text();});
-    };
-
+    
     //思洋實驗用
     ga_mouse_click_event("#search_scholar","Home_Search_Researcher", $('#scholar_name').val());
     ga_mouse_click_event("#search_item",'Home_Search_Publication',$('#item_name').val());
@@ -51,6 +50,12 @@ var exec = function () {
     ga_mouse_click_event('li .a:contains("學系")','Home_Browse_Researcher');
     ga_mouse_click_event('li .a:contains("學術產出")','Home_Browse_Publication');
     ga_mouse_click_event('.scholar_img','Home_Browse_Dinstinguished Scholar');
+
+
+
+    };
+
+    
 
 
 
