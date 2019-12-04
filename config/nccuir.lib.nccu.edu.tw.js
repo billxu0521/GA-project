@@ -73,7 +73,7 @@ var exec = function () {
     ga_mouse_click_event('div.panel-body.sub-id-panel span a','Researcher_Resume');
 
     //登入
-    ga_mouse_click_event('input.btn[name="login_submit"]','Login_Click');
+    ga_submit_event('input.btn[name="login_submit"]','Login_Click');
 
 
 console.log($('input.btn[name="login_submit"]'));
