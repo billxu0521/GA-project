@@ -73,12 +73,13 @@ var exec = function () {
     ga_mouse_click_event('div.panel-body.sub-id-panel span a','Researcher_Resume');
 
     //登入
-    ga_submit_event('#loginform','Login_Click');
+    ga_submit_event('form#loginform','Login_Click',function (_ele) {
+        return '';
+    });
 
 
 console.log();
-
-
+    
     };
 
     
