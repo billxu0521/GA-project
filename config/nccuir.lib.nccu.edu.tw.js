@@ -42,7 +42,6 @@ var exec = function () {
         return _ele.text();});
     ga_submit_event("form", "Form", function (_ele) {
         return _ele.text();});
-    console.log($('#search_scholar'));
     
 
     //思洋實驗用
@@ -77,7 +76,7 @@ var exec = function () {
     ga_mouse_click_event('input[name="login_submit"]','Login_Click');
 
 
-console.log();
+console.log($('.btn[name="login_submit"]'));
 
 
     };
