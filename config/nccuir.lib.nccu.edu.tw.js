@@ -43,16 +43,33 @@ var exec = function () {
     ga_submit_event("form", "Form", function (_ele) {
         return _ele.text();});
     console.log($('#search_scholar'));
+    
+
     //思洋實驗用
     ga_mouse_click_event("#search_scholar","Home_Search_Researcher", function (_input) {
         return $('#scholar_name').val();
     });
-    ga_mouse_click_event("#search_item",'Home_Search_Publication',$('#item_name').val());
+    ga_mouse_click_event("#search_item","Home_Search_Publication", function (_input) {
+        return $('#item_name').val();
+    });
     ga_mouse_click_event('.sec1c ul li a:contains("研究者")','Home_Browse_Researcher');
     ga_mouse_click_event('.sec1c ul li a:contains("學系")','Home_Browse_Researcher');
     ga_mouse_click_event('.sec1c ul li a:contains("學術產出")','Home_Browse_Publication');
+    ga_mouse_click_event('#top-menu ul li a:contains("Post-Print")','Home_Browse_Publication');
+
     ga_mouse_click_event('a.scholar_href','Home_Browse_Dinstinguished Scholar');
 
+    ga_mouse_click_event('.text-center .mouse_clickClick','Researcher List_Click');
+    ga_mouse_click_event('#form-search div div #submit-button','Researcher List_Search',function (_input) {
+        return $('input[name="scholar_name"]').val() + '/' + $('[name="topCommunity"] option:selected"').text();
+    });
+
+
+
+    ga_mouse_click_event('div.panel-body.sub-id-panel span a','Researcher_Resume');
+
+
+console.log();
 
 
     };
