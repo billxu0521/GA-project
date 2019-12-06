@@ -68,7 +68,7 @@ console.log($('input[name="scholar_name"]'));
         return _ele.text();});
     ga_mouse_click_event('#researcher_list div.col-lg-9 div h2 a','Researcher List_Search');
     ga_mouse_click_event('#researcher_list div.col-lg-9 div #form-search div div #submit-button','Researcher List_Search',function (_input) {
-        return $('input[name="scholar_name"]').val() + '/' + $(' #researcher_list div.col-lg-9 div #form-search div div > [name="topCommunity"] option:selected"').text();
+        return ($('input[name="scholar_name"]').val() + '/' + $('[name="topCommunity"] option:selected"').text());
     });
 
 
