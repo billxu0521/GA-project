@@ -24,6 +24,7 @@ var exec = function () {
 
     //偵測語法
     //ga_mouse_click_event("選擇要素","準則");
+    /*
     ga_mouse_click_event(".btn","Click");
     ga_mouse_click_event("input.gsc-search-button gsc-search-button-v2","Click"); //GOOGLE站內搜尋
     ga_input_keydown_enter_event(".gsc-search-box input.gsc-input", "Click", function (_input) {
@@ -42,7 +43,7 @@ var exec = function () {
         return _ele.text();});
     ga_submit_event("form", "Form", function (_ele) {
         return _ele.text();});
-    
+    */
 
     //思洋實驗用
     //主頁
@@ -60,7 +61,8 @@ var exec = function () {
     ga_mouse_click_event('a.scholar_href','Home_Browse_Dinstinguished Scholar');
     ga_mouse_click_event('#academic_trends a','Home_Information_Academic Trends');
     ga_mouse_click_event('#statisticail_info a','Home_Information_Statistical Data');
-console.log($('#researcher_list div.col-lg-9 div nav ul li a'));
+console.log($('#publication_list div.col-lg-9 form div div div a[href]'));
+    
     //研究者
     ga_mouse_click_event('#researcher_list div.col-lg-3 ul li a[href]','Researcher List_Browse');
     ga_mouse_click_event('#researcher_list div.col-lg-3 ul li ul li a[href]','Researcher List_Browse');
@@ -70,11 +72,21 @@ console.log($('#researcher_list div.col-lg-9 div nav ul li a'));
     ga_mouse_click_event('#researcher_list div.col-lg-9 div #form-search div div #submit-button','Researcher List_Search',function (_input) {
         return ($('input[name="scholar_name"]').val() + '/' + $('[name="topCommunity"] option:selected').text());
     });
+
     //學系
     ga_mouse_click_event('#department_list div.col-lg-3 span a[href]','Department List_Browse');
     ga_mouse_click_event('#department_list div.col-lg-9 div table tbody tr td a[href]','Department List_ Click');
     
-
+    //學術產出
+    ga_mouse_click_event('#publication_list div.col-lg-3 span a[href]','Publication List_Browse');
+    ga_mouse_click_event('#publication_list div.col-lg-9 form div div div a','Publication List_Browse',function (_ele) {
+        return $('input[name="item_name"]').val();
+    }
+    ga_mouse_click_event('#publication_list div.col-lg-9 div nav ul li a','Publication List_Browse',function (_ele) {
+        return _ele.text();});
+    ga_mouse_click_event('#publication_list div.col-lg-9 col-lg-12 table tbody tr td a[href]','Publication List_ Download');        
+    ga_mouse_click_event('#publication_list div.col-lg-9 form div div select[name="itemPerPage"] option:selected','Publication List_Interface');        
+    ga_mouse_click_event('#publication_list div.col-lg-9 col-lg-12 table thead tr th a[href]','Publication List_Interface');
 
 
     ga_mouse_click_event('div.panel-body.sub-id-panel span a','Researcher_Resume');
