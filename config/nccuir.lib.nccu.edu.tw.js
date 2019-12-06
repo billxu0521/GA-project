@@ -89,8 +89,12 @@ var exec = function () {
     ga_mouse_click_event('#publication_list div.col-lg-9 .col-lg-12 table thead tr th a[href]','Publication List_Interface');
 
     //研究者詳情
-    //ga_mouse_click_event('div.panel-body.sub-id-panel span a:not(#researcher_socialnetwork)','Researcher_Resume');
-    //ga_mouse_click_event('#researcher_socialnetwork div span a','Researcher_SocialNetwork');
+    ga_mouse_click_event('div.panel-body.sub-id-panel span a:not(#researcher_socialnetwork)','Researcher_Resume');
+    ga_mouse_click_event('#researcher_socialnetwork div span a','Researcher_SocialNetwork');
+
+    //學系詳情
+    ga_mouse_click_event('#departments_archival div.col-lg-3 span a[href]','Departments_Archival Studies');
+    ga_mouse_click_event('#departments_archival container div span a[href]','Departments_Information');
 
     //登入
     ga_submit_event('form#loginform','Login_Click',function (_ele) {
