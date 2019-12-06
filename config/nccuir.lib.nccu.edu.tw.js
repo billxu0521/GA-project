@@ -72,7 +72,7 @@ console.log($('#researcher_list div.col-lg-9 div nav ul li a'));
     });
     //學系
     ga_mouse_click_event('#department_list div.col-lg-3 span a[href]','Department List_Browse');
-    ga_mouse_click_event('#researcher_list div.col-lg-9 div table tbody tr td a[href]','Department List_ Click');
+    ga_mouse_click_event('#department_list div.col-lg-9 div table tbody tr td a[href]','Department List_ Click');
     
 
 
