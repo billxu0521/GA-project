@@ -58,22 +58,30 @@ var exec = function () {
     ga_mouse_click_event('#top-menu ul li a:contains("Post-Print")','Home_Browse_Publication');
     ga_mouse_click_event('#top-menu ul li a:contains("關於學術集成")','Home_Browse_Publication');
     ga_mouse_click_event('a.scholar_href','Home_Browse_Dinstinguished Scholar');
+    ga_mouse_click_event('#academic_trends a','Home_Information_Academic Trends');
+    ga_mouse_click_event('#statisticail_info a','Home_Information_Statistical Data');
 
-
+    //研究者
+    ga_mouse_click_event('#researcher_list div.col-lg-9 ul li a','Researcher List_Browse');
+    ga_mouse_click_event('#researcher_list div.col-lg-3 div nav ui ul li','Researcher List_Browse');
+    ga_mouse_click_event('#researcher_list div.col-lg-9 div h2 a','Researcher List_Search');
+    ga_mouse_click_event('#statisticail_info a','Researcher List_Browse');
+    ga_mouse_click_event('#statisticail_info a','Researcher List_Browse');
+    ga_mouse_click_event('#researcher_list div.col-lg-9 div #form-search div div #submit-button','Researcher List_Search',function (_input) {
+        return $('#researcher_list div.col-lg-9 div #form-search > input[name="scholar_name"]').val() + '/' + $(' #researcher_list div.col-lg-9 div #form-search div div > [name="topCommunity"] option:selected"').text();
+    });
 
 
 
     ga_mouse_click_event('.text-center ','Researcher List_Click');
-    ga_mouse_click_event('#form-search div div #submit-button','Researcher List_Search',function (_input) {
-        return $('input[name="scholar_name"]').val() + '/' + $('[name="topCommunity"] option:selected"').text();
-    });
+    
 
 
 
     ga_mouse_click_event('div.panel-body.sub-id-panel span a','Researcher_Resume');
 
     //登入
-    ga_submit_event('form','Login_Click',function (_ele) {
+    ga_submit_event('form#loginform','Login_Click',function (_ele) {
         return '';
     });
 
