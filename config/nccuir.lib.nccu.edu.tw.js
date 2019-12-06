@@ -61,7 +61,7 @@ var exec = function () {
     ga_mouse_click_event('a.scholar_href','Home_Browse_Dinstinguished Scholar');
     ga_mouse_click_event('#academic_trends a','Home_Information_Academic Trends');
     ga_mouse_click_event('#statisticail_info a','Home_Information_Statistical Data');
-console.log($('#publication_list div.col-lg-9 form div div select[name="itemPerPage"]'));
+console.log($('div.panel-body.sub-id-panel span a:not(id="researcher_socialnetwork")'));
     
     //研究者
     ga_mouse_click_event('#researcher_list div.col-lg-3 ul li a[href]','Researcher List_Browse');
@@ -88,8 +88,9 @@ console.log($('#publication_list div.col-lg-9 form div div select[name="itemPerP
     ga_input_change_event('#publication_list div.col-lg-9 form div div select[name="itemPerPage"]','Publication List_Interface');        
     ga_mouse_click_event('#publication_list div.col-lg-9 .col-lg-12 table thead tr th a[href]','Publication List_Interface');
 
-
-    ga_mouse_click_event('div.panel-body.sub-id-panel span a','Researcher_Resume');
+    //研究者詳情
+    ga_mouse_click_event('div.panel-body.sub-id-panel span a:not(#researcher_socialnetwork)','Researcher_Resume');
+    ga_mouse_click_event('#researcher_socialnetwork','Researcher_SocialNetwork');
 
     //登入
     ga_submit_event('form#loginform','Login_Click',function (_ele) {
