@@ -90,7 +90,7 @@ console.log($('div.panel-body.sub-id-panel span a:not(id="researcher_socialnetwo
 
     //研究者詳情
     ga_mouse_click_event('div.panel-body.sub-id-panel span a:not(#researcher_socialnetwork)','Researcher_Resume');
-    ga_mouse_click_event('#researcher_socialnetwork','Researcher_SocialNetwork');
+    ga_mouse_click_event('#researcher_socialnetwork div span a','Researcher_SocialNetwork');
 
     //登入
     ga_submit_event('form#loginform','Login_Click',function (_ele) {
