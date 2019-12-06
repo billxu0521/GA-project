@@ -101,6 +101,11 @@ var exec = function () {
         return '';
     });
 
+    //社會網絡
+    ga_mouse_click_event('#chart svg g g g.node ','soc',function (_ele) {
+        return _ele.find('text tspan').text();
+    });
+
 
 console.log();
     
