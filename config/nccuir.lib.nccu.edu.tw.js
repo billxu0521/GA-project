@@ -60,16 +60,15 @@ var exec = function () {
     ga_mouse_click_event('a.scholar_href','Home_Browse_Dinstinguished Scholar');
     ga_mouse_click_event('#academic_trends a','Home_Information_Academic Trends');
     ga_mouse_click_event('#statisticail_info a','Home_Information_Statistical Data');
-console.log($('#researcher_list div.col-lg-3 ul li a[href]'));
+console.log($('input[name="scholar_name"]'));
     //研究者
     ga_mouse_click_event('#researcher_list div.col-lg-3 ul li a[href]','Researcher List_Browse');
     ga_mouse_click_event('#researcher_list div.col-lg-3 ul li ul li a[href]','Researcher List_Browse');
-    ga_mouse_click_event('#researcher_list div.col-lg-9 div nav ui ul li','Researcher List_Browse');
+    ga_mouse_click_event('#researcher_list div.col-lg-9 div nav ui ul li','Researcher List_Browse',function (_ele) {
+        return _ele.text();});
     ga_mouse_click_event('#researcher_list div.col-lg-9 div h2 a','Researcher List_Search');
-    ga_mouse_click_event('#statisticail_info a','Researcher List_Browse');
-    ga_mouse_click_event('#statisticail_info a','Researcher List_Browse');
     ga_mouse_click_event('#researcher_list div.col-lg-9 div #form-search div div #submit-button','Researcher List_Search',function (_input) {
-        return $('#researcher_list div.col-lg-9 div #form-search > input[name="scholar_name"]').val() + '/' + $(' #researcher_list div.col-lg-9 div #form-search div div > [name="topCommunity"] option:selected"').text();
+        return $('input[name="scholar_name"]').val() + '/' + $(' #researcher_list div.col-lg-9 div #form-search div div > [name="topCommunity"] option:selected"').text();
     });
 
 
