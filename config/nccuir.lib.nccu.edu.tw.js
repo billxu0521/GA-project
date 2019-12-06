@@ -61,7 +61,7 @@ var exec = function () {
     ga_mouse_click_event('a.scholar_href','Home_Browse_Dinstinguished Scholar');
     ga_mouse_click_event('#academic_trends a','Home_Information_Academic Trends');
     ga_mouse_click_event('#statisticail_info a','Home_Information_Statistical Data');
-console.log($('div.panel-body.sub-id-panel span a:not(id="researcher_socialnetwork")'));
+console.log($('div.panel-body.sub-id-panel span a:not(#researcher_socialnetwork)'));
     
     //研究者
     ga_mouse_click_event('#researcher_list div.col-lg-3 ul li a[href]','Researcher List_Browse');
