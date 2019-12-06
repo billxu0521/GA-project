@@ -81,7 +81,7 @@ console.log($('#publication_list div.col-lg-9 form div div div a[href]'));
     ga_mouse_click_event('#publication_list div.col-lg-3 span a[href]','Publication List_Browse');
     ga_mouse_click_event('#publication_list div.col-lg-9 form div div div a','Publication List_Browse',function (_ele) {
         return $('input[name="item_name"]').val();
-    }
+    });
     ga_mouse_click_event('#publication_list div.col-lg-9 div nav ul li a','Publication List_Browse',function (_ele) {
         return _ele.text();});
     ga_mouse_click_event('#publication_list div.col-lg-9 col-lg-12 table tbody tr td a[href]','Publication List_ Download');        
