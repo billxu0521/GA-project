@@ -135,12 +135,11 @@ var exec = function () {
 
 let listcheck = function (){
     $('#menu_r ul .name_chi:eq(0) a').on('click',function(event){
-        
         let url = $(this).attr('href');
         let urlid = url.split('=');
         let urlParams = new URLSearchParams(window.location.search);
         let epersonid = urlParams.get('epersonID');
-        
+        console.log(urlid[1] + '/' + epersonid);
         if(urlid[1] == epersonid){
             ga_mouse_over_event('#menu_r ul .name_chi:eq(0) a','Social Network_Self Researcher')
         }else{
@@ -154,7 +153,7 @@ let listcheck = function (){
         let urlid = url.split('=');
         let urlParams = new URLSearchParams(window.location.search);
         let epersonid = urlParams.get('epersonID');
-        
+        console.log(urlid[1] + '/' + epersonid);
         if(urlid[1] == epersonid){
             ga_mouse_over_event('#menu_r ul .name_chi:eq(1) a','Social Network_Other Researcher')
         }else{
