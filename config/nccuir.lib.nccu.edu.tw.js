@@ -141,9 +141,9 @@ let listcheck = function (){
         let epersonid = urlParams.get('epersonID');
         console.log(urlid[1] + '/' + epersonid);
         if(urlid[1] == epersonid){
-            ga_mouse_click_event('#menu_r ul .name_chi:eq(0) a','Social Network_Self Researcher')
+            ga_mouse_click_event('#menu_r ul .name_chi a','Social Network_Self Researcher')
         }else{
-            ga_mouse_click_event('#menu_r ul .name_chi:eq(0) a','Social Network_Other Researcher')
+            ga_mouse_click_event('#menu_r ul .name_chi a','Social Network_Other Researcher')
         }
 
     });
@@ -155,9 +155,9 @@ let listcheck = function (){
         let epersonid = urlParams.get('epersonID');
         console.log(urlid[1] + '/' + epersonid);
         if(urlid[1] == epersonid){
-            ga_mouse_click_event('#menu_r ul .name_chi:eq(1) a','Social Network_Other Researcher')
+            ga_mouse_click_event('#menu_r ul .name_chi a','Social Network_Other Researcher')
         }else{
-            ga_mouse_click_event('#menu_r ul .name_chi:eq(1) a','Social Network_Other Researcher')
+            ga_mouse_click_event('#menu_r ul .name_chi a','Social Network_Other Researcher')
         }
 
     });
