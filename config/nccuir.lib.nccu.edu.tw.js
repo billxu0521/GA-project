@@ -127,7 +127,7 @@ var exec = function () {
     ga_mouse_over_event('#chart svg g g line','Social Network_Link Line')
     ga_mouse_click_event('#chart svg g g line','Social Network_Link Line');
     $('#menu_r ul .name_chi a:eq(0)').on('click',function(event){
-
+        console.log('click');
         let url = event.attr('href');
         let urlid = url.split('=');
         let urlParams = new URLSearchParams(window.location.search);
