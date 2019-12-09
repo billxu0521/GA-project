@@ -61,7 +61,7 @@ var exec = function () {
     ga_mouse_click_event('a.scholar_href','Home_Browse_Dinstinguished Scholar');
     ga_mouse_click_event('#academic_trends a','Home_Information_Academic Trends');
     ga_mouse_click_event('#statisticail_info a','Home_Information_Statistical Data');
-//console.log($('#publication_list div.col-lg-9 col-lg-12 table tbody tr td:eq(1)'));
+//console.log($('#publication_list div.col-lg-9 .col-lg-12 table tbody tr td:nth-child(5)'));
     
     //研究者
     ga_mouse_click_event('#researcher_list div.col-lg-3 ul li a[href]','Researcher List_Browse');
@@ -97,6 +97,21 @@ var exec = function () {
     //學系詳情
     ga_mouse_click_event('#departments_archival div.col-lg-3 span a[href]','Departments_Archival Studies');
     ga_mouse_click_event('#departments_archival div.container div span a[href]','Departments_Information');
+
+    //學術產出詳情
+    ga_mouse_click_event('#publication_page div h5','Publication_Download');
+    ga_mouse_click_event('#publication_page div h6','Publication_Export');
+    ga_mouse_click_event('#atstbx div a','Publication_Sharing');
+    ga_mouse_click_event('#atic_facebook','Publication_Sharing');
+    ga_mouse_click_event('#atic_twitter','Publication_Sharing');
+    ga_mouse_click_event('#atic_print','Publication_Sharing');
+    ga_mouse_click_event('#atic_favorites','Publication_Sharing');
+    ga_mouse_click_event('#atic_pinterest_share','Publication_Sharing');
+    ga_mouse_click_event('#atic_more','Publication_Sharing');
+    ga_mouse_click_event('#relatedarticle a','Publication_Related');
+
+    ga_mouse_click_event('#publication_page div h6','Publication_Export');
+
 
     //登入
     ga_submit_event('form#loginform','Login_Click',function (_ele) {
