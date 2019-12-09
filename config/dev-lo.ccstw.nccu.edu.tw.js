@@ -29,13 +29,14 @@ var exec = function () {
     ga_mouse_click_event("#addperioddate","setsearch");
     ga_mouse_click_event("#delperioddate","setsearch");
     ga_mouse_click_event("#searchbtntext","search",function (_ele) {
-        let _info = [];
+        let  _date = [];
         let _keyword = $('#keyword').val();
-        $('#timelinedate').each(function(){
+        $('div#timelinedate').each(function(){
             let _day = $(this).parent().attr('datevalue');
             let _year = $(this).text();
-            _info.push(_keyword + ':' + _year + '-' + _day);
+            _date.push(_year + '-' + _day);
         });
+        _info = _keyword + ':' + _date;
         return _info;
     });
 };
