@@ -438,8 +438,6 @@ window.ga_mouse_click_event = function (_selector, _event_type, _name) {
 };
 
 window.ga_mouse_click_event_trigger = function (_obj, _selector, _name, _event_type, _event_key) {
-    console.log(_obj);
-    console.log(_selector);
     var _name_data = _get_element_name(_obj, _selector, _name);
     _console_log([_event_type, _name_data, _event_key]);
     ga("send", "event", _event_type, _name_data, _event_key);

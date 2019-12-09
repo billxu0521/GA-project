@@ -141,12 +141,12 @@ let listcheck = function (){
         let epersonid = urlParams.get('epersonID');
         console.log(urlid[1] + '/' + epersonid);
         if(urlid[1] == epersonid){
-            var _name_data = _get_element_name(this, _selector, _name);
+            var _name_data = _get_element_name(this, '#menu_r ul .name_chi:eq(0) a', _name);
             _console_log(['Social Network_Self Researcher', _name_data, 'mouse_click']);
             ga("send", "event", 'Social Network_Self Researcher', _name_data, 'mouse_click');
             //ga_mouse_click_event('#menu_r ul .name_chi a','Social Network_Self Researcher')
         }else{
-            var _name_data = _get_element_name(this, _selector, _name);
+            var _name_data = _get_element_name(this, '#menu_r ul .name_chi:eq(0) a', _name);
             _console_log(['Social Network_Other Researcher', _name_data, 'mouse_click']);
             ga("send", "event", 'Social Network_Other Researcher', _name_data, 'mouse_click');
             //ga_mouse_click_event('#menu_r ul .name_chi a','Social Network_Other Researcher')
@@ -161,11 +161,11 @@ let listcheck = function (){
         let epersonid = urlParams.get('epersonID');
         console.log(urlid[1] + '/' + epersonid);
         if(urlid[1] == epersonid){
-            var _name_data = _get_element_name(this, _selector, _name);
+            var _name_data = _get_element_name(this, '#menu_r ul .name_chi:eq(1) a', _name);
             _console_log(['Social Network_Other Researcher', _name_data, 'mouse_click']);
             ga("send", "event", 'Social Network_Other Researcher', _name_data, 'mouse_click');
         }else{
-            var _name_data = _get_element_name(this, _selector, _name);
+            var _name_data = _get_element_name(this, '#menu_r ul .name_chi:eq(1) a', _name);
             _console_log(['Social Network_Other Researcher', _name_data, 'mouse_click']);
             ga("send", "event", 'Social Network_Other Researcher', _name_data, 'mouse_click');
         }
