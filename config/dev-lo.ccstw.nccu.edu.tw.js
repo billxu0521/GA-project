@@ -45,15 +45,25 @@ var exec = function () {
 
     ga_mouse_click_event("#graph g g g.nodes circle","node",function (_ele) {
         let _id = _ele.attr('node_id');
-        let _str = $('.labels text[label_id="'+_id+'"]');
+        let _str = $('.labels text[label_id="'+_id+'"]').text();
         return _str;
     });
-    ga_mouse_drag_event('#nodecardbar','node_move_drag');
-    ga_mouse_drag_event('#nodeslider span','node_zoom');
+    ga_mouse_click_event('#nodecardbar','node_move_drag');
+    ga_mouse_click_event('#nodeslider span','node_zoom');
     ga_mouse_click_event('#nodecardmove','node_move_click');
     ga_mouse_click_event('#savesvgnode','node_download');
 
+    ga_mouse_click_event('#keyword','keyword_click');
+    ga_mouse_click_event('.context_genre','keyword_click');
+    ga_mouse_click_event('.context_year','keyword_click');
+    ga_mouse_click_event('.context_title','keyword_click');
+    ga_mouse_click_event('.context_fulltext','keyword_click');
+    ga_mouse_click_event('#keywordcardbartext','keyword_move_drag');
+    ga_mouse_click_event('#keywordcardmove','keyword_move_click');
+    ga_mouse_click_event('#openwordfrequency','keyword_frequency_click');
 
+    ga_mouse_click_event('#articlecardbar','article_move_drag');
+    ga_mouse_click_event('#articlecardmove','article_move_click');
 
 
 };
