@@ -142,29 +142,13 @@ $(function () {
     $.getScript(LIB_URL, function () {
         ga_setup(function () {
             exec();
-
-            $('#menu_r ul .name_chi:eq(0) a').on('click',function(event){
-                console.log('click');
-                let url = event.attr('href');
-                let urlid = url.split('=');
-                let urlParams = new URLSearchParams(window.location.search);
-                let epersonid = urlParams.get('epersonID');
-                console.log(urlid + '/' + epersonid);
-                if(urlid == epersonid){
-                    console.log('self / ' + urlid + '/' + epersonid);
-                }else{
-                    console.log('not self / ' + urlid + '/' + epersonid);
-                }
-
-            });
-
+            listcheck();
         });
     });
 });
 
-
-function listcheck(){
-    $('#menu_r ul .name_chi a:eq(0)').on('click',function(event){
+let listcheck = function (){
+    $('#menu_r ul .name_chi:eq(0) a').on('click',function(event){
 
         let url = event.attr('href');
         let urlid = url.split('=');
