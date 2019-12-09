@@ -74,7 +74,7 @@ var exec = function () {
     ga_mouse_click_event('#combine_graph g circle','bombin_node',function (_ele) {
         return _ele.attr('_name');
     });
-    ga_mouse_click_event('#combinelist_table tbody tr','bombin_select_period');
+    ga_mouse_click_event('#combinelist_table tbody tr','combin_select_period');
     ga_mouse_click_event('#combinelist_table tbody tr td div.context_genre','combine_keyword_click');
     ga_mouse_click_event('#combinelist_table tbody tr td div.context_year','combine_keyword_click');
     ga_mouse_click_event('#combinelist_table tbody tr td div.context_title','combine_keyword_click');
