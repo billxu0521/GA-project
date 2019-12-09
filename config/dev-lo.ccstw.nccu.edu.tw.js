@@ -39,6 +39,23 @@ var exec = function () {
         _info = _keyword + ':' + _date;
         return _info;
     });
+    ga_mouse_click_event("#leftperiod","settime");
+    ga_mouse_click_event("#rightperiod","settime");
+    ga_mouse_click_event(".periodlinetouch","settime");
+
+    ga_mouse_click_event("#graph g g g.nodes circle","node",function (_ele) {
+        let _id = _ele.attr('node_id');
+        let _str = $('.labels text[label_id="'+_id+'"]');
+        return _str;
+    });
+    ga_mouse_drag_event('#nodecardbar','node_move_drag');
+    ga_mouse_drag_event('#nodeslider span','node_zoom');
+    ga_mouse_click_event('#nodecardmove','node_move_click');
+    ga_mouse_click_event('#savesvgnode','node_download');
+
+
+
+
 };
 
 
