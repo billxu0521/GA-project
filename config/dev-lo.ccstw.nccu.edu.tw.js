@@ -53,11 +53,13 @@ var exec = function () {
     ga_mouse_click_event('#nodecardmove','node_move_click');
     ga_mouse_click_event('#savesvgnode','node_download');
 
-    ga_mouse_click_event('#keyword_outter tbody tr','keyword_click');
-    ga_mouse_click_event('.context_genre','keyword_click');
-    ga_mouse_click_event('.context_year','keyword_click');
-    ga_mouse_click_event('.context_title','keyword_click');
-    ga_mouse_click_event('.context_fulltext','keyword_click');
+    ga_mouse_click_event('#keyword_outter tbody tr','keyword_click',function (_ele) {
+        return $('#keyword').text();
+    });
+    ga_mouse_click_event('#keyword_outter tbody tr td div.context_genre','keyword_click');
+    ga_mouse_click_event('#keyword_outter tbody tr td div.context_year','keyword_click');
+    ga_mouse_click_event('#keyword_outter tbody tr td div.context_title','keyword_click');
+    ga_mouse_click_event('#keyword_outter tbody tr td div.context_fulltext','keyword_click');
     ga_mouse_click_event('#keywordcardbartext','keyword_move_drag');
     ga_mouse_click_event('#keywordcardmove','keyword_move_click');
     ga_mouse_click_event('#openwordfrequency','keyword_frequency_click');
@@ -68,6 +70,15 @@ var exec = function () {
     ga_mouse_click_event('#notecardbar','note_move_drag');
     ga_mouse_click_event('#notecardmove','note_move_click');
 
+    ga_mouse_click_event('#CombinePeriodBtns div','bombin_select_period');
+    ga_mouse_click_event('#combine_graph g circle','bombin_node',function (_ele) {
+        return _ele.attr('_name');
+    });
+    ga_mouse_click_event('#combinelist_table tbody tr','bombin_select_period');
+    ga_mouse_click_event('#combinelist_table tbody tr td div.context_genre','combine_keyword_click');
+    ga_mouse_click_event('#combinelist_table tbody tr td div.context_year','combine_keyword_click');
+    ga_mouse_click_event('#combinelist_table tbody tr td div.context_title','combine_keyword_click');
+    ga_mouse_click_event('#combinelist_table tbody tr td div.context_fulltext','combine_keyword_click');
 
 };
 
