@@ -61,7 +61,7 @@ var exec = function () {
     ga_mouse_click_event('a.scholar_href','Home_Browse_Dinstinguished Scholar');
     ga_mouse_click_event('#academic_trends a','Home_Information_Academic Trends');
     ga_mouse_click_event('#statisticail_info a','Home_Information_Statistical Data');
-//console.log($('#departments_archival container div span a[href]'));
+//console.log($('#publication_list div.col-lg-9 col-lg-12 table tbody tr td:eq(1)'));
     
     //研究者
     ga_mouse_click_event('#researcher_list div.col-lg-3 ul li a[href]','Researcher List_Browse');
@@ -84,7 +84,9 @@ var exec = function () {
     });
     ga_mouse_click_event('#publication_list div.col-lg-9 div nav ul li a','Publication List_Search',function (_ele) {
         return _ele.text();});
-    ga_mouse_click_event('#publication_list div.col-lg-9 col-lg-12 table tbody tr td a[href]','Publication List_ Download');        
+    ga_mouse_click_event('#publication_list div.col-lg-9 .col-lg-12 table tbody tr td:nth-child(5)','Publication List_ Download');    
+    ga_mouse_click_event('#publication_list div.col-lg-9 .col-lg-12 table tbody tr td:nth-child(2)','Publication List_Information');        
+    ga_mouse_click_event('#publication_list div.col-lg-9 .col-lg-12 table tbody tr td:nth-child(3)','Publication List_Information');    
     ga_input_change_event('#publication_list div.col-lg-9 form div div select[name="itemPerPage"]','Publication List_Interface');        
     ga_mouse_click_event('#publication_list div.col-lg-9 .col-lg-12 table thead tr th a[href]','Publication List_Interface');
 
