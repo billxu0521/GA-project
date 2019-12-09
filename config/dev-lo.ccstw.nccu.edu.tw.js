@@ -37,7 +37,8 @@ var exec = function () {
             _info.push(_keyword + ':' + _year + '-' + _day);
         });
         return _date;
-    };
+    });
+};
 
 
 // --------------------------------------
