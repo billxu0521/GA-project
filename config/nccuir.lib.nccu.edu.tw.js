@@ -156,8 +156,9 @@ $(function () {
     $.getScript(LIB_URL, function () {
         ga_setup(function () {
             exec();
-            listcheck();
+            $("#menu_r").change(function(){
+              console.log('change');
+            });
         });
     });
 });
-
