@@ -137,7 +137,7 @@ let listcheck = function (){
     $('#menu_r ul .name_chi:eq(0) a').on('click',function(event){
         console.log($(this));
         let url = $(this).attr('href');
-        let urlid = url.split('=');
+        let urlid = (url.split('='))[1];
         let urlParams = new URLSearchParams(window.location.search);
         let epersonid = urlParams.get('epersonID');
         console.log(urlid + '/' + epersonid);
