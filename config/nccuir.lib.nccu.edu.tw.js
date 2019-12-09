@@ -141,9 +141,15 @@ let listcheck = function (){
         let epersonid = urlParams.get('epersonID');
         console.log(urlid[1] + '/' + epersonid);
         if(urlid[1] == epersonid){
-            ga_mouse_click_event('#menu_r ul .name_chi a','Social Network_Self Researcher')
+            var _name_data = _get_element_name(this, _selector, _name);
+            _console_log(['Social Network_Self Researcher', _name_data, 'mouse_click']);
+            ga("send", "event", 'Social Network_Self Researcher', _name_data, 'mouse_click');
+            //ga_mouse_click_event('#menu_r ul .name_chi a','Social Network_Self Researcher')
         }else{
-            ga_mouse_click_event('#menu_r ul .name_chi a','Social Network_Other Researcher')
+            var _name_data = _get_element_name(this, _selector, _name);
+            _console_log(['Social Network_Other Researcher', _name_data, 'mouse_click']);
+            ga("send", "event", 'Social Network_Other Researcher', _name_data, 'mouse_click');
+            //ga_mouse_click_event('#menu_r ul .name_chi a','Social Network_Other Researcher')
         }
 
     });
@@ -155,9 +161,13 @@ let listcheck = function (){
         let epersonid = urlParams.get('epersonID');
         console.log(urlid[1] + '/' + epersonid);
         if(urlid[1] == epersonid){
-            ga_mouse_click_event('#menu_r ul .name_chi a','Social Network_Other Researcher')
+            var _name_data = _get_element_name(this, _selector, _name);
+            _console_log(['Social Network_Other Researcher', _name_data, 'mouse_click']);
+            ga("send", "event", 'Social Network_Other Researcher', _name_data, 'mouse_click');
         }else{
-            ga_mouse_click_event('#menu_r ul .name_chi a','Social Network_Other Researcher')
+            var _name_data = _get_element_name(this, _selector, _name);
+            _console_log(['Social Network_Other Researcher', _name_data, 'mouse_click']);
+            ga("send", "event", 'Social Network_Other Researcher', _name_data, 'mouse_click');
         }
 
     });
