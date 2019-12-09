@@ -109,7 +109,6 @@ var exec = function () {
     ga_mouse_click_event('#atic_pinterest_share','Publication_Sharing');
     ga_mouse_click_event('#atic_more','Publication_Sharing');
     ga_mouse_click_event('#relatedarticle a','Publication_Related');
-
     ga_mouse_click_event('#publication_page div h6','Publication_Export');
 
 
@@ -122,17 +121,14 @@ var exec = function () {
     ga_mouse_click_event('#chart svg g g g.node:eq(1)','Social Network_Self Publication',function (_ele) {
         return _ele.find('text tspan').text();
     });
-    ga_mouse_click_event('#chart svg g g g.node:gt(1)','Social Network_Other Publication',function (_ele) {
+    ga_mouse_click_event('#chart svg g g g.node:gt(0)','Social Network_Other Publication',function (_ele) {
         return _ele.find('text tspan').text();
     });
     ga_mouse_over_event('#chart svg g g line','Social Network_Link Line')
-    ga_mouse_click_event('#menu_r ul .pubs a[href]','Social Network_Publication');
-    ga_mouse_click_event('#menu_r ul .name_chi','Social Network_Self Researcher');
+    ga_mouse_click_event('#chart svg g g line','Social Network_Link Line');
+    listcheck();
+
     
-
-
-
-console.log();
     
     };
 
@@ -150,3 +146,19 @@ $(function () {
         });
     });
 });
+
+
+function listcheck(){
+    $('#menu_r ul .name_chi a:eq(0)').on('click',function(event){
+        let url = event.attr('href');
+        let urlid = url.split('=');
+        let urlParams = new URLSearchParams(window.location.search);
+        let epersonid = urlParams.get('epersonID');
+        if(urlid == epersonid){
+            console.log('self / ' + urlid + '/' + epersonid);
+        }else{
+            console.log('not self / ' + urlid + '/' + epersonid);
+        }
+
+    });
+}
