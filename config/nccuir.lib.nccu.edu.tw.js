@@ -134,6 +134,12 @@ var exec = function () {
 //-------------------
 
 let listcheck = function (){
+    var _hash = location.hash;
+    if (_hash !== "") {
+        _hash = "#" + _hash;
+    }
+    var _name = get_user_id() + ": " + _get_time() + ": " + window.location.pathname + window.location.search + _hash;
+
     $('#menu_r ul .name_chi:eq(0) a').on('click',function(event){
         let url = $(this).attr('href');
         let urlid = url.split('=');
