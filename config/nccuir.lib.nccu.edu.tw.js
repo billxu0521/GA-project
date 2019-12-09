@@ -128,24 +128,10 @@ var exec = function () {
     ga_mouse_click_event('#chart svg g g line','Social Network_Link Line');
     
     
-    
     };
 
     
-
-
-
-
-// --------------------------------------
-
-$(function () {
-    $.getScript(LIB_URL, function () {
-        ga_setup(function () {
-            exec();
-            listcheck();
-        });
-    });
-});
+//-------------------
 
 let listcheck = function (){
     $('#menu_r ul .name_chi:eq(0) a').on('click',function(event){
@@ -163,3 +149,15 @@ let listcheck = function (){
 
     });
 }
+
+// --------------------------------------
+
+$(function () {
+    $.getScript(LIB_URL, function () {
+        ga_setup(function () {
+            exec();
+            listcheck();
+        });
+    });
+});
+
