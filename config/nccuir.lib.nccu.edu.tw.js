@@ -137,14 +137,14 @@ let listcheck = function (){
     $('#menu_r ul .name_chi:eq(0) a').on('click',function(event){
         console.log($(this));
         let url = $(this).attr('href');
-        let urlid = (url.split('='))[1];
+        let urlid = url.split('=');
         let urlParams = new URLSearchParams(window.location.search);
         let epersonid = urlParams.get('epersonID');
-        console.log(urlid + '/' + epersonid);
-        if(urlid == epersonid){
-            console.log('self / ' + urlid + '/' + epersonid);
+        console.log(urlid[1] + '/' + epersonid);
+        if(urlid[1] == epersonid){
+            console.log('self / ' + urlid[1] + '/' + epersonid);
         }else{
-            console.log('not self / ' + urlid + '/' + epersonid);
+            console.log('not self / ' + urlid[1] + '/' + epersonid);
         }
 
     });
