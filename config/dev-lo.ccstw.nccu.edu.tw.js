@@ -53,7 +53,7 @@ var exec = function () {
     ga_mouse_click_event('#nodecardmove','node_move_click');
     ga_mouse_click_event('#savesvgnode','node_download');
 
-    ga_mouse_click_event('#keyword','keyword_click');
+    ga_mouse_click_event('#keyword_outter tbody tr','keyword_click');
     ga_mouse_click_event('.context_genre','keyword_click');
     ga_mouse_click_event('.context_year','keyword_click');
     ga_mouse_click_event('.context_title','keyword_click');
@@ -64,6 +64,9 @@ var exec = function () {
 
     ga_mouse_click_event('#articlecardbar','article_move_drag');
     ga_mouse_click_event('#articlecardmove','article_move_click');
+
+    ga_mouse_click_event('#notecardbar','note_move_drag');
+    ga_mouse_click_event('#notecardmove','note_move_click');
 
 
 };
