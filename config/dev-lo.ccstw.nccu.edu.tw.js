@@ -33,7 +33,7 @@ var exec = function () {
         let _keyword = $('#keyword').val();
         $('#timelinedate').each(function(){
             let _day = $(this).parent().attr('datevalue');
-            let _year = this.text();
+            let _year = $(this).text();
             _info.push(_keyword + ':' + _year + '-' + _day);
         });
         return _date;
