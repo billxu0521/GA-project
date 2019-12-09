@@ -36,7 +36,7 @@ var exec = function () {
             let _year = $(this).text();
             _info.push(_keyword + ':' + _year + '-' + _day);
         });
-        return _date;
+        return _info;
     });
 };
 
