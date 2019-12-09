@@ -54,7 +54,7 @@ var exec = function () {
     ga_mouse_click_event('#savesvgnode','node_download');
 
     ga_mouse_click_event('#keyword_outter tbody tr','keyword_click',function (_ele) {
-        return $('#keyword').text();
+        return _ele.find('#keyword').text();
     });
     ga_mouse_click_event('#keyword_outter tbody tr td div.context_genre','keyword_click');
     ga_mouse_click_event('#keyword_outter tbody tr td div.context_year','keyword_click');
