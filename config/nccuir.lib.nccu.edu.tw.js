@@ -126,7 +126,7 @@ var exec = function () {
     });
     ga_mouse_over_event('#chart svg g g line','Social Network_Link Line')
     ga_mouse_click_event('#chart svg g g line','Social Network_Link Line');
-    
+    ga_mouse_click_event('#menu_r #obj_des li.pubs a','Social Network_Publication');
     
     };
 
@@ -145,7 +145,6 @@ let listcheck = function (){
         let urlid = url.split('=');
         let urlParams = new URLSearchParams(window.location.search);
         let epersonid = urlParams.get('epersonID');
-        console.log(urlid[1] + '/' + epersonid);
         if(urlid[1] == epersonid){
             var _name_data = _get_element_name(this, '#menu_r ul .name_chi:eq(0) a', _name);
             _console_log(['Social Network_Self Researcher', _name_data, 'mouse_click']);
@@ -165,7 +164,6 @@ let listcheck = function (){
         let urlid = url.split('=');
         let urlParams = new URLSearchParams(window.location.search);
         let epersonid = urlParams.get('epersonID');
-        console.log(urlid[1] + '/' + epersonid);
         if(urlid[1] == epersonid){
             var _name_data = _get_element_name(this, '#menu_r ul .name_chi:eq(1) a', _name);
             _console_log(['Social Network_Other Researcher', _name_data, 'mouse_click']);
