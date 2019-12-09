@@ -150,10 +150,12 @@ $(function () {
 
 function listcheck(){
     $('#menu_r ul .name_chi a:eq(0)').on('click',function(event){
+
         let url = event.attr('href');
         let urlid = url.split('=');
         let urlParams = new URLSearchParams(window.location.search);
         let epersonid = urlParams.get('epersonID');
+        console.log(urlid + '/' + epersonid);
         if(urlid == epersonid){
             console.log('self / ' + urlid + '/' + epersonid);
         }else{
