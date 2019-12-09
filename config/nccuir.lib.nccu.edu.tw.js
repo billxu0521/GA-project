@@ -61,7 +61,7 @@ var exec = function () {
     ga_mouse_click_event('a.scholar_href','Home_Browse_Dinstinguished Scholar');
     ga_mouse_click_event('#academic_trends a','Home_Information_Academic Trends');
     ga_mouse_click_event('#statisticail_info a','Home_Information_Statistical Data');
-//console.log($('#publication_list div.col-lg-9 .col-lg-12 table tbody tr td:nth-child(5)'));
+//console.log($('#chart svg g g g.node:gt(1)'));
     
     //研究者
     ga_mouse_click_event('#researcher_list div.col-lg-3 ul li a[href]','Researcher List_Browse');
@@ -119,9 +119,17 @@ var exec = function () {
     });
 
     //社會網絡
-    ga_mouse_click_event('#chart svg g g g.node ','soc',function (_ele) {
+    ga_mouse_click_event('#chart svg g g g.node:eq(1)','Social Network_Self Publication',function (_ele) {
         return _ele.find('text tspan').text();
     });
+    ga_mouse_click_event('#chart svg g g g.node:gt(1)','Social Network_Other Publication',function (_ele) {
+        return _ele.find('text tspan').text();
+    });
+    ga_mouse_over_event('#chart svg g g line','Social Network_Link Line')
+    ga_mouse_click_event('#menu_r ul .pubs a[href]','Social Network_Publication');
+    ga_mouse_click_event('#menu_r ul .name_chi','Social Network_Self Researcher');
+    
+
 
 
 console.log();
