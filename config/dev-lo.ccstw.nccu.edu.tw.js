@@ -24,10 +24,19 @@ var exec = function () {
 
     //偵測語法
     //ga_mouse_click_event("選擇要素","準則");
-    ga_mouse_click_event(".btn","Click");
-   
-    
-
+    ga_mouse_click_event(".searchtime","setsearch");
+    ga_mouse_click_event("#searchtimelineCont div span","setsearch");
+    ga_mouse_click_event("#addperioddate","setsearch");
+    ga_mouse_click_event("#delperioddate","setsearch");
+    ga_mouse_click_event("#searchbtntext","search",function (_ele) {
+        let _info = [];
+        let _keyword = $('#keyword').val();
+        $('#timelinedate').each(function(){
+            let _day = $(this).parent().attr('datevalue');
+            let _year = this.text();
+            _info.push(_keyword + ':' + _year + '-' + _day);
+        });
+        return _date;
     };
 
 
