@@ -156,7 +156,7 @@ $(function () {
     $.getScript(LIB_URL, function () {
         ga_setup(function () {
             exec();
-            $('#chart svg g g g.node').change(function(){
+            $('#chart svg g g g.node').on('click',function(){
                 listcheck();
             });
         });
