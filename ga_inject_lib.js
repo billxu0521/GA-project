@@ -142,11 +142,24 @@ window.auto_set_user_id = function(_callback){
     if (get_user_id() === "anonymous") {
 		_console_log("3.2. anonymous");
 		
+
+        _console_log("3.3. get user_id);
+        USER_ID = get_user_time_id();
+        //USER_IP = String(data['ip']);
+        set_user_id(USER_IP);    
+        _console_log("Set user id in ip: " + USER_IP);
+        if (typeof(_callback) === "function") {
+            
+            _console_log("3.4. ok");
+            _callback();
+        }
+
+        /*
         getJSONP('https://ipinfo.io', function(data){
 			_console_log("3.3. https://ipinfo.io");
 			
-			
-            USER_IP = String(data['ip']);
+			USER_ID = get_user_time_id();
+            //USER_IP = String(data['ip']);
             set_user_id(USER_IP);    
             _console_log("Set user id in ip: " + USER_IP);
             if (typeof(_callback) === "function") {
@@ -154,7 +167,7 @@ window.auto_set_user_id = function(_callback){
 				_console_log("3.4. ok");
                 _callback();
             }
-        });
+        });*/
     }
     else {
         if (typeof(_callback) === "function") {
@@ -200,6 +213,33 @@ var _get_time = function () {
 };
 
 USER_TIMER = 0;
+
+
+/**
+ * 利用unixtime取得使用者唯一值 紀錄8小時
+ * @return {String} cache_user
+ */
+window.get_user_time_id = function () {
+    let dateTime = Date.now();
+    dateTime = Math.floor(dateTime / 1000);
+    let cache_user = localStorage.getItem("user");
+    if(cache_user){
+        let timestr = cache_user.split('_');
+        let time = parseInt(timestr[1]);
+        let dur = Math.floor(dateTime - time);
+        if(dur > 28800){
+            localStorage.setItem("user", "user_"+dateTime);
+            cache_user = localStorage.getItem("user");
+            console.log(cache_user);
+        }
+    }else{
+        localStorage.setItem("user", "user_"+dateTime);
+        let cache_user = localStorage.getItem("user");
+        
+    }
+    return cache_user
+};
+
 
 /**
  * 將ID資訊記錄到視窗屬性中

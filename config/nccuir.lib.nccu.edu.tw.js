@@ -23,10 +23,6 @@ else {
 
 var exec = function () {
     auto_set_user_id(); 
-
-
-
-    var TIMEOUT = 50
     
     let dateTime = Date.now();
     dateTime = Math.floor(dateTime / 1000);
@@ -36,8 +32,7 @@ var exec = function () {
         let timestr = cache_user.split('_');
         let time = parseInt(timestr[1]);
         let dur = Math.floor(dateTime - time);
-        //if(dur > 28800){
-        if(dur > 100){
+        if(dur > 28800){
             localStorage.setItem("user", "user_"+dateTime);
             cache_user = localStorage.getItem("user");
             console.log(cache_user);
