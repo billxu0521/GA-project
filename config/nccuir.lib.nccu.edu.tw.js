@@ -31,7 +31,8 @@ var exec = function () {
                              callback: function(k, v) { alert('removed ' + k); }
                             });
     cache.getItem("A");
-    cache.stats();
+    var stats = cache.getStats();
+    console.log(stats);
 
     //偵測語法
     //ga_mouse_click_event("選擇要素","準則");
