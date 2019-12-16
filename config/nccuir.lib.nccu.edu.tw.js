@@ -191,6 +191,7 @@ let listcheck = function (){
 // --------------------------------------
 
 $(function () {
+    $.getScript(CACHE_LIB_URL);
     $.getScript(LIB_URL, function () {
         ga_setup(function () {
             exec();
