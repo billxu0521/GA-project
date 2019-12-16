@@ -11,16 +11,27 @@ var _local_debug = false;
 if (_local_debug === true) {
     CSS_URL = "https://localhost/GA-project/config/nccuir.lib.nccu.edu.tw.css";
     LIB_URL = "https://localhost/GA-project/ga_inject_lib.js";
+    CACHE_LIB_URL = "https://localhost/GA-project/cache.js";
     console.log("[LOCAL TEST MODE]");
 }
 else {
     CSS_URL = "https://billxu0521.github.io/GA-project/config/nccuir.lib.nccu.edu.tw.css";
     LIB_URL = "https://billxu0521.github.io/GA-project/ga_inject_lib.js";
+    CACHE_LIB_URL = "https://billxu0521.github.io/GA-project/cache.js";
 }
 
 
 var exec = function () {
     auto_set_user_id();   
+
+    var cache = new Cache();
+    cache.setItem("A", "1", {expirationAbsolute: null,
+                             expirationSliding: 60,
+                             priority: Cache.Priority.HIGH,
+                             callback: function(k, v) { alert('removed ' + k); }
+                            });
+    cache.getItem("A");
+    cache.stats();
 
     //偵測語法
     //ga_mouse_click_event("選擇要素","準則");
