@@ -27,6 +27,7 @@ var exec = function () {
     var cache = new Cache();
     let dateTime = Date.now();
     let cache_user = cache.getItem("user");
+    console.log(cache_user);
     if(cache_user){
         console.log(cache_user);
     }else{
@@ -35,6 +36,8 @@ var exec = function () {
                              priority: Cache.Priority.HIGH,
                              callback: function(k, v) { alert('removed ' + k); }
                             });
+        cache_user = cache.getItem("user");
+        console.log(cache_user);
     }
 
     //偵測語法
