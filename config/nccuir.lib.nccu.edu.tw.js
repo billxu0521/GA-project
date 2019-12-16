@@ -22,7 +22,15 @@ else {
 
 
 var exec = function () {
-    auto_set_user_id();   
+    auto_set_user_id(); 
+
+
+
+    function assertEqual(a, b) {
+      if (a !== b) {
+        throw "AssertEqual Failed: " + a + " !== " + b;
+      }
+    }  
     var TIMEOUT = 50
     var cache = new Cache();
     let dateTime = Date.now();
