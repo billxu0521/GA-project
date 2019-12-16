@@ -25,14 +25,13 @@ var exec = function () {
     auto_set_user_id();   
 
     var cache = new Cache();
-    cache.setItem("A", "1", {expirationAbsolute: null,
+    cache.setItem("user", "1", {expirationAbsolute: null,
                              expirationSliding: 60,
                              priority: Cache.Priority.HIGH,
                              callback: function(k, v) { alert('removed ' + k); }
                             });
-    cache.getItem("A");
-    var stats = cache.getStats();
-    console.log(stats);
+    let data = cache.getItem("user");
+    console.log(data);
 
     //偵測語法
     //ga_mouse_click_event("選擇要素","準則");
