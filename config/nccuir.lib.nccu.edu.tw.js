@@ -37,13 +37,13 @@ var exec = function () {
         let time = parseInt(timestr[1]);
         let dur = Math.floor(dateTime - time);
         if(dur > 28800){
-            calocalStorageche.setItem("user", "user_"+dateTime);
+            localStorage.setItem("user", "user_"+dateTime);
             let cache_user = localStorage.getItem("user");
             console.log(cache_user);
         }
         console.log(cache_user);
     }else{
-        calocalStorageche.setItem("user", "user_"+dateTime);
+        localStorage.setItem("user", "user_"+dateTime);
         let cache_user = localStorage.getItem("user");
         console.log(cache_user);
     }
