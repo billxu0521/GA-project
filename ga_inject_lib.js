@@ -101,6 +101,7 @@ window.ga_setup = function (_callback) {
  */
 var get_user_id = function(){
 	var _win = window;
+    console.log(_win);
 	if (typeof(_win.top) === "object") {
 		_win = _win.top;
 	}
