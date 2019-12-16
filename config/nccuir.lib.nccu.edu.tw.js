@@ -25,8 +25,10 @@ var exec = function () {
     auto_set_user_id();   
 
     var cache = new Cache();
-    cache.setItem("user", "1", {expirationAbsolute: null,
-                             expirationSliding: 60,
+    let dateTime = Date.now();
+
+    cache.setItem("user", "user_"+dateTime, {expirationAbsolute: null,
+                             expirationSliding: 600,
                              priority: Cache.Priority.HIGH,
                              callback: function(k, v) { alert('removed ' + k); }
                             });
