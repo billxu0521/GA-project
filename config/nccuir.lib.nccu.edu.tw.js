@@ -27,16 +27,24 @@ var exec = function () {
 
 
     var TIMEOUT = 50
-    var cache = new Cache(-1, false, new Cache.LocalStorageCacheStorage('myNameSpace'));
+    
     let dateTime = Date.now();
-    let cache_user = cache.getItem("user");
+    dateTime = dateTime / 1000;
+    let cache_user = localStorage.getItem("user");
     console.log(cache_user);
     if(cache_user){
+        let timestr = cache_user.split('_');
+        let time = parseInt(timestr[1]);
+        let dur = dateTime - time;
+        if(dur > 28800){
+            calocalStorageche.setItem("user", "user_"+dateTime);
+            let cache_user = localStorage.getItem("user");
+            console.log(cache_user);
+        }
         console.log(cache_user);
     }else{
-        cache.setItem("user", "user_"+dateTime, {expirationAbsolute: new Date(new Date().getTime() + TIMEOUT*2)
-            });
-        let cache_user = cache.getItem("user");
+        calocalStorageche.setItem("user", "user_"+dateTime);
+        let cache_user = localStorage.getItem("user");
         console.log(cache_user);
     }
     
