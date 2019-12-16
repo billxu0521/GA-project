@@ -31,14 +31,17 @@ var exec = function () {
     if(cache_user){
         console.log(cache_user);
     }else{
-        cache.setItem("user", "user_"+dateTime, {expirationAbsolute: new Date(new Date().getTime() + TIMEOUT*2),
-                             expirationSliding: TIMEOUT * 2 / 1000,
-                             priority: Cache.Priority.HIGH,
-                             callback: function(k, v) { alert('removed ' + k); }
-                            });
-        cache_user = cache.getItem("user");
-        console.log(cache_user);
+        cache.setItem("user", "user_"+dateTime, {expirationAbsolute: new Date(new Date().getTime() + TIMEOUT*2)
+            });
+        assertEqual(cache.getItem("user"), "user_"+dateTime);
     }
+    setTimeout(function() {
+    assertEqual(cache.getItem("foo"), "bar");
+      }, TIMEOUT);
+      setTimeout(function() {
+        assertEqual(cache.getItem("foo"), null);
+        success();
+      }, TIMEOUT*3);
 
     //偵測語法
     //ga_mouse_click_event("選擇要素","準則");
