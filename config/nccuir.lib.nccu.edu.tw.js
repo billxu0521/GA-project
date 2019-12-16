@@ -23,7 +23,7 @@ else {
 
 var exec = function () {
     auto_set_user_id();   
-
+    var TIMEOUT = 50
     var cache = new Cache();
     let dateTime = Date.now();
     let cache_user = cache.getItem("user");
@@ -31,8 +31,8 @@ var exec = function () {
     if(cache_user){
         console.log(cache_user);
     }else{
-        cache.setItem("user", "user_"+dateTime, {expirationAbsolute: null,
-                             expirationSliding: 60,
+        cache.setItem("user", "user_"+dateTime, {expirationAbsolute: new Date(new Date().getTime() + TIMEOUT*2),
+                             expirationSliding: TIMEOUT * 2 / 1000,
                              priority: Cache.Priority.HIGH,
                              callback: function(k, v) { alert('removed ' + k); }
                             });
