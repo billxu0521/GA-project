@@ -26,14 +26,16 @@ var exec = function () {
 
     var cache = new Cache();
     let dateTime = Date.now();
-
-    cache.setItem("user", "user_"+dateTime, {expirationAbsolute: null,
-                             expirationSliding: 600,
+    let cache_user = cache.getItem("user");
+    if(cache_user){
+        console.log(cache_user);
+    }else{
+        cache.setItem("user", "user_"+dateTime, {expirationAbsolute: null,
+                             expirationSliding: 60,
                              priority: Cache.Priority.HIGH,
                              callback: function(k, v) { alert('removed ' + k); }
                             });
-    let data = cache.getItem("user");
-    console.log(data);
+    }
 
     //偵測語法
     //ga_mouse_click_event("選擇要素","準則");
