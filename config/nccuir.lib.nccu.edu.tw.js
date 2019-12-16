@@ -27,7 +27,7 @@ var exec = function () {
 
 
     var TIMEOUT = 50
-    var cache = new Cache();
+    var cache = new Cache(-1, false, new Cache.LocalStorageCacheStorage());
     let dateTime = Date.now();
     let cache_user = cache.getItem("user");
     console.log(cache_user);
@@ -36,9 +36,8 @@ var exec = function () {
     }else{
         cache.setItem("user", "user_"+dateTime, {expirationAbsolute: new Date(new Date().getTime() + TIMEOUT*2)
             });
-        if (cache.getItem("user") !== "user_"+dateTime) {
-            throw "AssertEqual Failed: " + cache.getItem("user") + " !== " + "user_"+dateTime;
-        }
+        let cache_user = cache.getItem("user");
+        console.log(cache_user);
     }
     
     //偵測語法
