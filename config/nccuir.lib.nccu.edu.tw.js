@@ -27,7 +27,7 @@ var exec = function () {
 
 
     var TIMEOUT = 50
-    var cache = new Cache(-1, false, new Cache.LocalStorageCacheStorage());
+    var cache = new Cache(-1, false, new Cache.LocalStorageCacheStorage('myNameSpace'));
     let dateTime = Date.now();
     let cache_user = cache.getItem("user");
     console.log(cache_user);
