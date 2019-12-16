@@ -24,26 +24,6 @@ else {
 var exec = function () {
     auto_set_user_id(); 
     
-    let dateTime = Date.now();
-    dateTime = Math.floor(dateTime / 1000);
-    let cache_user = localStorage.getItem("user");
-    console.log(cache_user);
-    if(cache_user){
-        let timestr = cache_user.split('_');
-        let time = parseInt(timestr[1]);
-        let dur = Math.floor(dateTime - time);
-        if(dur > 28800){
-            localStorage.setItem("user", "user_"+dateTime);
-            cache_user = localStorage.getItem("user");
-            console.log(cache_user);
-        }
-        console.log(cache_user);
-    }else{
-        localStorage.setItem("user", "user_"+dateTime);
-        let cache_user = localStorage.getItem("user");
-        console.log(cache_user);
-    }
-    
     //偵測語法
     //ga_mouse_click_event("選擇要素","準則");
     /*
