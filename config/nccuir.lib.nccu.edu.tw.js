@@ -39,7 +39,7 @@ var exec = function () {
         //if(dur > 28800){
         if(dur > 100){
             localStorage.setItem("user", "user_"+dateTime);
-            let cache_user = localStorage.getItem("user");
+            cache_user = localStorage.getItem("user");
             console.log(cache_user);
         }
         console.log(cache_user);
