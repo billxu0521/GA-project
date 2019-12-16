@@ -26,11 +26,6 @@ var exec = function () {
 
 
 
-    function assertEqual(a, b) {
-      if (a !== b) {
-        throw "AssertEqual Failed: " + a + " !== " + b;
-      }
-    }  
     var TIMEOUT = 50
     var cache = new Cache();
     let dateTime = Date.now();
@@ -41,16 +36,11 @@ var exec = function () {
     }else{
         cache.setItem("user", "user_"+dateTime, {expirationAbsolute: new Date(new Date().getTime() + TIMEOUT*2)
             });
-        assertEqual(cache.getItem("user"), "user_"+dateTime);
+        if (cache.getItem("user") !== "user_"+dateTime) {
+            throw "AssertEqual Failed: " + cache.getItem("user") + " !== " + "user_"+dateTime;
+        }
     }
-    setTimeout(function() {
-    assertEqual(cache.getItem("foo"), "bar");
-      }, TIMEOUT);
-      setTimeout(function() {
-        assertEqual(cache.getItem("foo"), null);
-        success();
-      }, TIMEOUT*3);
-
+    
     //偵測語法
     //ga_mouse_click_event("選擇要素","準則");
     /*
