@@ -145,7 +145,7 @@ window.auto_set_user_id = function(_callback){
 
         _console_log("3.3. get user_id");
         console.log(USER_IP);
-        if(USER_IP = '' || undefined || null){
+        if(USER_IP == '' || USER_IP == undefined || USER_IP == null){
             USER_IP = get_user_time_id();
         }
         console.log(USER_IP);
