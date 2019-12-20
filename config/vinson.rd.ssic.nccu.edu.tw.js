@@ -5,7 +5,6 @@
  */
 
 GA_TRACE_CODE = "UA-89833109-4";
-USERIP = '';
 var _local_debug = false;
 
 if (_local_debug === true) {
