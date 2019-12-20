@@ -5,7 +5,7 @@
  */
 
 GA_TRACE_CODE = "UA-89833109-4";
-
+USERIP = '';
 var _local_debug = false;
 
 if (_local_debug === true) {
@@ -21,7 +21,7 @@ else {
 
 var exec = function () {
     auto_set_user_id();   
-    console.log(userip);
+    console.log(USERIP);
     //搜尋按鈕
     ga_mouse_click_event(".glyphicon glyphicon-search","Click");
     ga_mouse_click_event('a[title="文集瀏覽"]', "Click", function (_ele) {
