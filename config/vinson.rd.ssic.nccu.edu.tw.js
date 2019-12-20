@@ -21,7 +21,7 @@ else {
 
 var exec = function () {
     auto_set_user_id();   
-
+    console.log(userip);
     //搜尋按鈕
     ga_mouse_click_event(".glyphicon glyphicon-search","Click");
     ga_mouse_click_event('a[title="文集瀏覽"]', "Click", function (_ele) {
