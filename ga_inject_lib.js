@@ -143,6 +143,7 @@ window.auto_set_user_id = function(_callback){
 		_console_log("3.2. anonymous");
 
         _console_log("3.3. get user_id");
+        console.log(USERIP);
         if(USERIP = ''){
             USER_IP = get_user_time_id();
         }else{
