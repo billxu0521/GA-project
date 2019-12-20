@@ -148,6 +148,7 @@ window.auto_set_user_id = function(_callback){
         if(USER_IP = '' || undefined || null){
             USER_IP = get_user_time_id();
         }
+        console.log(USER_IP);
         //USER_IP = String(data['ip']);
         set_user_id(USER_IP);
         _console_log("Set user id in ip: " + USER_IP);
