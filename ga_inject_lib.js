@@ -141,16 +141,17 @@ window.auto_set_user_id = function(_callback){
 	
     if (get_user_id() === "anonymous") {
 		_console_log("3.2. anonymous");
-		
 
         _console_log("3.3. get user_id");
-        USER_IP = USERIP;
-        //USER_IP = get_user_time_id();
+        if(USERIP = ''){
+            USER_IP = get_user_time_id();
+        }else{
+            USER_IP = USERIP;
+        }
         //USER_IP = String(data['ip']);
-        set_user_id(USER_IP);    
+        set_user_id(USER_IP);
         _console_log("Set user id in ip: " + USER_IP);
         if (typeof(_callback) === "function") {
-            
             _console_log("3.4. ok");
             _callback();
         }
@@ -158,10 +159,9 @@ window.auto_set_user_id = function(_callback){
         /*
         getJSONP('https://ipinfo.io', function(data){
 			_console_log("3.3. https://ipinfo.io");
-			
 			USER_ID = get_user_time_id();
             //USER_IP = String(data['ip']);
-            set_user_id(USER_IP);    
+            set_user_id(USER_IP);
             _console_log("Set user id in ip: " + USER_IP);
             if (typeof(_callback) === "function") {
 				
