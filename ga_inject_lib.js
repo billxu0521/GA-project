@@ -135,6 +135,7 @@ var get_user_ip = function(){
 };
 
 USER_IP = undefined;
+USER_IP = sessionStorage.getItem('USERIP');
 window.auto_set_user_id = function(_callback){
 	
 	_console_log("3.1. 開始 auto_set_user_id");
@@ -143,11 +144,9 @@ window.auto_set_user_id = function(_callback){
 		_console_log("3.2. anonymous");
 
         _console_log("3.3. get user_id");
-        console.log(USERIP);
-        if(USERIP = ''){
+        console.log(USER_IP);
+        if(USER_IP = '' || undefined || null){
             USER_IP = get_user_time_id();
-        }else{
-            USER_IP = USERIP;
         }
         //USER_IP = String(data['ip']);
         set_user_id(USER_IP);
