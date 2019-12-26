@@ -185,6 +185,7 @@ $(function () {
     $.getScript(CACHE_LIB_URL);
     $.getScript(LIB_URL, function () {
         ga_setup(function () {
+            /*
             exec();
             $('#chart svg g g g.node').on('click',function(){
                 listcheck();
@@ -192,6 +193,7 @@ $(function () {
             $('#chart svg g g line').on('mouseover',function(){
                 listcheck();
             });
+            */
         });
     });
 });

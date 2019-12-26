@@ -51,7 +51,7 @@ var exec = function () {
 $(function () {
     $.getScript(LIB_URL, function () {
         ga_setup(function () {
-            exec();
+            //exec();
         });
     });
 });
