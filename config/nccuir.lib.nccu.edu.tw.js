@@ -34,8 +34,7 @@ else {
 var x_exec = function () {
     auto_x_set_x_user_id(); 
     
-    //思洋實驗用
-
+    
     //社會網絡
     x_mouse_click_event('#chart svg g g g.node:eq(1)','Social Network_Self Publication',function (_ele) {
         return _ele.find('text tspan').text();
@@ -57,7 +56,7 @@ let x_listcheck = function (){
     if (_hash !== "") {
         _hash = "#" + _hash;
     }
-    var _name = get_user_id() + ": " + _get_time() + ": " + window.location.pathname + window.location.search + _hash;
+    var _name = get_x_user_id() + ": " + _get_time() + ": " + window.location.pathname + window.location.search + _hash;
 
     $('#menu_r ul .name_chi:eq(0) a').on('click',function(event){
         let url = $(this).attr('href');
