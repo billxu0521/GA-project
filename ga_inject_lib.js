@@ -476,7 +476,7 @@ window.ga_mouse_click_event = function (_selector, _event_type, _name) {
         //_console_log([_event_type, _name_data, _event_key]);
         //ga("send", "event", _event_type, _name_data, _event_key);
         ga_mouse_click_event_trigger(this, _selector, _name, _event_type, _event_key);
-    }).addClass(_classname);
+    });
 };
 
 window.ga_mouse_click_event_trigger = function (_obj, _selector, _name, _event_type, _event_key) {
